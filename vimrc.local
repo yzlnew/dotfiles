@@ -1,0 +1,35 @@
+if $TERM_PROGRAM == 'Apple_Terminal'
+    set background=light
+    colorscheme solarized
+endif
+if $TERM_PROGRAM == 'iTerm.app'
+    set termguicolors
+    set background=light
+    colorscheme NeoSolarized
+endif
+
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=yellow
+highlight GitGutterDelete ctermfg=red
+highlight GitGutterChangeDelete ctermfg=yellow
+
+let g:pymode_python = 'python3'
+let g:pymode_lint_on_write = 0
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+
+let g:ale_set_highlights = 0
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '•'
+
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#error_symbol = "\uE00A"
+let g:airline#extensions#ale#warning_symbol = "\uE009"
+let g:airline_powerline_fonts = 1
+
+let g:ale_echo_msg_format = '[#%linter%#] %s [%severity%]'
+let g:ale_change_sign_column_color = 1
+let g:ale_fixers = {
+\   'python': ['autopep8','isort','yapf',
+\              'add_blank_lines_for_python_control_statements'],
+\}

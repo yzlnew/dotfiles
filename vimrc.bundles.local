@@ -1,0 +1,7 @@
+UnBundle 'scrooloose/syntastic'
+Bundle 'ayu-theme/ayu-vim'
+Bundle 'wakatime/vim-wakatime'
+Bundle 'w0rp/ale'
+Bundle 'junegunn/vim-emoji'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'iCyMind/NeoSolarized'

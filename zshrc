@@ -88,12 +88,12 @@ alias python="/usr/local/bin/python3"
 alias pip="/usr/local/bin/pip3"
 eval "$(thefuck --alias)"
 
-# Homebrew Github Token
-export HOMEBREW_GITHUB_API_TOKEN="39426561cccfae295d759aca976dbe0bcbda13cc"
+# Tokens
+source $HOME/.tokens
 
 # VSCode
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
-export EDITOR=code 
+export EDITOR=code
 
 # Eigen
 export EIGEN3_INCLUDE_DIR="/usr/local/Cellar/eigen/3.3.4/include"

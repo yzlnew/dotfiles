@@ -7,29 +7,37 @@ if $TERM_PROGRAM == 'iTerm.app'
     set background=light
     colorscheme NeoSolarized
 endif
-
+"自动换行
+set colorcolumn=81
+set textwidth=78
+set fo+=tmB
+"GitGutter 颜色设置
 highlight GitGutterAdd ctermfg=green
 highlight GitGutterChange ctermfg=yellow
 highlight GitGutterDelete ctermfg=red
 highlight GitGutterChangeDelete ctermfg=yellow
-
+"Pymode
 let g:pymode_python = 'python3'
 let g:pymode_lint_on_write = 0
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
-
-let g:ale_set_highlights = 0
-let g:ale_sign_error = 'x'
-let g:ale_sign_warning = '•'
-
+"Airline
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#ale#error_symbol = "\uE00A"
 let g:airline#extensions#ale#warning_symbol = "\uE009"
 let g:airline_powerline_fonts = 1
-
+"ALE
+let g:ale_set_highlights = 0
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '•'
 let g:ale_echo_msg_format = '[#%linter%#] %s [%severity%]'
+let g:ale_writegood_use_global = 1
 let g:ale_change_sign_column_color = 1
 let g:ale_fixers = {
 \   'python': ['autopep8','isort','yapf',
 \              'add_blank_lines_for_python_control_statements'],
+\   'markdown': ['prettier','trim_whitespace'],
 \}
+"markdown
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1

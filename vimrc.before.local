@@ -5,4 +5,4 @@ elseif has('python3')
 endif
 
 " spf13-vim 插件组
-let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'python', 'misc',]
+let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'python', 'html', 'javascript' ]

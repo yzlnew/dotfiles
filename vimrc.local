@@ -10,7 +10,12 @@ endif
 "自动换行
 set colorcolumn=81
 set textwidth=78
-set fo+=tmB
+set fo+=mB
+"Markdown 设置自动折行
+au BufNewFile,BufRead *.md set wrap
+autocmd FileType markdown set wrap
+"去除行号背景
+highlight LineNr guibg=NONE
 "GitGutter 颜色设置
 highlight GitGutterAdd ctermfg=green
 highlight GitGutterChange ctermfg=yellow
@@ -30,14 +35,26 @@ let g:airline_powerline_fonts = 1
 let g:ale_set_highlights = 0
 let g:ale_sign_error = 'x'
 let g:ale_sign_warning = '•'
-let g:ale_echo_msg_format = '[#%linter%#] %s [%severity%]'
+let g:ale_echo_msg_format = "%severity% \uF101 %s \uF101 %linter%"
+let g:ale_echo_msg_error_str = "\uF2D3 Error"
+let g:ale_echo_msg_info_str = "\uF05A Info"
+let g:ale_echo_msg_warning_str = "\uF071 Warning"
 let g:ale_writegood_use_global = 1
 let g:ale_change_sign_column_color = 1
 let g:ale_fixers = {
 \   'python': ['autopep8','isort','yapf',
 \              'add_blank_lines_for_python_control_statements'],
 \   'markdown': ['prettier','trim_whitespace'],
+\    'cpp': ['clang-format','trim_whitespace'],
 \}
-"markdown
+"Markdown
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_folding_disabled = 1
+let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
+let g:instant_markdown_autostart = 0
+"AutoPairs FlyMode
+let g:AutoPairsFlyMode = 0
+"fzf
+set rtp+=/usr/local/opt/fzf
+

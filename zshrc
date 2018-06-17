@@ -29,7 +29,7 @@ ZSH_THEME="sobole"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -51,7 +51,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git autojump zsh-autosuggestions osx zsh-syntax-highlighting)
+plugins=(vi-mode git zsh-autosuggestions autojump osx zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,8 +93,19 @@ source $HOME/.tokens
 
 # VSCode
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
-export EDITOR=code
+export EDITOR=vim
 
 # Eigen
 export EIGEN3_INCLUDE_DIR="/usr/local/Cellar/eigen/3.3.4/include"
 
+# Pipenv
+eval "$(pipenv --completion)"
+
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Solarized colors
+export FZF_DEFAULT_OPTS='
+    --color fg:240,bg:230,hl:33,fg+:241,bg+:221,hl+:33
+    --color info:33,prompt:33,pointer:166,marker:166,spinner:33
+'

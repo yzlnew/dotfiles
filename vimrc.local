@@ -1,3 +1,6 @@
+if has('python3')
+  silent! python3 1
+endif
 if $TERM_PROGRAM == 'Apple_Terminal'
     set background=light
     colorscheme solarized
@@ -57,4 +60,6 @@ let g:instant_markdown_autostart = 0
 let g:AutoPairsFlyMode = 0
 "fzf
 set rtp+=/usr/local/opt/fzf
-
+"ycm
+let g:ycm_autoclose_preview_window_after_completion=1
+nmap <leader>gt :YcmCompleter GoTo<CR>

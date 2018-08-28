@@ -99,8 +99,7 @@ export EDITOR=vim
 export EIGEN3_INCLUDE_DIR="/usr/local/Cellar/eigen/3.3.4/include"
 
 # Pipenv
-eval "$(pipenv --completion)"
-
+# eval "$(pipenv --completion)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

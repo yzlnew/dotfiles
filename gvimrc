@@ -1,4 +1,4 @@
-set guifont=FiraCode-Retina:h14
+set guifont=FuraCodeNerdFontComplete-Retina:h16
 
 set background=light
 set termguicolors

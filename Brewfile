@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/science"
+brew "openssl"
 brew "aria2"
 brew "gcc"
 brew "arpack"
@@ -33,15 +34,14 @@ brew "graphviz"
 brew "hdf5"
 brew "hub"
 brew "icu4c"
-brew "openssl"
 brew "libsndfile"
 brew "libyaml"
+brew "python"
 brew "mackup"
 brew "mas"
 brew "metis"
 brew "ncdu"
 brew "node"
-brew "python"
 brew "octave"
 brew "opencv"
 brew "openssl@1.1"
@@ -103,12 +103,14 @@ cask "hammerspoon"
 cask "handbrake"
 cask "ichm"
 cask "iina"
+cask "imageoptim"
 cask "insomniax"
 cask "istat-menus"
 cask "iterm2"
 cask "java8"
 cask "karabiner"
 cask "keycastr"
+cask "kindle"
 cask "kitematic"
 cask "lepton"
 cask "licecap"
@@ -164,8 +166,10 @@ mas "Noizio", id: 928871589
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Polarr Photo Editor Lite", id: 1077124956
+mas "Reeder", id: 880001334
 mas "ScriptFlow", id: 994939623
 mas "TickTick", id: 966085870
 mas "Todoist", id: 585829637
 mas "Wallpaper Wizard", id: 1266674560
 mas "WeChat", id: 836500024
+mas "订票助手", id: 1163682213

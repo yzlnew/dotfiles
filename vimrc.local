@@ -17,8 +17,9 @@ set fo+=mB
 "Markdown 设置自动折行
 au BufNewFile,BufRead *.md set wrap
 autocmd FileType markdown set wrap
-"去除行号背景
+"去除行号背景 标志列背景
 highlight LineNr guibg=NONE
+highlight clear SignColumn
 "GitGutter 颜色设置
 highlight GitGutterAdd ctermfg=green
 highlight GitGutterChange ctermfg=yellow
@@ -34,6 +35,8 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#ale#error_symbol = "\uE00A"
 let g:airline#extensions#ale#warning_symbol = "\uE009"
 let g:airline_powerline_fonts = 1
+let g:airline_solarized_bg='light'
+let g:airline_theme='solarized'
 "ALE
 let g:ale_set_highlights = 0
 let g:ale_sign_error = 'x'
@@ -43,7 +46,7 @@ let g:ale_echo_msg_error_str = "\uF2D3 Error"
 let g:ale_echo_msg_info_str = "\uF05A Info"
 let g:ale_echo_msg_warning_str = "\uF071 Warning"
 let g:ale_writegood_use_global = 1
-let g:ale_change_sign_column_color = 1
+let g:ale_change_sign_column_color = 0
 let g:ale_fixers = {
 \   'python': ['autopep8','isort','yapf',
 \              'add_blank_lines_for_python_control_statements'],

@@ -86,6 +86,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
 alias python="/usr/local/bin/python3"
 alias pip="/usr/local/bin/pip3"
+alias typora="open -a typora"
 eval "$(thefuck --alias)"
 
 # Tokens

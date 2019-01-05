@@ -1,6 +1,6 @@
-if has('python3')
-  silent! python3 1
-endif
+"if has('python3')
+  "silent! python3 1
+"endif
 if $TERM_PROGRAM == 'Apple_Terminal'
     set background=light
     colorscheme solarized

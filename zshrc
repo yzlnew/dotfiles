@@ -7,7 +7,49 @@ export ZSH=/Users/r0brew/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="sobole"
+# THEME
+POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_COLOR_SCHEME="light"
+
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir_writable dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator background_jobs time)
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%K{white}%k"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{white}%F{yellow} \uf155 %f%F{white}%k\ue0b0%f "
+POWERLEVEL9K_USER_ICON="\uF489"
+POWERLEVEL9K_ROOT_ICON="\uF09C"
+POWERLEVEL9K_SUDO_ICON=$'\uF09C'
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_TIME_FOREGROUND='yellow'
+POWERLEVEL9K_TIME_BACKGROUND='white'
+# POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\uE0C0'
+
+# VCS icons
+POWERLEVEL9K_VCS_GIT_ICON=$'\uf1d2 '
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uf113 '
+POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$'\uf296 '
+POWERLEVEL9K_VCS_BRANCH_ICON=$''
+POWERLEVEL9K_VCS_STAGED_ICON=$'\uf055'
+POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf421'
+POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf00d'
+POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uf0ab '
+POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uf0aa '
+
+# VCS colours
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='blue'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='green'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
+
+# VCS CONFIG
+POWERLEVEL9K_SHOW_CHANGESET=false
+
 # SPACESHIP_BATTERY_SHOW="false"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -42,7 +84,7 @@ ZSH_THEME="sobole"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -51,7 +93,7 @@ ZSH_THEME="sobole"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git zsh-autosuggestions autojump osx zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions autojump osx zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,7 +147,10 @@ export EIGEN3_INCLUDE_DIR="/usr/local/Cellar/eigen/3.3.4/include"
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Solarized colors
-export FZF_DEFAULT_OPTS='
-    --color fg:240,bg:230,hl:33,fg+:241,bg+:221,hl+:33
-    --color info:33,prompt:33,pointer:166,marker:166,spinner:33
-'
+  export FZF_DEFAULT_OPTS="
+    --color fg:#657b83,bg:#fdf6e3,hl:#859900,fg+:#586e75,bg+:#eee8d5,hl+:#859900
+    --color info:#dc322f,prompt:#859900,pointer:#859900,marker:#fdf6e3,spinner:#b58900
+  "
+
+# Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH:/usr/local/lib/ruby/gems/2.6.0/bin"

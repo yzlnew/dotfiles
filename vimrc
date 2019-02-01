@@ -12,6 +12,7 @@
 " 参考：https://github.com/junegunn/vim-plug
     call plug#begin('~/.vim/plugged')
         Plug 'scrooloose/nerdtree'              " 目录树
+        Plug 'mhinz/vim-startify'               " 启动页
         Plug 'CodeFalling/fcitx-vim-osx'        " 正常模式使用英文输入法
         Plug 'cespare/vim-toml'                 " 支持 TOML
         Plug 'junegunn/fzf.vim'                 " fzf 文件模糊搜索
@@ -48,6 +49,7 @@
     syntax enable               " 支持语法高亮
     set mouse=a                 " 使用鼠标
     set mousehide               " 输入时隐藏鼠标指针
+    set encoding=utf-8
     scriptencoding utf-8        " UTF-8 文件编码
     set clipboard=unnamed       " 系统剪贴板使用匿名寄存器
     set shortmess+=filmnrxoOtT  " 减少和缩写消息提示
@@ -72,8 +74,13 @@
     augroup END
     " 备份 {
         set backup
+        set backupdir=$HOME/.vim/files/backup/
+        set backupext=-vimbackup
+        set backupskip=
+        set directory=$HOME/.vim/files/swap//
         if has('persistent_undo')
             set undofile
+            set undodir=$HOME/.vim/files/undo/
             set undolevels=1000
             set undoreload=10000
         endif
@@ -97,6 +104,16 @@
             let &t_SI = "\<Esc>]50;CursorShape=1\x7"
             let &t_SR = "\<Esc>]50;CursorShape=2\x7"
             let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+        endif
+        if has('gui_running')
+            set guifont=FuraCode\ Nerd\ Font:h16
+            set guifontwide=Noto\ Sans\ CJK\ SC:h16
+            set shell=/bin/zsh
+            highlight clear SignColumn
+            " highlight LineNr guibg=NONE
+            set background=light
+            set termguicolors
+            colorscheme NeoSolarized
         endif
     " }
     set noshowmode              " 不显示当前模式，使用 Airline
@@ -201,12 +218,13 @@
 
 " 插件设定 {
     " Airline {
-        let g:airline#extensions#ale#enabled = 1
-        let g:airline#extensions#ale#error_symbol = "\uE00A"
-        let g:airline#extensions#ale#warning_symbol = "\uE009"
         let g:airline_powerline_fonts = 1
         let g:airline_solarized_bg='light'
         let g:airline_theme='solarized'
+        let g:airline#extensions#ale#enabled = 1
+        let g:airline#extensions#ale#error_symbol = "\uE00A"
+        let g:airline#extensions#ale#warning_symbol = "\uE009"
+        let g:airline#extensions#tabline#enabled = 1
     " }
     " ALE {
         let g:ale_set_highlights = 0

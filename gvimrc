@@ -4,10 +4,3 @@ if exists('py2') && has('python')
 elseif has('python3')
 endif
 
-set shell=/bin/zsh
-highlight clear SignColumn
-" highlight LineNr guibg=NONE
-set guifont=FuraCodeNerdFontComplete-Retina:h16
-set background=light
-set termguicolors
-colorscheme NeoSolarized

@@ -80,7 +80,8 @@
     augroup END
     " 备份 {
         set backup
-        if !isdirectory($HOME . '/.vim/files/')
+        if !isdirectory($HOME . '/.vim/files')
+            call mkdir($HOME . '/.vim/files')
             call mkdir($HOME . '/.vim/files/backup')
             call mkdir($HOME . '/.vim/files/swap')
             call mkdir($HOME . '/.vim/files/undo')

@@ -10,8 +10,14 @@
 " 插件管理 {
 " 使用 vim-plug 进行插件管理
 " 参考：https://github.com/junegunn/vim-plug
+    if empty(glob('~/.vim/autoload/plug.vim'))
+      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
     call plug#begin('~/.vim/plugged')
         Plug 'scrooloose/nerdtree'              " 目录树
+        Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'mhinz/vim-startify'               " 启动页
         Plug 'CodeFalling/fcitx-vim-osx'        " 正常模式使用英文输入法
         Plug 'cespare/vim-toml'                 " 支持 TOML
@@ -74,6 +80,11 @@
     augroup END
     " 备份 {
         set backup
+        if !isdirectory($HOME . '/.vim/files/')
+            call mkdir($HOME . '/.vim/files/backup')
+            call mkdir($HOME . '/.vim/files/swap')
+            call mkdir($HOME . '/.vim/files/undo')
+        endif
         set backupdir=$HOME/.vim/files/backup/
         set backupext=-vimbackup
         set backupskip=
@@ -106,7 +117,7 @@
             let &t_EI = "\<Esc>]50;CursorShape=0\x7"
         endif
         if has('gui_running')
-            set guifont=FuraCode\ Nerd\ Font:h16
+            set guifont=FantasqueSansMono\ Nerd\ Font:h18
             set guifontwide=Noto\ Sans\ CJK\ SC:h16
             set shell=/bin/zsh
             highlight clear SignColumn
@@ -114,6 +125,7 @@
             set background=light
             set termguicolors
             colorscheme NeoSolarized
+            highlight Comment gui=italic
         endif
     " }
     set noshowmode              " 不显示当前模式，使用 Airline
@@ -136,7 +148,6 @@
         set statusline+=\ [%{getcwd()}]
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%
     endif
-
     set number                  " 显示行号
     set cursorline              " 高亮当前行
     highlight clear SignColumn  " 去除标志列背景
@@ -314,5 +325,12 @@
     " }
     " NERDCommenter {
     let g:NERDSpaceDelims=1
+    " }
+    " startify {
+        let g:ascii = [
+        \ '    |\__/,| ',
+        \ '  _.|o o  |_ Hello, Robin!',
+        \ ]
+        let g:startify_custom_header = g:ascii + startify#fortune#boxed()
     " }
 " }

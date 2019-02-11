@@ -25,6 +25,7 @@ brew "fftw"
 brew "fig2dev"
 brew "flac"
 brew "fltk"
+brew "fontforge"
 brew "fzf"
 brew "gd"
 brew "gist"
@@ -97,9 +98,12 @@ cask "flash-player"
 cask "fliqlo"
 cask "font-camingocode"
 cask "font-cooper-hewitt"
+cask "font-fantasque-sans-mono"
+cask "font-fantasquesansmono-nerd-font"
 cask "font-fira-mono-for-powerline"
 cask "font-firacode-nerd-font"
 cask "font-fontawesome"
+cask "font-ibm-plex"
 cask "font-menlo-for-powerline"
 cask "font-mononoki-nerd-font"
 cask "font-museo"
@@ -174,6 +178,7 @@ mas "Bear", id: 1091189122
 mas "GIF Brewery 3", id: 1081413713
 mas "GIPHY CAPTURE", id: 668208984
 mas "HazeOver", id: 430798174
+mas "IM+", id: 1137958278
 mas "iMovie", id: 408981434
 mas "iPic", id: 1101244278
 mas "Irvue", id: 1039633667
@@ -184,7 +189,6 @@ mas "Maipo", id: 789066512
 mas "miniQpicview", id: 1314842898
 mas "Money", id: 1185488696
 mas "Muzei", id: 1203123639
-mas "MWeb", id: 954188948
 mas "Noizio", id: 928871589
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541

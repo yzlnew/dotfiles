@@ -78,12 +78,16 @@
 " }
 
 " 基础设置 {
+    set encoding=utf-8          " YCM 要求
+    if WINDOWS()                " gVim 菜单乱码
+        source $VIMRUNTIME/delmenu.vim
+        source $VIMRUNTIME/menu.vim
+    endif
     set history=500             " 历史指令数量
     filetype plugin indent on   " 文件类型
     syntax enable               " 支持语法高亮
     set mouse=a                 " 使用鼠标
     set mousehide               " 输入时隐藏鼠标指针
-    set encoding=utf-8
     scriptencoding utf-8        " UTF-8 文件编码
     set clipboard=unnamed       " 系统剪贴板使用匿名寄存器
     set shortmess+=filmnrxoOtT  " 减少和缩写消息提示
@@ -147,12 +151,14 @@
         endif
         if has('gui_running')
             set guifont=FantasqueSansMono\ Nerd\ Font:h18
-            set guifontwide=Noto\ Sans\ CJK\ SC:h16
-            set shell=/bin/zsh
+            set guifontwide=Sarasa\ Term\ SC:h16
+            if WINDOWS()
+                set guifont=Sarasa\ Term\ SC:h14
+            endif
+            set guioptions -=T
             highlight clear LineNr
             highlight clear SignColumn
             highlight LineNr guibg=NONE
-            set background=light
             set termguicolors
             colorscheme NeoSolarized
             highlight Comment gui=italic
@@ -168,12 +174,8 @@
 
     if has('statusline')
         set laststatus=2
-
         set statusline=%<%f\
         set statusline+=%w%h%m%r
-        if !exists('g:override_spf13_bundles')
-            set statusline+=%{fugitive#statusline()}
-        endif
         set statusline+=\ [%{&ff}/%Y]
         set statusline+=\ [%{getcwd()}]
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%

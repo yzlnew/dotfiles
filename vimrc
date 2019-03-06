@@ -25,7 +25,6 @@
             set shell=/bin/zsh
         endif
     " }
-
     " Windows 兼容 {
         if WINDOWS()
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
@@ -74,6 +73,7 @@
         Plug 'easymotion/vim-easymotion'        " 快速跳转
         Plug 'junegunn/goyo.vim'                " 专注模式
         Plug 'amix/vim-zenroom2'                " 禅模式
+        Plug 'wellle/targets.vim'               " 额外的文本对象
     call plug#end()
 " }
 

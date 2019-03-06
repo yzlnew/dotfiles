@@ -7,19 +7,48 @@
 " Copyright 2019 @yzlnew
 " }
 
+" 环境设置 {
+    " 识别平台 {
+        silent function! OSX()
+            return has('macunix')
+        endfunction
+        silent function! LINUX()
+            return has('unix') && !has('macunix') && !has('win32unix')
+        endfunction
+        silent function! WINDOWS()
+            return  (has('win32') || has('win64'))
+        endfunction
+    " }
+    " Shell {
+        set nocompatible        " Must be first line
+        if !WINDOWS()
+            set shell=/bin/zsh
+        endif
+    " }
+
+    " Windows 兼容 {
+        if WINDOWS()
+          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+        endif
+    " }
+" }
+
 " 插件管理 {
 " 使用 vim-plug 进行插件管理
 " 参考：https://github.com/junegunn/vim-plug
-    if empty(glob('~/.vim/autoload/plug.vim'))
-      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    if !WINDOWS()
+        if empty(glob('~/.vim/autoload/plug.vim'))
+          silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+          autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+        endif
     endif
+
     call plug#begin('~/.vim/plugged')
+        Plug 'dangxuandev/fcitx-vim-osx'        " 正常模式使用英文输入法
         Plug 'scrooloose/nerdtree'              " 目录树
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'mhinz/vim-startify'               " 启动页
-        Plug 'CodeFalling/fcitx-vim-osx'        " 正常模式使用英文输入法
         Plug 'cespare/vim-toml'                 " 支持 TOML
         Plug 'junegunn/fzf.vim'                 " fzf 文件模糊搜索
         Plug 'wakatime/vim-wakatime'            " Wakatime 编程记录
@@ -49,7 +78,6 @@
 " }
 
 " 基础设置 {
-    set nocompatible        " 不兼容 Vi
     set history=500             " 历史指令数量
     filetype plugin indent on   " 文件类型
     syntax enable               " 支持语法高亮
@@ -121,8 +149,9 @@
             set guifont=FantasqueSansMono\ Nerd\ Font:h18
             set guifontwide=Noto\ Sans\ CJK\ SC:h16
             set shell=/bin/zsh
+            highlight clear LineNr
             highlight clear SignColumn
-            " highlight LineNr guibg=NONE
+            highlight LineNr guibg=NONE
             set background=light
             set termguicolors
             colorscheme NeoSolarized
@@ -152,7 +181,7 @@
     set number                  " 显示行号
     set cursorline              " 高亮当前行
     highlight clear SignColumn  " 去除标志列背景
-    " highlight clear LineNr      " 去除行号背景
+    highlight clear LineNr      " 去除行号背景
     highlight LineNr guibg=NONE
     set backspace=indent,eol,start
     set showmatch               " 括号匹配

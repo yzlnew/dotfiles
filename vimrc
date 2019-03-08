@@ -151,7 +151,7 @@
         endif
         if has('gui_running')
             set guifont=FantasqueSansMono\ Nerd\ Font:h18
-            set guifontwide=Sarasa\ Term\ SC:h16
+            set guifontwide=Sarasa\ Term\ SC:h14
             if WINDOWS()
                 set guifont=Sarasa\ Term\ SC:h14
             endif
@@ -365,4 +365,8 @@
         \ ]
         let g:startify_custom_header = g:ascii + startify#fortune#boxed()
     " }
+    " AutoPairs {
+        let g:AutoPairsShortcutFastWrap = '<M-e>'
+    " }
+
 " }

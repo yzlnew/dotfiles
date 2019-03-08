@@ -12,18 +12,27 @@ This [vimrc](https://github.com/yzlnew/dotfiles/blob/master/vimrc) is tested on 
 
 Screenshots can be found [here](https://yellow-stone.club/blog/2019-01-28-vimrc/).
 
-#### on macOS/Linux
+#### macOS/Linux
 
 Copy the vimrc to your ~/.vimrc, and you're almost all set.
 
-#### on Windows
+#### Windows
 
 1. Copy the vimrc to ~/\_vimrc.
 2. Paste script below in PowerShell to install vim-plug.
 
-<script src="https://gist.github.com/yzlnew/dae21e149e713662aec77ae7aa6ae90c.js"></script>
+```PowerShell
+md ~\.vim\autoload
+$uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+(New-Object Net.WebClient).DownloadFile(
+  $uri,
+  $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
+    "~\.vim\autoload\plug.vim"
+  )
+)
+```
 
-#### reminder
+#### Reminder
 
 - I use [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic) on Windows and FantasqueSansMono on macOS. A Nerd-Font is needed
   to make plugin like `vim-devicons` and `vim-airline` look right.

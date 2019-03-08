@@ -74,6 +74,8 @@
         Plug 'junegunn/goyo.vim'                " 专注模式
         Plug 'amix/vim-zenroom2'                " 禅模式
         Plug 'wellle/targets.vim'               " 额外的文本对象
+        Plug 'lilydjwg/colorizer'               " RGB 颜色显示
+        Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
     call plug#end()
 " }
 
@@ -200,6 +202,7 @@
     set foldenable              " 打开代码折叠
     set list                    " 显示可能引起的空白字符
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+    set fillchars+=vert:│
 " }
 
 " 格式化 {

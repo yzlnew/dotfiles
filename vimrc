@@ -77,6 +77,7 @@
         Plug 'wellle/targets.vim'               " 额外的文本对象
         Plug 'lilydjwg/colorizer'               " RGB 颜色显示
         Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
+        Plug 'lervag/vimtex'                    " LaTeX
     call plug#end()
 " }
 

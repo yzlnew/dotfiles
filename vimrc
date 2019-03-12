@@ -46,6 +46,7 @@
     call plug#begin('~/.vim/plugged')
         Plug 'dangxuandev/fcitx-vim-osx'        " 正常模式使用英文输入法
         Plug 'scrooloose/nerdtree'              " 目录树
+        Plug 'francoiscabrol/ranger.vim'        " Ranger
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'mhinz/vim-startify'               " 启动页
         Plug 'cespare/vim-toml'                 " 支持 TOML
@@ -153,7 +154,7 @@
         endif
         if has('gui_running')
             set guifont=FantasqueSansMono\ Nerd\ Font:h18
-            set guifontwide=Sarasa\ Term\ SC:h14
+            set guifontwide=Sarasa\ Term\ SC:h16
             if WINDOWS()
                 set guifont=Sarasa\ Term\ SC:h14
             endif
@@ -369,7 +370,8 @@
         let g:startify_custom_header = g:ascii + startify#fortune#boxed()
     " }
     " AutoPairs {
-        let g:AutoPairsShortcutFastWrap = '<M-e>'
+        let g:AutoPairsShortcutFastWrap = '<leader>fw'
+        let g:AutoPairsShortcutJump = '<leader>j'
     " }
 
 " }

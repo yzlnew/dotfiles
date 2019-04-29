@@ -3,6 +3,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+cask "java8"
 brew "openssl"
 brew "aria2"
 brew "gcc"
@@ -12,18 +13,19 @@ brew "bat"
 brew "icu4c"
 brew "boost"
 brew "fontconfig"
-brew "cmake"
 brew "gdbm"
 brew "python"
+brew "cmake"
 brew "cookiecutter"
 brew "duti"
-brew "emacs", args: ["with-cocoa"]
+brew "emacs"
 brew "epstool"
 brew "fcitx-remote-for-osx"
 brew "libogg"
+brew "flac"
+brew "libsndfile"
 brew "fftw"
 brew "fig2dev"
-brew "flac"
 brew "fltk"
 brew "fontforge"
 brew "fzf"
@@ -40,12 +42,12 @@ brew "graphviz"
 brew "hdf5"
 brew "hub"
 brew "hugo"
-brew "libsndfile"
 brew "libyaml"
 brew "mackup"
 brew "mas"
 brew "metis"
 brew "ncdu"
+brew "neovim", args: ["HEAD"]
 brew "node"
 brew "numpy", link: false
 brew "octave"
@@ -53,6 +55,7 @@ brew "openssl@1.1"
 brew "pandoc"
 brew "perl"
 brew "polipo"
+brew "pyenv"
 brew "pyqt"
 brew "ranger"
 brew "redis"
@@ -65,6 +68,7 @@ brew "tldr"
 brew "tmux"
 brew "vim"
 brew "wget"
+brew "yarn"
 brew "you-get"
 cask "adobe-acrobat-reader"
 cask "aerial"
@@ -129,7 +133,6 @@ cask "imageoptim"
 cask "insomniax"
 cask "istat-menus"
 cask "iterm2"
-cask "java8"
 cask "karabiner"
 cask "keycastr"
 cask "kitematic"
@@ -144,6 +147,7 @@ cask "mailspring"
 cask "mathpix-snipping-tool"
 cask "microsoft-remote-desktop-beta"
 cask "mounty"
+cask "musicbrainz-picard"
 cask "muzzle"
 cask "neteasemusic"
 cask "notion"
@@ -177,31 +181,31 @@ cask "visual-studio-code"
 cask "vox"
 cask "xquartz"
 cask "zotero"
-mas "Bear", id: 1091189122
-mas "GIF Brewery 3", id: 1081413713
-mas "GIPHY CAPTURE", id: 668208984
-mas "HazeOver", id: 430798174
-mas "IM+", id: 1137958278
-mas "iMovie", id: 408981434
-mas "iPic", id: 1101244278
-mas "Irvue", id: 1039633667
-mas "Jietu", id: 1059334054
-mas "Keynote", id: 409183694
-mas "Magnet", id: 441258766
-mas "Maipo", id: 789066512
-mas "miniQpicview", id: 1314842898
-mas "Money", id: 1185488696
-mas "Muzei", id: 1203123639
-mas "Noizio", id: 928871589
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Polarr Photo Editor Lite", id: 1077124956
-mas "Reeder", id: 880001334
-mas "ScriptFlow", id: 994939623
-mas "TickTick", id: 966085870
-mas "Time Out", id: 402592703
-mas "Todoist", id: 585829637
-mas "Wallpaper Wizard", id: 1266674560
-mas "WeChat", id: 836500024
-mas "Xnip", id: 1221250572
-mas "订票助手", id: 1163682213
+mas "co.polarr.ppeosx.lite", id: 1077124956
+mas "com.apple.iMovieApp", id: 408981434
+mas "com.apple.iWork.Keynote", id: 409183694
+mas "com.apple.iWork.Numbers", id: 409203825
+mas "com.apple.iWork.Pages", id: 409201541
+mas "com.crowdcafe.windowmagnet", id: 441258766
+mas "com.dejal.timeout.free", id: 402592703
+mas "com.fancymax.12306ForMac", id: 1163682213
+mas "com.fasthatchapps.gifgrabberosx", id: 668208984
+mas "com.helloresolven.GIF-Brewery-3", id: 1081413713
+mas "com.jumsoft.money.macos", id: 1185488696
+mas "com.kryolokovlin.Noizio", id: 928871589
+mas "com.leonspok.osx.Irvue", id: 1039633667
+mas "com.macpaw.WallWiz", id: 1266674560
+mas "com.naman14.muzeimacos", id: 1203123639
+mas "com.pointum.hazeover", id: 430798174
+mas "com.reederapp.rkit2.mac", id: 880001334
+mas "com.shapeservices.implusosx", id: 1137958278
+mas "com.softmastx.ScriptFlow", id: 994939623
+mas "com.tencent.JietuMac", id: 1059334054
+mas "com.tencent.miniqpicview", id: 1314842898
+mas "com.tencent.xinWeChat", id: 836500024
+mas "com.TickTick.task.mac", id: 966085870
+mas "com.todoist.mac.Todoist", id: 585829637
+mas "com.wutian.weibo", id: 789066512
+mas "com.zzd.Xnip", id: 1221250572
+mas "net.shinyfrog.bear", id: 1091189122
+mas "net.toolinbox.ipic", id: 1101244278

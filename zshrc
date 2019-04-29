@@ -113,3 +113,5 @@ export EIGEN3_INCLUDE_DIR="/usr/local/Cellar/eigen/3.3.4/include"
 
 # Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH:/usr/local/lib/ruby/gems/2.6.0/bin"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

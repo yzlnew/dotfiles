@@ -63,7 +63,7 @@
         Plug 'skywind3000/asyncrun.vim'         " 异步执行命令行指令
         Plug 'vim-airline/vim-airline'          " Airline 状态栏
         Plug 'vim-airline/vim-airline-themes'   " Airline 主题
-        Plug 'Valloric/YouCompleteMe'           " 代码补全
+        " Plug 'Valloric/YouCompleteMe'           " 代码补全
         Plug 'SirVer/ultisnips'                 " 代码片段引擎
         Plug 'honza/vim-snippets'               " 代码片段
         Plug 'tpope/vim-fugitive'               " Git
@@ -78,6 +78,10 @@
         Plug 'lilydjwg/colorizer'               " RGB 颜色显示
         Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
         Plug 'lervag/vimtex'                    " LaTeX
+        if WINDOWS()
+            Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
+        endif
+        Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
     call plug#end()
 " }
 
@@ -115,16 +119,17 @@
         autocmd BufWinEnter * call ResCur()
     augroup END
     " 备份 {
-        set backup
+        set nobackup
+        set nowritebackup
         if !isdirectory($HOME . '/.vim/files')
             call mkdir($HOME . '/.vim/files')
-            call mkdir($HOME . '/.vim/files/backup')
+            " call mkdir($HOME . '/.vim/files/backup')
             call mkdir($HOME . '/.vim/files/swap')
             call mkdir($HOME . '/.vim/files/undo')
         endif
-        set backupdir=$HOME/.vim/files/backup/
-        set backupext=-vimbackup
-        set backupskip=
+        " set backupdir=$HOME/.vim/files/backup/
+        " set backupext=-vimbackup
+        " set backupskip=
         set directory=$HOME/.vim/files/swap//
         if has('persistent_undo')
             set undofile
@@ -165,8 +170,9 @@
             highlight LineNr guibg=NONE
             set termguicolors
             colorscheme NeoSolarized
-            highlight Comment gui=italic
         endif
+        highlight Comment cterm=italic gui=italic
+        " highlight Keyword cterm=italic gui=italic
     " }
     set noshowmode              " 不显示当前模式，使用 Airline
     set colorcolumn=81
@@ -336,6 +342,70 @@
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
         autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
     " }
+    " COC {
+        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+        autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+        set signcolumn=yes
+        set updatetime=300
+        " Use `[c` and `]c` to navigate diagnostics
+        nmap <silent> [c <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+        " Remap keys for gotos
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+        nmap <silent> gi <Plug>(coc-implementation)
+        nmap <silent> gr <Plug>(coc-references)
+
+        " Use K to show documentation in preview window
+        nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+        function! s:show_documentation()
+          if (index(['vim','help'], &filetype) >= 0)
+            execute 'h '.expand('<cword>')
+          else
+            call CocAction('doHover')
+          endif
+        endfunction
+
+        " Highlight symbol under cursor on CursorHold
+        autocmd CursorHold * silent call CocActionAsync('highlight')
+
+        " Remap for rename current word
+        nmap <leader>rn <Plug>(coc-rename)
+
+        " Remap for format selected region
+        vmap <leader>f  <Plug>(coc-format-selected)
+        nmap <leader>f  <Plug>(coc-format-selected)
+
+        augroup mygroup
+          autocmd!
+          " Setup formatexpr specified filetype(s).
+          autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+          " Update signature help on jump placeholder
+          autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+        augroup end
+
+        " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+        vmap <leader>a  <Plug>(coc-codeaction-selected)
+        nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+        " Remap for do codeAction of current line
+        nmap <leader>ac  <Plug>(coc-codeaction)
+        " Fix autofix problem of current line
+        nmap <leader>qf  <Plug>(coc-fix-current)
+
+        " Use `:Format` to format current buffer
+        command! -nargs=0 Format :call CocAction('format')
+
+        " Use `:Fold` to fold current buffer
+        command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+        let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+        let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+    " }
     " UltiSnips {
         let g:UltiSnipsExpandTrigger = '<C-j>'
         let g:UltiSnipsJumpForwardTrigger = '<C-j>'
@@ -374,5 +444,16 @@
         let g:AutoPairsShortcutFastWrap = '<leader>fw'
         let g:AutoPairsShortcutJump = '<leader>j'
     " }
-
+    " Vimtex {
+        let g:vimtex_view_enabled = 0
+        let g:vimtex_compiler_latexmk = {
+            \ 'options' : [
+            \   '-xelatex',
+            \   '-verbose',
+            \   '-file-line-error',
+            \   '-synctex=1',
+            \   '-interaction=nonstopmode',
+            \ ],
+            \}
+    " }
 " }

@@ -437,9 +437,10 @@
         let NERDTreeMouseMode=2
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
-        let g:nerdtree_tabs_open_on_gui_startup=0
+        let g:NERDTreeHijackNetrw=0
     " }
     " defx {
+        nmap <leader>df :Defx<CR>
         call defx#custom#option('_', {
               \ 'columns': 'mark:git:indent:icons:filename',
               \ 'winwidth': 40,

@@ -168,7 +168,7 @@
             let &t_EI = "\<Esc>]50;CursorShape=0\x7"
         endif
         if has('gui_running')
-            set guifont=FantasqueSansMono\ Nerd\ Font:h18
+            set guifont=OperatorMono\ Nerd\ Font:h18
             set guifontwide=Sarasa\ Term\ SC:h16
             if WINDOWS()
                 set guifont=Sarasa\ Term\ SC:h14
@@ -437,7 +437,7 @@
         let NERDTreeMouseMode=2
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
-        let g:NERDTreeHijackNetrw=0
+        let g:NERDTreeHijackNetrw=1
     " }
     " defx {
         nmap <leader>df :Defx<CR>
@@ -460,6 +460,16 @@
               \ 'readonly_icon': "",
               \ 'selected_icon': "",
               \ })
+        let g:defx_git#indicators = {
+          \ 'Modified'  : '∙',
+          \ 'Staged'    : '+',
+          \ 'Untracked' : '*',
+          \ 'Renamed'   : '→',
+          \ 'Unmerged'  : '=',
+          \ 'Ignored'   : '☒',
+          \ 'Deleted'   : '✗',
+          \ 'Unknown'   : '?'
+          \ }
         autocmd FileType defx call s:defx_my_settings()
         function! s:defx_my_settings() abort
           setlocal nonumber
@@ -480,7 +490,7 @@
           " nnoremap <silent><buffer><expr>   l               defx#do_action('open')
           nnoremap <silent><buffer><expr>   E               defx#do_action('open', 'vsplit')
           nnoremap <silent><buffer><expr>   P               defx#do_action('open', 'pedit')
-          " nnoremap <silent><buffer><expr>   o               defx#do_action('open_or_close_tree')
+          nnoremap <silent><buffer><expr>   o               defx#do_action('open_or_close_tree')
           nnoremap <silent><buffer><expr>   K               defx#do_action('new_directory')
           nnoremap <silent><buffer><expr>   N               defx#do_action('new_file')
           nnoremap <silent><buffer><expr>   M               defx#do_action('new_multiple_files')

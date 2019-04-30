@@ -89,8 +89,9 @@
         Plug 'lervag/vimtex'                    " LaTeX
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
+        else
+            Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
         endif
-        Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
     call plug#end()
 " }
 

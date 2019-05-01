@@ -65,6 +65,7 @@
         Plug 'junegunn/vim-emoji'               " Emoji
         Plug 'airblade/vim-gitgutter'           " Git 标记
         Plug 'iCyMind/NeoSolarized'             " 支持 True Color 的主题
+        Plug 'lifepillar/vim-solarized8'
         Plug 'altercation/vim-colors-solarized' " Solarized 主题
         Plug 'godlygeek/tabular'                " 对齐文本
         Plug 'plasticboy/vim-markdown'          " 支持 Markdown
@@ -162,25 +163,29 @@
         endif
         if $TERM_PROGRAM == 'iTerm.app'
             set termguicolors
-            colorscheme NeoSolarized
+            colorscheme solarized8
             let &t_SI = "\<Esc>]50;CursorShape=1\x7"
             let &t_SR = "\<Esc>]50;CursorShape=2\x7"
             let &t_EI = "\<Esc>]50;CursorShape=0\x7"
         endif
         if has('gui_running')
-            set guifont=OperatorMono\ Nerd\ Font:h18
+            colorscheme solarized8
             set guifontwide=Sarasa\ Term\ SC:h16
             if WINDOWS()
                 set guifont=Sarasa\ Term\ SC:h14
+            else
+                set guifont=OperatorMono\ Nerd\ Font:h18
             endif
             set guioptions -=T
             highlight clear LineNr
             highlight clear SignColumn
             highlight LineNr guibg=NONE
-            set termguicolors
-            colorscheme NeoSolarized
+            highlight Comment gui=italic
         endif
-        highlight Comment cterm=italic gui=italic
+        if has('nvim')
+            colorscheme solarized8
+            highlight Comment cterm=italic
+        endif
         " highlight Keyword cterm=italic gui=italic
     " }
     set noshowmode              " 不显示当前模式，使用 Airline

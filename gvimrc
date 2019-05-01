@@ -4,3 +4,4 @@ if exists('py2') && has('python')
 elseif has('python3')
 endif
 
+highlight Comment gui=italic

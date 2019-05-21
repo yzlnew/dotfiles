@@ -30,6 +30,12 @@
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
+    " NeoVim {
+        if has('nvim')
+            set pyx=3
+            set wildoptions=pum
+        endif
+    " }
 " }
 
 " 插件管理 {
@@ -64,9 +70,10 @@
         Plug 'w0rp/ale'                         " 代码分析和自动修正
         Plug 'junegunn/vim-emoji'               " Emoji
         Plug 'airblade/vim-gitgutter'           " Git 标记
-        Plug 'iCyMind/NeoSolarized'             " 支持 True Color 的主题
+        " Plug 'iCyMind/NeoSolarized'             " 支持 True Color 的主题
         Plug 'lifepillar/vim-solarized8'
         Plug 'altercation/vim-colors-solarized' " Solarized 主题
+        " Plug 'rafi/awesome-vim-colorschemes'
         Plug 'godlygeek/tabular'                " 对齐文本
         Plug 'plasticboy/vim-markdown'          " 支持 Markdown
         Plug 'suan/vim-instant-markdown'        " Markdown 预览
@@ -88,11 +95,11 @@
         Plug 'lilydjwg/colorizer'               " RGB 颜色显示
         Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
         Plug 'lervag/vimtex'                    " LaTeX
+        Plug 'liuchengxu/vim-which-key'
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
-        else
-            Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
         endif
+        Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
     call plug#end()
 " }
 
@@ -155,16 +162,24 @@
     " 主题 {
     " 由于 macOS 的终端不支持 True Color，建议使用 iTerm2
     " 另支持正常和插入模式不同的光标样式
-        set background=light    " 浅色背景
+        let iterm_profile = $ITERM_PROFILE
+        if iterm_profile == "robin_dark"
+            set background=dark
+            let g:airline_theme='solarized_flood'
+        else
+            set background=light
+            let g:airline_theme='solarized'
+        endif
+        colorscheme solarized8
+
         if $TERM_PROGRAM == 'Apple_Terminal'
-            colorscheme solarized
+            let g:solarized_use16 = 0
             let &t_SI.="\e[5 q"
             let &t_SR.="\e[4 q"
             let &t_EI.="\e[1 q"
         endif
         if $TERM_PROGRAM == 'iTerm.app'
             set termguicolors
-            colorscheme solarized8
             let &t_SI = "\<Esc>]50;CursorShape=1\x7"
             let &t_SR = "\<Esc>]50;CursorShape=2\x7"
             let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -175,18 +190,20 @@
             if WINDOWS()
                 set guifont=Sarasa\ Term\ SC:h14
             else
-                set guifont=OperatorMono\ Nerd\ Font:h18
+                set guifont=OperatorMonoNerdFontComplete-Book:h18
             endif
             set guioptions -=T
-            highlight clear LineNr
-            highlight clear SignColumn
-            highlight LineNr guibg=NONE
-            highlight Comment gui=italic
+            " highlight clear LineNr
+            " highlight clear SignColumn
+            " highlight LineNr guibg=NONE
+            " highlight Comment gui=italic
         endif
         if has('nvim')
-            colorscheme solarized8
-            highlight Comment cterm=italic
+            " colorscheme solarized8
+            set guifont=Sarasa\ Term\ SC:h14
+            " highlight Comment cterm=italic
         endif
+        let g:solarized_term_italics=1
         " highlight Keyword cterm=italic gui=italic
     " }
     set noshowmode              " 不显示当前模式，使用 Airline
@@ -218,7 +235,7 @@
     set ignorecase              " 大小写不敏感
     set smartcase               " 使用大写字符时开启大小写敏感
     set wildmenu                " Tab 补全候选
-    set wildmode=list:longest,full
+    " set wildmode=list:longest,full
     set whichwrap=b,s,<,>,[,]   " 在行首行尾可以移动到另一行
     set scrolljump=5            " 光标离开屏幕时滚动的行数
     set scrolloff=3             " 收尾留的行数
@@ -288,8 +305,7 @@
 " 插件设定 {
     " Airline {
         let g:airline_powerline_fonts = 1
-        let g:airline_solarized_bg='light'
-        let g:airline_theme='solarized'
+        " let g:airline_solarized_bg='light'
         let g:airline#extensions#ale#enabled = 1
         let g:airline#extensions#ale#error_symbol = "\uE00A"
         let g:airline#extensions#ale#warning_symbol = "\uE009"
@@ -496,6 +512,7 @@
           " nnoremap <silent><buffer><expr>   l               defx#do_action('open')
           nnoremap <silent><buffer><expr>   E               defx#do_action('open', 'vsplit')
           nnoremap <silent><buffer><expr>   P               defx#do_action('open', 'pedit')
+          nnoremap <silent><buffer><expr>   t               defx#do_action('open', 'tabnew')
           nnoremap <silent><buffer><expr>   o               defx#do_action('open_or_close_tree')
           nnoremap <silent><buffer><expr>   K               defx#do_action('new_directory')
           nnoremap <silent><buffer><expr>   N               defx#do_action('new_file')
@@ -536,15 +553,8 @@
         let g:AutoPairsShortcutJump = '<leader>j'
     " }
     " Vimtex {
-        let g:vimtex_view_enabled = 0
-        let g:vimtex_compiler_latexmk = {
-            \ 'options' : [
-            \   '-xelatex',
-            \   '-verbose',
-            \   '-file-line-error',
-            \   '-synctex=1',
-            \   '-interaction=nonstopmode',
-            \ ],
-            \}
+        let g:vimtex_view_enabled = 1
+        let g:vimtex_view_method = 'skim'
+        let g:vimtex_compiler_progname = 'nvr'
     " }
 " }

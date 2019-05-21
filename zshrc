@@ -100,18 +100,22 @@ export EDITOR=vim
 # Eigen
 export EIGEN3_INCLUDE_DIR="/usr/local/Cellar/eigen/3.3.4/include"
 
-# Pipenv
-# eval "$(pipenv --completion)"
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Solarized colors
-  export FZF_DEFAULT_OPTS="
-    --color fg:#657b83,bg:#fdf6e3,hl:#859900,fg+:#586e75,bg+:#eee8d5,hl+:#859900
-    --color info:#dc322f,prompt:#859900,pointer:#859900,marker:#fdf6e3,spinner:#b58900
-  "
-
+# Solarized colors light & dark
+# export FZF_DEFAULT_OPTS="
+    # --color fg:#657b83,bg:#fdf6e3,hl:#859900,fg+:#586e75,bg+:#eee8d5,hl+:#859900
+    # --color info:#dc322f,prompt:#859900,pointer:#859900,marker:#fdf6e3,spinner:#b58900
+# "
+export FZF_DEFAULT_OPTS="
+  --color bg+:#073642,bg:#002b36,spinner:#719e07,hl:#586e75
+  --color fg:#839496,header:#586e75,info:#cb4b16,pointer:#719e07
+  --color marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07
+"
 # Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH:/usr/local/lib/ruby/gems/2.6.0/bin"
 
+# Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export PATH="/usr/local/sbin:$PATH"

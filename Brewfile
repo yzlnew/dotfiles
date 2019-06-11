@@ -48,7 +48,6 @@ brew "metis"
 brew "ncdu"
 brew "neovim", args: ["HEAD"]
 brew "node"
-brew "numpy", link: false
 brew "octave"
 brew "openssl@1.1"
 brew "pandoc"
@@ -66,6 +65,7 @@ brew "the_silver_searcher"
 brew "thefuck"
 brew "tldr"
 brew "tmux"
+brew "tree"
 brew "vim"
 brew "wget"
 brew "yarn"
@@ -73,13 +73,13 @@ brew "you-get"
 cask "adobe-acrobat-reader"
 cask "aerial"
 cask "agenda"
+cask "alacritty"
 cask "alfred"
 cask "aliwangwang"
 cask "android-file-transfer"
 cask "android-platform-tools"
 cask "appcleaner"
 cask "bettertouchtool"
-cask "betterzip"
 cask "cajviewer"
 cask "cakebrew"
 cask "caption"
@@ -184,32 +184,35 @@ cask "visual-studio-code"
 cask "vox"
 cask "xquartz"
 cask "zotero"
-mas "co.polarr.ppeosx.lite", id: 1077124956
-mas "com.apple.iMovieApp", id: 408981434
-mas "com.apple.iWork.Keynote", id: 409183694
-mas "com.apple.iWork.Numbers", id: 409203825
-mas "com.apple.iWork.Pages", id: 409201541
-mas "com.crowdcafe.windowmagnet", id: 441258766
-mas "com.dejal.timeout.free", id: 402592703
-mas "com.fancymax.12306ForMac", id: 1163682213
-mas "com.fasthatchapps.gifgrabberosx", id: 668208984
-mas "com.helloresolven.GIF-Brewery-3", id: 1081413713
-mas "com.jonny.perculia", id: 1462633284
-mas "com.jumsoft.money.macos", id: 1185488696
-mas "com.kryolokovlin.Noizio", id: 928871589
-mas "com.leonspok.osx.Irvue", id: 1039633667
-mas "com.macpaw.WallWiz", id: 1266674560
-mas "com.naman14.muzeimacos", id: 1203123639
-mas "com.pointum.hazeover", id: 430798174
-mas "com.reederapp.rkit2.mac", id: 880001334
-mas "com.shapeservices.implusosx", id: 1137958278
-mas "com.softmastx.ScriptFlow", id: 994939623
-mas "com.tencent.JietuMac", id: 1059334054
-mas "com.tencent.miniqpicview", id: 1314842898
-mas "com.tencent.xinWeChat", id: 836500024
-mas "com.TickTick.task.mac", id: 966085870
-mas "com.todoist.mac.Todoist", id: 585829637
-mas "com.wutian.weibo", id: 789066512
-mas "com.zzd.Xnip", id: 1221250572
-mas "net.shinyfrog.bear", id: 1091189122
-mas "net.toolinbox.ipic", id: 1101244278
+mas "GIF Brewery 3", id: 1081413713
+mas "GIPHY CAPTURE", id: 668208984
+mas "HazeOver", id: 430798174
+mas "IM+", id: 1137958278
+mas "iMovie 剪辑", id: 408981434
+mas "iPic", id: 1101244278
+mas "Irvue", id: 1039633667
+mas "Keynote 讲演", id: 409183694
+mas "Magnet", id: 441258766
+mas "Maipo", id: 789066512
+mas "MindNode", id: 1289197285
+mas "Money", id: 1185488696
+mas "Muzei", id: 1203123639
+mas "Noizio", id: 928871589
+mas "Numbers 表格", id: 409203825
+mas "Pages 文稿", id: 409201541
+mas "Perculia", id: 1462633284
+mas "Polarr Photo Editor", id: 1077124956
+mas "Reeder", id: 880001334
+mas "ScriptFlow", id: 994939623
+mas "Time Out", id: 402592703
+mas "Todoist", id: 585829637
+mas "Wallpaper Wizard", id: 1266674560
+mas "XMind", id: 1327661892
+mas "Xnip", id: 1221250572
+mas "休息一下", id: 1457158844
+mas "微信", id: 836500024
+mas "截图", id: 1059334054
+mas "滴答清单", id: 966085870
+mas "熊掌记", id: 1091189122
+mas "看图", id: 1314842898
+mas "订票助手", id: 1163682213

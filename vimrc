@@ -162,30 +162,40 @@
     " 主题 {
     " 由于 macOS 的终端不支持 True Color，建议使用 iTerm2
     " 另支持正常和插入模式不同的光标样式
-        let iterm_profile = $ITERM_PROFILE
-        if iterm_profile == "robin_dark"
-            set background=dark
-            let g:airline_theme='solarized_flood'
-        else
-            set background=light
-            let g:airline_theme='solarized'
-        endif
-        colorscheme solarized8
-
-        if $TERM_PROGRAM == 'Apple_Terminal'
-            let g:solarized_use16 = 0
-            let &t_SI.="\e[5 q"
-            let &t_SR.="\e[4 q"
-            let &t_EI.="\e[1 q"
-        endif
-        if $TERM_PROGRAM == 'iTerm.app'
-            set termguicolors
-            let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-            let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-            let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-        endif
-        if has('gui_running')
+        if OSX()
+            let iterm_profile = $ITERM_PROFILE
+            if iterm_profile == "robin_dark"
+                set background=dark
+                let g:airline_theme='solarized_flood'
+            else
+                set background=light
+                let g:airline_theme='solarized'
+            endif
             colorscheme solarized8
+
+            if $TERM_PROGRAM == 'Apple_Terminal'
+                let g:solarized_use16 = 0
+                let &t_SI.="\e[5 q"
+                let &t_SR.="\e[4 q"
+                let &t_EI.="\e[1 q"
+            endif
+            if $TERM_PROGRAM == 'iTerm.app'
+                set termguicolors
+                let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+                let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+                let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+            endif
+        endif
+
+        if WINDOWS()
+            set background=dark
+            colorscheme solarized
+            let g:airline_theme='solarized_flood'
+        endif
+
+        let g:solarized_term_italics=1
+
+        if has('gui_running')
             set guifontwide=Sarasa\ Term\ SC:h16
             if WINDOWS()
                 set guifont=Sarasa\ Term\ SC:h14
@@ -198,12 +208,6 @@
             " highlight LineNr guibg=NONE
             " highlight Comment gui=italic
         endif
-        if has('nvim')
-            " colorscheme solarized8
-            set guifont=Sarasa\ Term\ SC:h14
-            " highlight Comment cterm=italic
-        endif
-        let g:solarized_term_italics=1
         " highlight Keyword cterm=italic gui=italic
     " }
     set noshowmode              " 不显示当前模式，使用 Airline

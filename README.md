@@ -2,7 +2,7 @@
 
 - Homebrew Bundle
 - ~~spf13-vim~~
-- vim
+- vim/NeoVim
 - oh-my-zsh
 - tmux
 
@@ -36,5 +36,5 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 - I use [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic) on Windows and FantasqueSansMono on macOS. A Nerd-Font is needed
   to make plugin like `vim-devicons` and `vim-airline` look right.
-- You need to compile YCM first, which is a pain on Windows. And make sure `python` is visible to vim on Windows.
+- ~~You need to compile YCM first, which is a pain on Windows.~~ Life is short, use coc.nvim. And make sure `python` is visible to vim on Windows.
 - Use [Scoop](https://github.com/lukesampson/scoop) to install vim and anything else on Windows.

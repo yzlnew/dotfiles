@@ -96,6 +96,7 @@
         Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
         Plug 'lervag/vimtex'                    " LaTeX
         Plug 'liuchengxu/vim-which-key'
+        Plug 'ludovicchabant/vim-gutentags'     " 自动生成 tags
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         endif
@@ -121,6 +122,7 @@
     set virtualedit=onemore     " 允许光标移动到超过行尾的位置
     set nospell                 " 禁用拼写检查
     set hidden                  " 隐藏缓冲区
+    set tags=./.tags;,.tags
     " 自动切换到当前缓冲区文件目录
     autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h |
     " 编辑 git commit 时光标指向第一行
@@ -557,8 +559,28 @@
         let g:AutoPairsShortcutJump = '<leader>j'
     " }
     " Vimtex {
-        let g:vimtex_view_enabled = 1
-        let g:vimtex_view_method = 'skim'
-        let g:vimtex_compiler_progname = 'nvr'
+        if OSX()
+            let g:vimtex_view_enabled = 1
+            let g:vimtex_view_method = 'skim'
+        endif
+        if has('nvim')
+            let g:vimtex_compiler_progname = 'nvr'
+        endif
+    " }
+    " gutentags {
+        " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+        let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+        " 所生成的数据文件的名称
+        let g:gutentags_ctags_tagfile = '.tags'
+
+        " 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+        let s:vim_tags = expand('~/.cache/tags')
+        let g:gutentags_cache_dir = s:vim_tags
+
+        " 配置 ctags 的参数
+        let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+        let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+        let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
     " }
 " }

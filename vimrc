@@ -110,6 +110,8 @@
         source $VIMRUNTIME/delmenu.vim
         source $VIMRUNTIME/menu.vim
     endif
+    set ttyfast
+    set lazyredraw
     set history=500             " 历史指令数量
     filetype plugin indent on   " 文件类型
     syntax enable               " 支持语法高亮
@@ -252,9 +254,12 @@
 " }
 
 " 格式化 {
+    set fo+=mB
+    set sidescroll=1
     set conceallevel=2                   " Markdown 用到此项做语法隐藏
     set nowrap
     set autoindent
+    set smartindent
     set shiftwidth=4
     set expandtab
     set tabstop=4
@@ -565,6 +570,12 @@
         endif
         if has('nvim')
             let g:vimtex_compiler_progname = 'nvr'
+        endif
+        if WINDOWS()
+            let g:vimtex_view_general_viewer = 'SumatraPDF'
+            let g:vimtex_view_general_options
+                \ = '-reuse-instance -forward-search @tex @line @pdf'
+            let g:vimtex_view_general_options_latexmk = '-reuse-instance'
         endif
     " }
     " gutentags {

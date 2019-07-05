@@ -61,6 +61,10 @@
         endif
         Plug 'kristijanhusak/defx-icons'
         Plug 'kristijanhusak/defx-git'
+        Plug 'vimwiki/vimwiki'
+        Plug 'tpope/vim-unimpaired'
+        Plug 'liuchengxu/vista.vim'
+        Plug 'junegunn/vim-easy-align'          " 文本对齐
         Plug 'francoiscabrol/ranger.vim'        " Ranger
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'mhinz/vim-startify'               " 启动页
@@ -70,7 +74,8 @@
         Plug 'w0rp/ale'                         " 代码分析和自动修正
         Plug 'junegunn/vim-emoji'               " Emoji
         Plug 'airblade/vim-gitgutter'           " Git 标记
-        " Plug 'iCyMind/NeoSolarized'             " 支持 True Color 的主题
+        Plug 'iCyMind/NeoSolarized'             " 支持 True Color 的主题
+        Plug 'arcticicestudio/nord-vim'
         Plug 'lifepillar/vim-solarized8'
         Plug 'altercation/vim-colors-solarized' " Solarized 主题
         " Plug 'rafi/awesome-vim-colorschemes'
@@ -167,6 +172,7 @@
     " 由于 macOS 的终端不支持 True Color，建议使用 iTerm2
     " 另支持正常和插入模式不同的光标样式
         if OSX()
+            set termguicolors
             let iterm_profile = $ITERM_PROFILE
             if iterm_profile == "robin_dark"
                 set background=dark
@@ -198,11 +204,12 @@
         endif
 
         let g:solarized_term_italics=1
+        let g:neosolarized_italic=1
 
         if has('gui_running')
-            set guifontwide=Sarasa\ Term\ SC:h16
             if WINDOWS()
-                set guifont=Sarasa\ Term\ SC:h14
+                set guifont=Operator_Mono_SSm_Book:h14
+                set guifontwide=Sarasa\ Term\ SC:h14
             else
                 set guifont=OperatorMonoNerdFontComplete-Book:h18
             endif
@@ -232,9 +239,11 @@
     endif
     set number                  " 显示行号
     set cursorline              " 高亮当前行
-    highlight clear SignColumn  " 去除标志列背景
-    highlight clear LineNr      " 去除行号背景
-    highlight LineNr guibg=NONE
+    " highlight clear SignColumn  " 去除标志列背景
+    " highlight clear LineNr      " 去除行号背景
+    hi Normal     ctermbg=NONE guibg=NONE
+    hi LineNr     ctermbg=NONE guibg=NONE
+    hi SignColumn ctermbg=NONE guibg=NONE
     set backspace=indent,eol,start
     set showmatch               " 括号匹配
     set incsearch               " 同步搜索

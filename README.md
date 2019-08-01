@@ -32,6 +32,9 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 )
 ```
 
+3. Add `Python3.dll` to `$PATH`
+4. `pip3 install --user pynvim` if using Neovim
+
 #### Reminder
 
 - I use [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic) on Windows and FantasqueSansMono on macOS. A Nerd-Font is needed

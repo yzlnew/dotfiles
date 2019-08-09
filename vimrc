@@ -203,6 +203,13 @@
             let g:airline_theme='solarized_flood'
         endif
 
+        if LINUX()
+            set termguicolors
+            set background=dark
+            colorscheme solarized8
+            let g:airline_theme='solarized'
+        endif
+
         let g:solarized_term_italics=1
         let g:neosolarized_italic=1
 

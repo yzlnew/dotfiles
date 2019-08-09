@@ -33,7 +33,8 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
 3. Add `Python3.dll` to `$PATH`
-4. `pip3 install --user pynvim` if using Neovim
+4. `pip3 install --user pynvim` if using Neovim.
+5. Install universal-ctags.
 
 #### Reminder
 

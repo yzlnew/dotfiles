@@ -101,7 +101,7 @@
         Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
         Plug 'lervag/vimtex'                    " LaTeX
         Plug 'liuchengxu/vim-which-key'
-        Plug 'ludovicchabant/vim-gutentags'     " 自动生成 tags
+        " Plug 'ludovicchabant/vim-gutentags'     " 自动生成 tags
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         endif
@@ -171,8 +171,8 @@
     " 主题 {
     " 由于 macOS 的终端不支持 True Color，建议使用 iTerm2
     " 另支持正常和插入模式不同的光标样式
+        set termguicolors
         if OSX()
-            set termguicolors
             let iterm_profile = $ITERM_PROFILE
             if iterm_profile == "robin_dark"
                 set background=dark
@@ -199,7 +199,7 @@
 
         if WINDOWS()
             set background=dark
-            colorscheme solarized
+            colorscheme solarized8
             let g:airline_theme='solarized_flood'
         endif
 
@@ -215,7 +215,7 @@
 
         if has('gui_running')
             if WINDOWS()
-                set guifont=Operator_Mono_SSm_Book:h14
+                set guifont=Sarasa\ Term\ SC:h14
                 set guifontwide=Sarasa\ Term\ SC:h14
             else
                 set guifont=OperatorMonoNerdFontComplete-Book:h18
@@ -248,7 +248,7 @@
     set cursorline              " 高亮当前行
     " highlight clear SignColumn  " 去除标志列背景
     " highlight clear LineNr      " 去除行号背景
-    hi Normal     ctermbg=NONE guibg=NONE
+    " hi Normal     ctermbg=NONE guibg=NONE
     hi LineNr     ctermbg=NONE guibg=NONE
     hi SignColumn ctermbg=NONE guibg=NONE
     set backspace=indent,eol,start

@@ -90,7 +90,7 @@
         Plug 'honza/vim-snippets'               " 代码片段
         Plug 'tpope/vim-fugitive'               " Git
         Plug 'tpope/vim-surround'               " 更改包裹
-        Plug 'scrooloose/nerdcommenter'         " 注释
+        " Plug 'scrooloose/nerdcommenter'         " 注释
         Plug 'tpope/vim-commentary'
         Plug 'jiangmiao/auto-pairs'             " 括号自动配对
         Plug 'luochen1990/rainbow'              " 彩虹括号
@@ -101,7 +101,8 @@
         Plug 'lilydjwg/colorizer'               " RGB 颜色显示
         Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
         Plug 'lervag/vimtex'                    " LaTeX
-        Plug 'liuchengxu/vim-which-key'
+        " Plug 'liuchengxu/vim-which-key'
+        Plug 'vim-scripts/ReplaceWithRegister'
         " Plug 'ludovicchabant/vim-gutentags'     " 自动生成 tags
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}

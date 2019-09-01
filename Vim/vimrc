@@ -91,6 +91,7 @@
         Plug 'tpope/vim-fugitive'               " Git
         Plug 'tpope/vim-surround'               " 更改包裹
         Plug 'scrooloose/nerdcommenter'         " 注释
+        Plug 'tpope/vim-commentary'
         Plug 'jiangmiao/auto-pairs'             " 括号自动配对
         Plug 'luochen1990/rainbow'              " 彩虹括号
         Plug 'easymotion/vim-easymotion'        " 快速跳转
@@ -104,8 +105,9 @@
         " Plug 'ludovicchabant/vim-gutentags'     " 自动生成 tags
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
+        else
+            Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
         endif
-        Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
     call plug#end()
 " }
 

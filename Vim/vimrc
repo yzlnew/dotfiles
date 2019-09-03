@@ -76,6 +76,7 @@
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'mhinz/vim-startify'               " 启动页
         Plug 'cespare/vim-toml'                 " 支持 TOML
+        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         Plug 'junegunn/fzf.vim'                 " fzf 文件模糊搜索
         Plug 'wakatime/vim-wakatime'            " Wakatime 编程记录
         Plug 'w0rp/ale'                         " 代码分析和自动修正
@@ -111,6 +112,10 @@
         Plug 'vim-scripts/ReplaceWithRegister'
         Plug 'patstockwell/vim-monokai-tasty'
         Plug 'joshdick/onedark.vim'
+        Plug 'rakr/vim-one'
+        Plug 'kaicataldo/material.vim'
+        Plug 'dikiaap/minimalist'
+        Plug 'hzchirs/vim-material'
         " Plug 'ludovicchabant/vim-gutentags'     " 自动生成 tags
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
@@ -187,7 +192,8 @@
         let g:solarized_term_italics=1
         let g:neosolarized_italic=1
         let g:onedark_terminal_italics=1
-
+        let g:material_terminal_italics = 1
+        let g:material_theme_style = 'default'
         if OSX()
             let iterm_profile = $ITERM_PROFILE
             if iterm_profile == "robin_dark"
@@ -214,16 +220,15 @@
         endif
 
         if WINDOWS()
-            set background=dark
-            " colorscheme solarized8
-            colorscheme onedark
-            let g:airline_theme='onedark'
+            set background=light
+            colorscheme solarized8
+            let g:airline_theme='solarized'
         endif
 
         if has('gui_running')
             if WINDOWS()
-                set guifont=Sarasa\ Term\ SC:h12
-                set guifontwide=Sarasa\ Term\ SC:h12
+                set guifont=Sarasa\ Mono\ SC:h12
+                set guifontwide=Sarasa\ Mono\ SC:h12
             else
                 set guifont=OperatorMonoSSm\ Nerd\ Font:h14
             endif
@@ -235,8 +240,8 @@
         endif
         if has('nvim')
             if WINDOWS()
-                set guifont=Sarasa\ Term\ SC:h12
-                set guifontwide=Sarasa\ Term\ SC:h12
+                set guifont=Sarasa\ Mono\ SC:h12
+                set guifontwide=Sarasa\ Mono\ SC:h12
             endif
         endif
         " highlight Keyword cterm=italic gui=italic
@@ -384,7 +389,6 @@
         let g:instant_markdown_autostart = 0
     " }
     " fzf {
-        set rtp+=/usr/local/opt/fzf
         let g:fzf_colors =
         \ { 'fg':      ['fg', 'Normal'],
           \ 'bg':      ['bg', 'Normal'],

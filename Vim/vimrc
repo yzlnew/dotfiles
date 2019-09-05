@@ -1,3 +1,9 @@
+" File              : _vimrc
+" Date              : 05.09.2019
+" Last Modified Date: 05.09.2019
+" File              : _vimrc
+" Date              : 05.09.2019
+" Last Modified Date: 05.09.2019
 " 简介 {
 " 设置本文档的默认折叠模式为标记
 " 参考：http://vim.wikia.com/wiki/Modeline_magic
@@ -66,6 +72,7 @@
           Plug 'roxma/nvim-yarp'
           Plug 'roxma/vim-hug-neovim-rpc'
         endif
+        Plug 'alpertuna/vim-header'
         Plug 'kristijanhusak/defx-icons'
         Plug 'kristijanhusak/defx-git'
         Plug 'vimwiki/vimwiki'
@@ -240,8 +247,9 @@
         endif
         if has('nvim')
             if WINDOWS()
-                set guifont=Sarasa\ Mono\ SC:h12
-                set guifontwide=Sarasa\ Mono\ SC:h12
+                " set guifont=Consolas:h12
+                " set guifontwide=Sarasa\ UI\ SC:h12
+                " set guifontset=FantasqueSansMono\ NF,Sarasa\ Mono\ SC
             endif
         endif
         " highlight Keyword cterm=italic gui=italic
@@ -629,5 +637,9 @@
     " }
     " Smartim {
         let g:smartim_default = '1033'
+    " }
+    " { header
+        let g:header_field_author = '@yzlnew'
+        let g:header_field_author_email = 'yzlnew@gmail.com'
     " }
 " }

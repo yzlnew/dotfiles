@@ -119,7 +119,7 @@
         Plug 'dikiaap/minimalist'
         Plug 'hzchirs/vim-material'
         Plug 'heavenshell/vim-pydocstring'      " 生成 Python docstring
-        Plug 'ludovicchabant/vim-gutentags'     " 自动生成 tags
+        " Plug 'ludovicchabant/vim-gutentags'     " 自动生成 tags
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         else

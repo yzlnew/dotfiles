@@ -1,3 +1,4 @@
 GuiTabline 0
 GuiPopupmenu 0
-" GuiFont
+GuiFont! Sarasa Mono SC:h12
+GuiLinespace 2

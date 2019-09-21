@@ -112,7 +112,7 @@
         Plug 'lervag/vimtex'                    " LaTeX
         Plug 'liuchengxu/vim-which-key'
         Plug 'vim-scripts/ReplaceWithRegister'  " 粘贴并替换 `gr`
-        Plug 'patstockwell/vim-monokai-tasty'
+        Plug 'patstockwell/vim-monokai-tasty'   " 以下都是一些主题
         Plug 'joshdick/onedark.vim'
         Plug 'rakr/vim-one'
         Plug 'kaicataldo/material.vim'
@@ -407,19 +407,6 @@
         "   \ 'marker':  ['fg', 'Keyword'],
         "   \ 'spinner': ['fg', 'Label'],
         "   \ 'header':  ['fg', 'Comment'] }
-    " }
-    " YCM {
-        let g:ycm_autoclose_preview_window_after_completion=1
-        let g:ycm_collect_identifiers_from_tags_files = 1
-        nmap <leader>gt :YcmCompleter GoTo<CR>
-        " Enable omni completion.
-        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-        autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
     " }
     " COC {
         inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"

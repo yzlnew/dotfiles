@@ -1,228 +1,192 @@
 {
-    "globals" : 
+    "globals" :
     {
         "alwaysShowTabs" : true,
-        "copyOnSelect" : false,
         "defaultProfile" : "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-        "initialCols" : 120,
+        "initialCols" : 80,
         "initialRows" : 30,
-        "keybindings" : 
+        "keybindings" :
         [
             {
-                "command" : "closePane",
-                "keys" : 
-                [
-                    "ctrl+shift+w"
-                ]
-            },
-            {
-                "command" : "copy",
-                "keys" : 
-                [
-                    "ctrl+shift+c"
-                ]
-            },
-            {
-                "command" : "duplicateTab",
-                "keys" : 
-                [
-                    "ctrl+shift+d"
-                ]
-            },
-            {
                 "command" : "newTab",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+shift+t"
+                    "ctrl+t"
                 ]
             },
             {
                 "command" : "newTabProfile0",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+1"
                 ]
             },
             {
                 "command" : "newTabProfile1",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+2"
                 ]
             },
             {
                 "command" : "newTabProfile2",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+3"
                 ]
             },
             {
                 "command" : "newTabProfile3",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+4"
                 ]
             },
             {
                 "command" : "newTabProfile4",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+5"
                 ]
             },
             {
                 "command" : "newTabProfile5",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+6"
                 ]
             },
             {
                 "command" : "newTabProfile6",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+7"
                 ]
             },
             {
                 "command" : "newTabProfile7",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+8"
                 ]
             },
             {
                 "command" : "newTabProfile8",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+9"
                 ]
             },
             {
                 "command" : "nextTab",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+tab"
                 ]
             },
             {
-                "command" : "openNewTabDropdown",
-                "keys" : 
-                [
-                    "ctrl+shift+space"
-                ]
-            },
-            {
                 "command" : "openSettings",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+,"
                 ]
             },
             {
-                "command" : "paste",
-                "keys" : 
-                [
-                    "ctrl+shift+v"
-                ]
-            },
-            {
                 "command" : "prevTab",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+tab"
                 ]
             },
             {
                 "command" : "scrollDown",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+down"
                 ]
             },
             {
                 "command" : "scrollDownPage",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+pgdn"
                 ]
             },
             {
                 "command" : "scrollUp",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+up"
                 ]
             },
             {
                 "command" : "scrollUpPage",
-                "keys" : 
+                "keys" :
                 [
                     "ctrl+shift+pgup"
                 ]
             },
             {
                 "command" : "switchToTab0",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+alt+1"
+                    "alt+1"
                 ]
             },
             {
                 "command" : "switchToTab1",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+alt+2"
+                    "alt+2"
                 ]
             },
             {
                 "command" : "switchToTab2",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+alt+3"
+                    "alt+3"
                 ]
             },
             {
                 "command" : "switchToTab3",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+alt+4"
+                    "alt+4"
                 ]
             },
             {
                 "command" : "switchToTab4",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+alt+5"
+                    "alt+5"
                 ]
             },
             {
                 "command" : "switchToTab5",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+alt+6"
+                    "alt+6"
                 ]
             },
             {
                 "command" : "switchToTab6",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+alt+7"
+                    "alt+7"
                 ]
             },
             {
                 "command" : "switchToTab7",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+alt+8"
+                    "alt+8"
                 ]
             },
             {
                 "command" : "switchToTab8",
-                "keys" : 
+                "keys" :
                 [
-                    "ctrl+alt+9"
+                    "alt+9"
                 ]
             }
         ],
@@ -231,22 +195,24 @@
         "showTerminalTitleInTitlebar" : true,
         "wordDelimiters" : " ./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}~?\u2502"
     },
-    "profiles" : 
+    "profiles" :
     [
         {
             "acrylicOpacity" : 0.5,
             "closeOnExit" : true,
             "colorScheme" : "Monokai Soda",
             "commandline" : "powershell.exe -nologo",
-            "cursorColor" : "#FFFFFF",
-            "cursorShape" : "bar",
-            "fontFace" : "Sarasa Term SC",
+            "cursorShape" : "emptyBox",
+            "fontFace" : "OperatorMonoSSm NF",
             "fontSize" : 12,
             "guid" : "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
             "historySize" : 9001,
+            "backgroundImage" : "ms-appdata:///roaming/rubick.png",
+            "backgroundImageOpacity" : 0.2,
+            "backgroundImageStrechMode" : "fill",
             "icon" : "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
             "name" : "Windows PowerShell",
-            "padding" : "10, 10, 10, 10",
+            "padding" : "0, 0, 0, 0",
             "snapOnInput" : true,
             "startingDirectory" : "%USERPROFILE%",
             "useAcrylic" : false,
@@ -259,8 +225,8 @@
             "commandline" : "cmd.exe",
             "cursorColor" : "#FFFFFF",
             "cursorShape" : "bar",
-            "fontFace" : "Consolas",
-            "fontSize" : 10,
+            "fontFace" : "Sarasa Term SC",
+            "fontSize" : 14,
             "guid" : "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
             "historySize" : 9001,
             "icon" : "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png",
@@ -268,29 +234,33 @@
             "padding" : "0, 0, 0, 0",
             "snapOnInput" : true,
             "startingDirectory" : "%USERPROFILE%",
-            "useAcrylic" : true
+            "useAcrylic" : true,
+            "tabTitle" : "CMDRobin"
         },
         {
-            "acrylicOpacity" : 0.59999999999999998,
-            "closeOnExit" : false,
-            "colorScheme" : "Vintage",
-            "commandline" : "Azure",
-            "connectionType" : "{d9fcfdfa-a479-412c-83b7-c5640e61cd62}",
-            "cursorColor" : "#FFFFFF",
+            "acrylicOpacity" : 0.80000001192092896,
+            "background" : "#002B36",
+            "closeOnExit" : true,
+            "colorScheme" : "Solarized Dark",
+            "commandline" : "wsl.exe",
+            "cursorColor" : "#657B83",
             "cursorShape" : "bar",
-            "fontFace" : "Consolas",
-            "fontSize" : 10,
-            "guid" : "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+            "fontFace" : "OperatorMonoSSm NF",
+            "fontSize" : 12,
+            "guid" : "{9acb9455-ca41-5af7-950f-6bca1bc9722f}",
             "historySize" : 9001,
-            "icon" : "ms-appx:///ProfileIcons/{b453ae62-4e3d-5e58-b989-0a998ec441b8}.png",
-            "name" : "Azure Cloud Shell",
+            "icon" : "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+            "name" : "Ubuntu",
             "padding" : "0, 0, 0, 0",
+            "startingDirectory": "%USERPROFILE%",
             "snapOnInput" : true,
-            "startingDirectory" : "%USERPROFILE%",
-            "useAcrylic" : true
+            "backgroundImage" : "ms-appdata:///roaming/blackhole.jpg",
+            "backgroundImageOpacity" : 0.2,
+            "backgroundImageStrechMode" : "fill",
+            "useAcrylic" : false
         }
     ],
-    "schemes" : 
+    "schemes" :
     [
         {
             "background" : "#0C0C0C",
@@ -312,27 +282,6 @@
             "red" : "#C50F1F",
             "white" : "#CCCCCC",
             "yellow" : "#C19C00"
-        },
-        {
-            "background" : "#000000",
-            "black" : "#000000",
-            "blue" : "#000080",
-            "brightBlack" : "#808080",
-            "brightBlue" : "#0000FF",
-            "brightCyan" : "#00FFFF",
-            "brightGreen" : "#00FF00",
-            "brightPurple" : "#FF00FF",
-            "brightRed" : "#FF0000",
-            "brightWhite" : "#FFFFFF",
-            "brightYellow" : "#FFFF00",
-            "cyan" : "#008080",
-            "foreground" : "#C0C0C0",
-            "green" : "#008000",
-            "name" : "Vintage",
-            "purple" : "#800080",
-            "red" : "#800000",
-            "white" : "#C0C0C0",
-            "yellow" : "#808000"
         },
         {
             "background" : "#282C34",
@@ -398,27 +347,6 @@
             "yellow" : "#B58900"
         },
         {
-            "background": "#1A1A1A",
-            "black": "#1A1A1A",
-            "blue": "#9D65FF",
-            "brightBlack": "#625E4C",
-            "brightBlue": "#9D65FF",
-            "brightCyan": "#58D1EB",
-            "brightGreen": "#98E024",
-            "brightPurple": "#F4005F",
-            "brightRed": "#F4005F",
-            "brightWhite": "#F6F6EF",
-            "brightYellow": "#E0D561",
-            "cyan": "#58D1EB",
-            "foreground": "#C4C5B5",
-            "green": "#98E024",
-            "name": "Monokai Soda",
-            "purple": "#F4005F",
-            "red": "#F4005F",
-            "white": "#C4C5B5",
-            "yellow": "#FA8419"
-        },
-        {
             "background" : "#FDF6E3",
             "black" : "#073642",
             "blue" : "#268BD2",
@@ -438,6 +366,27 @@
             "red" : "#DC322F",
             "white" : "#EEE8D5",
             "yellow" : "#B58900"
+        },
+        {
+            "background": "#1A1A1A",
+            "black": "#1A1A1A",
+            "blue": "#9D65FF",
+            "brightBlack": "#625E4C",
+            "brightBlue": "#9D65FF",
+            "brightCyan": "#58D1EB",
+            "brightGreen": "#98E024",
+            "brightPurple": "#F4005F",
+            "brightRed": "#F4005F",
+            "brightWhite": "#F6F6EF",
+            "brightYellow": "#E0D561",
+            "cyan": "#58D1EB",
+            "foreground": "#C4C5B5",
+            "green": "#98E024",
+            "name": "Monokai Soda",
+            "purple": "#F4005F",
+            "red": "#F4005F",
+            "white": "#C4C5B5",
+            "yellow": "#FA8419"
         }
     ]
 }

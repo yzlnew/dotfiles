@@ -222,6 +222,12 @@
             endif
         endif
 
+        if LINUX()
+            set background=dark
+            colorscheme solarized8
+            let g:airline_theme='solarized'
+        endif
+
         if WINDOWS()
             set background=dark
             colorscheme solarized8

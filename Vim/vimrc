@@ -3,7 +3,8 @@
 " 参考：http://vim.wikia.com/wiki/Modeline_magic
 " vim: foldmethod=marker foldlevel=0 foldmarker={,}
 " 自己使用的 Vim 配置
-" 主要平台：macOS / 终端：iTerm2 / 主题：Solarized-Light / 推荐字体：Nerd Fonts
+" 主要平台：macOS,Windows,Linux / 终端：iTerm2,Windows Terminal /
+" 主题：Solarized / 推荐字体：Nerd Fonts, SarasaGothic
 " Copyright 2019 @yzlnew
 " }
 
@@ -253,6 +254,14 @@
                 " set guifontwide=Sarasa\ UI\ SC:h12
                 " set guifontset=FantasqueSansMono\ NF,Sarasa\ Mono\ SC
             endif
+        endif
+        if exists('g:fvim_loaded')
+            " good old 'set guifont' compatibility
+            set guifont=OperatorMonoSSm\ NF:h16
+            " Ctrl-ScrollWheel for zooming in/out
+            nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
+            nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
+            nnoremap <A-CR> :FVimToggleFullScreen<CR>
         endif
         " highlight Keyword cterm=italic gui=italic
     " }

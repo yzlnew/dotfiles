@@ -119,6 +119,10 @@
         Plug 'kaicataldo/material.vim'
         Plug 'dikiaap/minimalist'
         Plug 'hzchirs/vim-material'
+        " Plug 'endel/vim-github-colorscheme'
+        Plug 'cormacrelf/vim-colors-github'
+        Plug 'sainnhe/vim-color-forest-night'
+        Plug 'Rigellute/shades-of-purple.vim'
         Plug 'heavenshell/vim-pydocstring'      " 生成 Python docstring
         " Plug 'ludovicchabant/vim-gutentags'     " 自动生成 tags
         if WINDOWS()
@@ -198,6 +202,8 @@
         let g:onedark_terminal_italics=1
         let g:material_terminal_italics = 1
         let g:material_theme_style = 'default'
+        let g:nord_italic = 1
+        let g:nord_cursor_line_number_background = 1
         if OSX()
             let iterm_profile = $ITERM_PROFILE
             if iterm_profile == "robin_dark"
@@ -230,9 +236,9 @@
         endif
 
         if WINDOWS()
-            set background=dark
-            colorscheme solarized8
-            let g:airline_theme='solarized'
+            set background=light
+            colorscheme forest-night
+            let g:airline_theme='forest_night'
         endif
 
         if has('gui_running')
@@ -426,7 +432,7 @@
         "   \ 'header':  ['fg', 'Comment'] }
     " }
     " COC {
-        hi IncSearch gui=reverse
+        " hi IncSearch gui=reverse
         nmap ge :CocCommand explorer<CR>
         inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

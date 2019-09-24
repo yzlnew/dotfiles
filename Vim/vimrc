@@ -365,6 +365,8 @@
     map zl zL
     map zh zH
 
+    " Terminal
+    tnoremap <Esc> <C-\><C-n>
 " }
 
 " 插件设定 {

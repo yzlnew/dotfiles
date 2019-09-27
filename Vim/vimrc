@@ -226,8 +226,8 @@
         endif
 
         if LINUX()
-            set background=dark
-            colorscheme solarized8
+            set background=light
+            colorscheme github
         endif
 
         if WINDOWS()

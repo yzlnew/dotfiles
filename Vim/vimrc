@@ -29,10 +29,8 @@
             " set shell=powershell.exe
         " endif
     " }
-    " Windows 兼容 {
-        if WINDOWS()
-          set runtimepath+=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-        endif
+    " runtimepath {
+      set runtimepath+=$HOME/.vim
     " }
     " NeoVim {
         if has('nvim')

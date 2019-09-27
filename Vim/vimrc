@@ -67,7 +67,7 @@
           Plug 'roxma/nvim-yarp'
           Plug 'roxma/vim-hug-neovim-rpc'
         endif
-        Plug 'alpertuna/vim-header'
+        Plug 'alpertuna/vim-header'             " 头部信息生成
         Plug 'kristijanhusak/defx-icons'
         Plug 'kristijanhusak/defx-git'
         Plug 'vimwiki/vimwiki'
@@ -192,6 +192,7 @@
     " 由于 macOS 的终端不支持 True Color，建议使用 iTerm2
     " 另支持正常和插入模式不同的光标样式
         set termguicolors
+
         let g:vim_monokai_tasty_italic = 1
         let g:solarized_term_italics=1
         let g:neosolarized_italic=1
@@ -200,6 +201,7 @@
         let g:material_theme_style = 'default'
         let g:nord_italic = 1
         let g:nord_cursor_line_number_background = 1
+
         if OSX()
             let iterm_profile = $ITERM_PROFILE
             if iterm_profile == "robin_dark"
@@ -238,7 +240,7 @@
                 set guifont=Sarasa\ Mono\ SC:h14
                 set guifontwide=Sarasa\ Mono\ SC:h14
             else
-                set guifont=OperatorMonoSSm\ Nerd\ Font:h14
+                set guifont=OperatorMonoSSm\ NF:h14
             endif
             set guioptions -=T
             " highlight clear LineNr

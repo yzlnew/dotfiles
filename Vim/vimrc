@@ -75,7 +75,6 @@
         Plug 'liuchengxu/vista.vim'             " tags, symbols
         Plug 'junegunn/vim-easy-align'          " 文本对齐
         " Plug 'francoiscabrol/ranger.vim'        " Ranger
-        Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'mhinz/vim-startify'               " 启动页
         Plug 'cespare/vim-toml'                 " 支持 TOML
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -121,6 +120,8 @@
         Plug 'sainnhe/vim-color-forest-night'
         Plug 'Rigellute/shades-of-purple.vim'
         Plug 'heavenshell/vim-pydocstring'      " 生成 Python docstring
+        Plug 'ryanoasis/vim-devicons'           " 文件图标
+        Plug 'lambdalisue/gina.vim'             " 又一个 Git 工具
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         else
@@ -362,8 +363,12 @@
 " 插件设定 {
     " Signify {
         let g:signify_vsc_list = ['git']
-        let g:signify_realtime = 1
+        let g:signify_realtime = 0
         let g:signify_line_highlight = 1
+        nmap <leader>gj <plug>(signify-next-hunk)
+        nmap <leader>gk <plug>(signify-prev-hunk)
+        nmap <leader>gJ 9999<leader>gj
+        nmap <leader>gK 9999<leader>gk
     " }
     " Lightline {
         let g:lightline = {}
@@ -471,6 +476,8 @@
     "       \ 'header':  ['fg', 'Comment'] }
     " " }
     " COC {
+        let g:coc_status_error_sign = '×'
+        let g:coc_status_warning_sign = '!'
         " hi IncSearch gui=reverse
         hi HighlightedyankRegion term=bold ctermbg=0 guibg=#cdffd8 guifg=#979797
         nmap <leader>e :CocCommand explorer<CR>

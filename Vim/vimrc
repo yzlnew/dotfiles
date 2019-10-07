@@ -359,6 +359,12 @@
 
     " Terminal
     tnoremap <Esc> <C-\><C-n>
+
+    " 禁用方向键
+    noremap <Up> <Nop>
+    noremap <Down> <Nop>
+    noremap <Left> <Nop>
+    noremap <Right> <Nop>
 " }
 
 " 插件设定 {
@@ -757,5 +763,12 @@
     " }
     " highlightedyank {
         " highlight HighlightedyankRegion cterm=reverse gui=reverse
+    " }
+    " vimwiki {
+      let g:vimwiki_global_ext = 0
+      let g:vimwiki_list = [{'path': '~/yzlwiki/',
+                           \ 'syntax': 'markdown', 'ext': '.md'}]
+      let g:vimwiki_table_mappings = 0
+      inoremap <F11> <Esc>:VimwikiReturn 1 5<CR>
     " }
 " }

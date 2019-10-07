@@ -145,11 +145,12 @@
     set mousehide               " 输入时隐藏鼠标指针
     scriptencoding utf-8        " UTF-8 文件编码
     set clipboard=unnamed       " 系统剪贴板使用匿名寄存器
-    set shortmess+=filmnrxoOtT  " 减少和缩写消息提示
+    set shortmess+=cfilmnrxoOtT  " 减少和缩写消息提示
     set viewoptions=folds,options,cursor,unix,slash
     set virtualedit=onemore     " 允许光标移动到超过行尾的位置
     set nospell                 " 禁用拼写检查
     set hidden                  " 隐藏缓冲区
+    set cmdheight=2
     set tags=./.tags;,.tags
     " 自动切换到当前缓冲区文件目录
     autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h |
@@ -238,7 +239,7 @@
 
         if has('gui_running')
             if WINDOWS()
-                set guifont=Sarasa\ Mono\ SC:h14
+                set guifont=Operator\ Mono\ SSm\ Book:h14
                 set guifontwide=Sarasa\ Mono\ SC:h14
             else
                 set guifont=OperatorMonoSSm\ NF:h14
@@ -404,6 +405,8 @@
         let g:lightline#ale#indicator_warnings = "!"
         let g:lightline#ale#indicator_errors = "×"
         let g:lightline#ale#indicator_ok = ""
+        " let g:lightline.separator = {'left': '', 'right': ''}
+        " let g:lightline.subseparator = {'left': '', 'right': ''}
         let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
         let g:lightline.active = {
               \  'left': [ [ 'mode', 'paste' ],
@@ -476,20 +479,52 @@
     "       \ 'header':  ['fg', 'Comment'] }
     " " }
     " COC {
+        let g:coc_global_extensions = [
+                        \ 'coc-json',
+                        \ 'coc-word',
+                        \ 'coc-vimtex',
+                        \ 'coc-lists',
+                        \ 'coc-yank',
+                        \ 'coc-python',
+                        \ 'coc-tabnine',
+                        \ 'coc-explorer',
+                        \ 'coc-ultisnips',
+                        \ 'coc-emoji'
+                    \ ]
         let g:coc_status_error_sign = '×'
         let g:coc_status_warning_sign = '!'
         " hi IncSearch gui=reverse
         hi HighlightedyankRegion term=bold ctermbg=0 guibg=#cdffd8 guifg=#979797
         nmap <leader>e :CocCommand explorer<CR>
-        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+        " Use tab for trigger completion with characters ahead and navigate.
+        " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+        inoremap <silent><expr> <TAB>
+              \ pumvisible() ? "\<C-n>" :
+              \ <SID>check_back_space() ? "\<TAB>" :
+              \ coc#refresh()
+        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+        function! s:check_back_space() abort
+          let col = col('.') - 1
+          return !col || getline('.')[col - 1]  =~# '\s'
+        endfunction
+
+        " Use <c-space> to trigger completion.
+        inoremap <silent><expr> <c-space> coc#refresh()
+
+        " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+        " Coc only does snippet and additional edit on confirm.
         inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-        autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+        " Or use `complete_info` if your vim support it, like:
+        " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+        " autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
         set signcolumn=yes
         set updatetime=300
         " Use `[c` and `]c` to navigate diagnostics
-        nmap <silent> [c <Plug>(coc-diagnostic-prev)
-        nmap <silent> ]c <Plug>(coc-diagnostic-next)
+        nmap <silent> [g <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
         " Remap keys for gotos
         nmap <silent> gd <Plug>(coc-definition)
@@ -535,12 +570,35 @@
         " Fix autofix problem of current line
         nmap <leader>qf  <Plug>(coc-fix-current)
 
+        " Create mappings for function text object, requires document symbols feature of languageserver.
+        xmap if <Plug>(coc-funcobj-i)
+        xmap af <Plug>(coc-funcobj-a)
+        omap if <Plug>(coc-funcobj-i)
+        omap af <Plug>(coc-funcobj-a)
+
         " Use `:Format` to format current buffer
         command! -nargs=0 Format :call CocAction('format')
 
         " Use `:Fold` to fold current buffer
         command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
+        " Using CocList
+        " Show all diagnostics
+        nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+        " Manage extensions
+        nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+        " Show commands
+        nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+        " Find symbol of current document
+        nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+        " Search workspace symbols
+        nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+        " Do default action for next item.
+        nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+        " Do default action for previous item.
+        nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+        " Resume latest coc list
+        nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
     " }
     " UltiSnips {
         let g:UltiSnipsExpandTrigger = '<C-j>'

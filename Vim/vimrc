@@ -52,11 +52,11 @@
     endif
 
     call plug#begin('~/.vim/plugged')
-        if WINDOWS()
-            if has('nvim')
-                Plug 'yzlnew/smartim'
-            endif
-        else
+        Plug 'yzlnew/vim-im-select', { 'on': [] }
+        if WINDOWS() && has('nvim')
+            Plug 'yzlnew/smartim'
+        endif
+        if OSX()
             Plug 'dangxuandev/fcitx-vim-osx'    " 正常模式使用英文输入法
         endif
         Plug 'scrooloose/nerdtree'              " 目录树
@@ -123,6 +123,7 @@
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'lambdalisue/gina.vim'             " 又一个 Git 工具
         Plug 'liuchengxu/vim-clap'
+        Plug 'airblade/vim-rooter'
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         else
@@ -485,22 +486,6 @@
         " let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
         let g:instant_markdown_autostart = 0
     " }
-    " " fzf {
-    "     let g:fzf_colors =
-    "     \ { 'fg':      ['fg', 'Normal'],
-    "       \ 'bg':      ['bg', 'Normal'],
-    "       \ 'hl':      ['fg', 'Comment'],
-    "       \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-    "       \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-    "       \ 'hl+':     ['fg', 'Statement'],
-    "       \ 'info':    ['fg', 'PreProc'],
-    "       \ 'border':  ['fg', 'Ignore'],
-    "       \ 'prompt':  ['fg', 'Conditional'],
-    "       \ 'pointer': ['fg', 'Exception'],
-    "       \ 'marker':  ['fg', 'Keyword'],
-    "       \ 'spinner': ['fg', 'Label'],
-    "       \ 'header':  ['fg', 'Comment'] }
-    " " }
     " COC {
         let g:coc_global_extensions = [
                         \ 'coc-json',
@@ -518,7 +503,7 @@
         let g:coc_status_warning_sign = '!'
         " hi IncSearch gui=reverse
         hi HighlightedyankRegion term=bold ctermbg=0 guibg=#cdffd8 guifg=#979797
-        nmap <leader>e :CocCommand explorer<CR>
+        nmap <leader>ge :CocCommand explorer<CR>
 
         " Use tab for trigger completion with characters ahead and navigate.
         " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.

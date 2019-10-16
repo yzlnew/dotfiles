@@ -347,18 +347,6 @@
     noremap j gj
     noremap k gk
     nnoremap Y y$       " 从光标处复制到行尾
-    " 折叠选项 {
-        nmap <leader>f0 :set foldlevel=0<CR>
-        nmap <leader>f1 :set foldlevel=1<CR>
-        nmap <leader>f2 :set foldlevel=2<CR>
-        nmap <leader>f3 :set foldlevel=3<CR>
-        nmap <leader>f4 :set foldlevel=4<CR>
-        nmap <leader>f5 :set foldlevel=5<CR>
-        nmap <leader>f6 :set foldlevel=6<CR>
-        nmap <leader>f7 :set foldlevel=7<CR>
-        nmap <leader>f8 :set foldlevel=8<CR>
-        nmap <leader>f9 :set foldlevel=9<CR>
-    " }
     nmap <silent> <leader>/ :nohlsearch<CR>    " 清除搜索结果高亮
 
     " 进入当前文件的目录
@@ -772,5 +760,9 @@
                            \ 'syntax': 'markdown', 'ext': '.md'}]
       let g:vimwiki_table_mappings = 0
       inoremap <F11> <Esc>:VimwikiReturn 1 5<CR>
+    " }
+    " which-key {
+      nnoremap <silent> <leader> :WhichKey ';'<CR>
+      let g:which_key_use_floating_win = 1
     " }
 " }

@@ -77,8 +77,8 @@
         " Plug 'francoiscabrol/ranger.vim'        " Ranger
         Plug 'mhinz/vim-startify'               " 启动页
         Plug 'cespare/vim-toml'                 " 支持 TOML
-        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-        Plug 'junegunn/fzf.vim'                 " fzf 文件模糊搜索
+        " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+        " Plug 'junegunn/fzf.vim'                 " fzf 文件模糊搜索
         Plug 'wakatime/vim-wakatime'            " Wakatime 编程记录
         Plug 'w0rp/ale'                         " 代码分析和自动修正
         Plug 'junegunn/vim-emoji'               " Emoji
@@ -123,7 +123,6 @@
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'lambdalisue/gina.vim'             " 又一个 Git 工具
         Plug 'liuchengxu/vim-clap'
-        Plug 'airblade/vim-rooter', { 'on': [] }
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         else

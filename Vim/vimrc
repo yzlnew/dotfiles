@@ -386,7 +386,9 @@
     " }
     " Lightline {
         let g:lightline = {}
-        let g:lightline.colorscheme = 'forest_night'
+        if get(g:, 'colors_name', 'default') == 'github'
+            let g:lightline.colorscheme = 'github'
+        endif
         let g:lightline.component = {
               \  'me': '@yzlnew',
               \  'lineinfo': '⭡ %3l:%-2v',

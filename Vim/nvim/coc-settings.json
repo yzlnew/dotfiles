@@ -1,7 +1,9 @@
 {
-    "coc.source.word.enable": true,
-    "diagnostic.errorSign": "\uf655",
-    "diagnostic.warningSign": "\uf704",
-    "diagnostic.infoSign": "\uf7fc",
-    "diagnostic.hintSign": "\ufbe7",
+    "list.source.files.defaultArgs": ["-folder"],
+    "list.source.grep.defaultArgs": ["-folder"],
+    "explorer.icon.enableNerdfont": true,
+    "yank.enableCompletion": true,
+    "suggest.snippetIndicator": " ->",
+    "suggest.maxCompleteItemCount": 15,
+    "java.errors.incompleteClasspath.severity": "ignore"
 }

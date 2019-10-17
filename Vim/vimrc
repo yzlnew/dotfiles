@@ -210,10 +210,11 @@
             let iterm_profile = $ITERM_PROFILE
             if iterm_profile == "robin_dark"
                 set background=dark
+                colorscheme forest-night
             else
                 set background=light
+                colorscheme github
             endif
-            colorscheme solarized8
 
             if $TERM_PROGRAM == 'Apple_Terminal'
                 let g:solarized_use16 = 0
@@ -385,7 +386,7 @@
     " }
     " Lightline {
         let g:lightline = {}
-        let g:lightline.colorscheme = 'github'
+        let g:lightline.colorscheme = 'forest_night'
         let g:lightline.component = {
               \  'me': '@yzlnew',
               \  'lineinfo': '⭡ %3l:%-2v',

@@ -1,6 +1,6 @@
+export TERM="xterm-256color"
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export PATH="~/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH="/home/robin/.oh-my-zsh"
 fpath+=~/.zfunc
@@ -73,9 +73,10 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export PATH="~/bin:$PATH"
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -98,8 +99,7 @@ export PATH="~/bin:$PATH"
 # Example aliases
 alias python="python3"
 alias pip="pip3"
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
 
 function brew_disable() {
 	export PATH=${PATH##*"/.linuxbrew/bin:"}

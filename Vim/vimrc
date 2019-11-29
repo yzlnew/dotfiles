@@ -394,7 +394,7 @@
         endif
         let g:lightline.component = {
               \  'me': '@yzlnew',
-              \  'lineinfo': '⭡ %3l:%-2v',
+              \  'lineinfo': '%3l:%-2v',
               \  'close': '%999X  '
               \  }
         let g:lightline.component_function = {
@@ -725,8 +725,13 @@
             let g:vimtex_view_enabled = 1
             let g:vimtex_view_method = 'skim'
         endif
-        if has('nvim')
-            let g:vimtex_compiler_progname = 'nvr'
+        " if has('nvim')
+        "     let g:vimtex_compiler_progname = 'nvr'
+        " endif
+        if Linux()
+            let g:vimtex_view_general_viewer = 'okular'
+            let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+            let g:vimtex_view_general_options_latexmk = '--unique'
         endif
         if WINDOWS()
             let g:vimtex_view_general_viewer = 'SumatraPDF'

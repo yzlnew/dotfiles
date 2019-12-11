@@ -333,7 +333,8 @@ background_opacity: 0.8
 key_bindings:
   - { key: V,        mods: Control|Shift, action: Paste            }
   - { key: C,        mods: Control|Shift, action: Copy             }
-  - { key: N,        mods: Control|Shift, action: SpawnNewInstance             }
+  - { key: N,        mods: Control|Shift, action: SpawnNewInstance }
+  - { key: W,        mods: Control|Shift, action: Quit             }
   - { key: Insert,   mods: Shift,         action: PasteSelection   }
   - { key: Key0,     mods: Control,       action: ResetFontSize    }
   - { key: Equals,   mods: Control,       action: IncreaseFontSize }

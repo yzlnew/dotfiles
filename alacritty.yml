@@ -19,8 +19,8 @@ window:
   # Specified in number of columns/lines, not pixels. If both are zero this
   # setting is ignored.
   dimensions:
-    columns: 100
-    lines: 75
+    columns: 80
+    lines: 60
 
   # Window padding (changes require restart)
   #
@@ -78,26 +78,24 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
+    family: "Sarasa Mono SC"
     family: SFMono
-    # family: "Source Code Pro"
     style: Regular
-    # family: "Sarasa Mono SC"
 
   # The bold font face
   bold:
+    family: "Sarasa Mono SC"
     family: SFMono
-    # family: "Fira Code"
-    # family: "Source Code Pro"
     style: Bold
 
   # The italic font face
   italic:
+    family: "Sarasa Mono SC"
     family: SFMono
-    # family: "Fira Code"
-    # family: "Source Code Pro"
     style: "Regular Italic"
 
   bold_italic:
+    family: "Sarasa Mono SC"
     family: SFMono
     style: "Bold Italic"
 

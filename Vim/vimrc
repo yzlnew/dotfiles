@@ -490,6 +490,7 @@
                         \ 'coc-vimtex',
                         \ 'coc-lists',
                         \ 'coc-yank',
+                        \ 'coc-snippets',
                         \ 'coc-python',
                         \ 'coc-explorer',
                         \ 'coc-ultisnips',

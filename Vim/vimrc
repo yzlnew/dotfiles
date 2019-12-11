@@ -60,6 +60,9 @@
         if OSX()
             Plug 'dangxuandev/fcitx-vim-osx'    " 正常模式使用英文输入法
         endif
+        if LINUX()
+            Plug 'brglng/vim-im-select'
+        endif
         Plug 'scrooloose/nerdtree'              " 目录树
         if has('nvim')
           Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -488,7 +491,6 @@
                         \ 'coc-lists',
                         \ 'coc-yank',
                         \ 'coc-python',
-                        \ 'coc-tabnine',
                         \ 'coc-explorer',
                         \ 'coc-ultisnips',
                         \ 'coc-emoji'
@@ -728,10 +730,11 @@
         " if has('nvim')
         "     let g:vimtex_compiler_progname = 'nvr'
         " endif
-        if Linux()
-            let g:vimtex_view_general_viewer = 'okular'
-            let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-            let g:vimtex_view_general_options_latexmk = '--unique'
+        if LINUX()
+            let g:vimtex_view_general_viewer = 'mupdf'
+            " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+            " let g:vimtex_view_general_options_latexmk = '--unique'
+            " let g:vimtex_compiler_latexmk_engines = 'xelatex'
         endif
         if WINDOWS()
             let g:vimtex_view_general_viewer = 'SumatraPDF'

@@ -1,0 +1,42 @@
+set ignorecase
+set smartcase
+set rnu
+set number
+set hlsearch
+set incsearch
+set showmode
+set clipboard+=unnamedplus,unnamed
+set history=1000
+set surround
+set commentary
+let mapleader = ";"
+
+" nnoremap <silent> <Plug>unimpairedPutAbove :call <SID>putline('[p', 'Above')<CR>
+" nnoremap <silent> <Plug>unimpairedPutBelow :call <SID>putline(']p', 'Below')<CR>
+" call s:map('n', '[P', '<Plug>unimpairedPutAbove')
+" call s:map('n', ']P', '<Plug>unimpairedPutBelow')
+" nmap ]<space> o<c-[>k
+" nmap [<space> O<c-[>j
+
+" 映射到idea快捷键
+" 弹出输入框，可以跳到指定类
+nnoremap <leader>gc :action GotoClass<CR>
+" 弹出输入框，跳转到指定操作
+nnoremap <leader>ga :action GotoAction<CR>
+" 跳转到定义
+nnoremap <leader>gd :action GotoDeclaration<CR>
+" 跳转到实现
+nnoremap <leader>gi :action GotoImplementation<CR>
+" 跳转到指定的文件
+nnoremap <leader>gf :action GotoFile<CR>
+" 跳转到方法的声明
+nnoremap <leader>gs :action GotoSuperMethod<CR>
+" 跳转到测试
+nnoremap <leader>gt :action GotoTest<CR>
+" 跳转到变量的声明
+nnoremap <leader>gS :action GotoSymbol<CR>
+" 查找使用
+nnoremap <leader>fu :action FindUsages<CR>
+" 显示使用
+nnoremap <leader>su :action ShowUsages<CR>
+

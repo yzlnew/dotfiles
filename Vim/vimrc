@@ -124,6 +124,7 @@
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'lambdalisue/gina.vim'             " 又一个 Git 工具
         Plug 'liuchengxu/vim-clap'
+        Plug 'Yggdroot/LeaderF'
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         else

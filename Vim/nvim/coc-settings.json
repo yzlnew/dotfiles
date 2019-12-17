@@ -5,5 +5,6 @@
     "yank.enableCompletion": true,
     "suggest.snippetIndicator": " ->",
     "suggest.maxCompleteItemCount": 15,
-    "java.errors.incompleteClasspath.severity": "ignore"
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "snippets.userSnippetsDirectory": "~/.vim/usnips"
 }

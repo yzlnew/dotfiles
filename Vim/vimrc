@@ -200,7 +200,7 @@
     " 由于 macOS 的终端不支持 True Color，建议使用 iTerm2
     " 另支持正常和插入模式不同的光标样式
         set termguicolors
-
+        let darkmode = 1
         let g:vim_monokai_tasty_italic = 1
         let g:solarized_term_italics=1
         let g:neosolarized_italic=1
@@ -240,8 +240,13 @@
         endif
 
         if WINDOWS()
-            set background=light
-            colorscheme github
+            if darkmode == 1
+                set background=dark
+                colorscheme forest-night
+            else
+                set background=light
+                colorscheme github
+            endif
             let &t_SI.="\e[5 q"
             let &t_SR.="\e[4 q"
             let &t_EI.="\e[1 q"
@@ -379,6 +384,9 @@
         let g:lightline = {}
         if get(g:, 'colors_name', 'default') == 'github'
             let g:lightline.colorscheme = 'github'
+        endif
+        if get(g:, 'colors_name', 'default') == 'forest-night'
+            let g:lightline.colorscheme = 'forest_night'
         endif
         let g:lightline.component = {
               \  'me': '@yzlnew',

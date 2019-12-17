@@ -40,3 +40,21 @@ snippet fig2 "2 figs with equal width" b
     \end{minipage}
 \end{figure}
 endsnippet
+
+snippet font "set font" b
+\setmainfont{LibertinusSerif}[
+  Extension      = .otf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  ItalicFont     = *-Italic,
+  BoldItalicFont = *-BoldItalic,
+  Scale          = 1.1]
+\setmonofont{Sarasa Mono SC}[Scale=0.96]
+\setCJKmainfont{思源宋体 CN}[
+  UprightFont     = * ,
+  BoldFont        = * SemiBold,
+  ItalicFont      = * SemiBold,
+  BoldItalicFont  = * SemiBold,
+  RawFeature      = +fwid]
+\setCJKmonofont{Sarasa Mono SC}
+endsnippet

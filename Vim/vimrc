@@ -61,7 +61,7 @@
             Plug 'dangxuandev/fcitx-vim-osx'    " 正常模式使用英文输入法
         endif
         if LINUX()
-            Plug 'brglng/vim-im-select'
+            Plug 'brglng/vim-im-select', {'on': [] }
         endif
         Plug 'scrooloose/nerdtree'              " 目录树
         if has('nvim')
@@ -235,8 +235,13 @@
         endif
 
         if LINUX()
-            set background=light
-            colorscheme github
+            if darmode == 1
+                set background=dark
+                colorscheme forest-night
+            else
+                set background=light
+                colorscheme github
+            endif
         endif
 
         if WINDOWS()
@@ -485,7 +490,6 @@
                         \ 'coc-yank',
                         \ 'coc-snippets',
                         \ 'coc-python',
-                        \ 'coc-explorer',
                         \ 'coc-ultisnips',
                         \ 'coc-emoji'
                     \ ]

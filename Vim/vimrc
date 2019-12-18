@@ -235,7 +235,7 @@
         endif
 
         if LINUX()
-            if darmode == 1
+            if darkmode == 1
                 set background=dark
                 colorscheme forest-night
             else

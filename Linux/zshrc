@@ -78,6 +78,8 @@ export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
 export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
 
+export LS_COLORS="ow=01;36;40"
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 

@@ -58,3 +58,18 @@ snippet font "set font" b
   RawFeature      = +fwid]
 \setCJKmonofont{Sarasa Mono SC}
 endsnippet
+
+snippet magic "magic comment" b
+% !TEX program = xelatex
+endsnippet
+
+snippet chinese "chinese support" b
+\usepackge[UTF8]{ctex}
+endsnippet
+
+snippet fragile "add a fragile beamer frame" b
+\begin{frame}[fragile]
+\frametitle{$1}
+
+\end{frame}
+endsnippet

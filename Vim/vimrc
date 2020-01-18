@@ -552,8 +552,8 @@
         nmap <leader>rn <Plug>(coc-rename)
 
         " Remap for format selected region
-        vmap <leader>f  <Plug>(coc-format-selected)
-        nmap <leader>f  <Plug>(coc-format-selected)
+        vmap <leader>fm  <Plug>(coc-format-selected)
+        nmap <leader>fm  <Plug>(coc-format-selected)
 
         augroup mygroup
           autocmd!
@@ -810,5 +810,20 @@
     " which-key {
       nnoremap <silent> <leader> :WhichKey ';'<CR>
       let g:which_key_use_floating_win = 1
+    " }
+    " Laderf {
+      let g:Lf_HideHelp = 1
+      let g:Lf_UseCache = 0
+      let g:Lf_UseVersionControlTool = 0
+      let g:Lf_IgnoreCurrentBufferName = 1
+      let g:Lf_WindowPosition = 'popup'
+      let g:Lf_PreviewInPopup = 1
+      let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2"}
+      let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+      let g:Lf_ShortcutF = "<leader>ff"
+      noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+      noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+      noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+      noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
     " }
 " }

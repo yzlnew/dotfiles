@@ -826,4 +826,7 @@
       noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
       noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
     " }
+    " Asyncrun {
+      command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+    " }
 " }

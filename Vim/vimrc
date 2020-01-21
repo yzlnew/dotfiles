@@ -25,9 +25,10 @@
         if !WINDOWS()
             set shell=/bin/zsh
         endif
-        " if WINDOWS()
-            " set shell=powershell.exe
-        " endif
+        if WINDOWS()
+            let &pythonthreedll='C:\Users\11103475\scoop\apps\python37\current\python37.dll'
+            let &pythonthreehome='C:\Users\11103475\scoop\apps\python37\current'
+        endif
     " }
     " runtimepath {
       set runtimepath+=$HOME/.vim
@@ -259,8 +260,8 @@
 
         if has('gui_running')
             if WINDOWS()
-                set guifont=Operator\ Mono\ SSm\ Book:h14
-                set guifontwide=Sarasa\ Mono\ SC:h14
+                set guifont=SF_Mono:h10
+                set guifontwide=Sarasa\ Mono\ SC:h10
             else
                 set guifont=OperatorMonoSSm\ NF:h14
             endif
@@ -272,6 +273,7 @@
             " highlight LineNr guibg=NONE
             " highlight Comment gui=italic
         endif
+
         highlight Keyword cterm=italic gui=italic
         highlight Comment cterm=italic gui=italic
     " }

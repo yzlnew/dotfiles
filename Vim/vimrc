@@ -64,7 +64,7 @@
         if LINUX()
             Plug 'brglng/vim-im-select', {'on': [] }
         endif
-        Plug 'scrooloose/nerdtree'              " 目录树
+        Plug 'preservim/nerdtree'
         if has('nvim')
           Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
         else
@@ -72,6 +72,7 @@
           Plug 'roxma/nvim-yarp'
           Plug 'roxma/vim-hug-neovim-rpc'
         endif
+        Plug 'sheerun/vim-polyglot'             " 语法高亮等
         Plug 'alpertuna/vim-header'             " 头部信息生成
         Plug 'kristijanhusak/defx-icons'
         Plug 'kristijanhusak/defx-git'
@@ -120,6 +121,7 @@
         Plug 'kaicataldo/material.vim'
         Plug 'dikiaap/minimalist'
         Plug 'hzchirs/vim-material'
+        Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
         " Plug 'endel/vim-github-colorscheme'
         Plug 'cormacrelf/vim-colors-github'
         Plug 'sainnhe/vim-color-forest-night'
@@ -202,6 +204,7 @@
     " 另支持正常和插入模式不同的光标样式
         set termguicolors
         let darkmode = 1
+        let g:forest_night_enable_italic = 1
         let g:vim_monokai_tasty_italic = 1
         let g:solarized_term_italics=1
         let g:neosolarized_italic=1
@@ -248,7 +251,7 @@
         if WINDOWS()
             if darkmode == 1
                 set background=dark
-                colorscheme forest-night
+                colorscheme gruvbox-material
             else
                 set background=light
                 colorscheme github
@@ -394,6 +397,9 @@
         endif
         if get(g:, 'colors_name', 'default') == 'forest-night'
             let g:lightline.colorscheme = 'forest_night'
+        endif
+        if get(g:, 'colors_name', 'default') == 'gruvbox-material'
+            let g:lightline.colorscheme = 'gruvbox_material'
         endif
         let g:lightline.component = {
               \  'me': '@yzlnew',

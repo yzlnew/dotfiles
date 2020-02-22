@@ -1,6 +1,8 @@
 {
     "list.source.files.defaultArgs": ["-folder"],
     "list.source.grep.defaultArgs": ["-folder"],
+    "python.jediEnabled": false,
+    "python.formatting.provider": "black",
     "explorer.icon.enableNerdfont": true,
     "yank.enableCompletion": true,
     "suggest.snippetIndicator": " ->",

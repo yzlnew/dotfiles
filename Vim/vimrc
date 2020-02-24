@@ -563,12 +563,12 @@
         " Use <c-space> to trigger completion.
         inoremap <silent><expr> <c-space> coc#refresh()
 
-        " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-        " Coc only does snippet and additional edit on confirm.
-        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-        " Or use `complete_info` if your vim support it, like:
-        " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-        " autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+        if has('patch8.1.1068')
+          " Use `complete_info` if your (Neo)Vim version supports it.
+          inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+        else
+          imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+        endif
 
         set signcolumn=yes
         set updatetime=300
@@ -633,6 +633,7 @@
         command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
         " Using CocList
+        nnoremap <silent> <space>b  :<C-u>CocList buffers<cr>
         " Show maps
         nnoremap <silent> <space>m  :<C-u>CocList maps<cr>
         " Show all diagnostics
@@ -651,6 +652,8 @@
         nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
         " Resume latest coc list
         nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+        " Open CocList
+        nnoremap <silent> <space>l  :<C-u>CocList<CR>
     " }
     " UltiSnips {
         let g:UltiSnipsExpandTrigger = '<C-j>'
@@ -661,7 +664,7 @@
         let g:UltiSnipsSnippetDirectories=["UltiSnips", "usnips"]
     " }
     " EasyMotion {
-        map <Leader>L <Plug>(easymotion-bd-jk)
+        map <leader><leader>L <Plug>(easymotion-bd-jk)
     " }
     " NERDTree {
         map <leader>nt :NERDTreeToggle<CR>
@@ -850,10 +853,14 @@
       let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2"}
       let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
       let g:Lf_ShortcutF = "<leader>ff"
-      noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-      noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-      noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-      noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+      noremap <leader>fb :<C-U>Leaderf buffer<CR>
+      noremap <leader>fm :<C-U>Leaderf mru<CR>
+      noremap <leader>ft :<C-U>Leaderf bufTag<CR>
+      noremap <leader>fl :<C-U>Leaderf line<CR>
+      noremap <leader>ft :<C-U>Leaderf filetype<CR>
+      noremap <leader>fr :<C-U>Leaderf rg<CR>
+      noremap <leader>fc :<C-U>Leaderf command<CR>
+      noremap <leader>fw :<C-U>Leaderf window<CR>
     " }
     " Asyncrun {
       let g:asyncrun_open = 8

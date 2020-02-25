@@ -12,7 +12,7 @@ if exists('g:fvim_loaded')
     " set guifont=Sarasa\ Mono\ SC:h16
     " set guifont=Operator\ Mono\ SSm:h16
     " set guifont=Dank\ Mono:h16
-    set guifont=SF\ Mono:h16
+    set guifont=Dank\ Mono:h16
     " set guifont=mononoki:h16
     set guifontwide=Sarasa\ Mono\ SC:h16
 

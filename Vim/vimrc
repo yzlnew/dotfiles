@@ -344,7 +344,7 @@
 " }
 
 " 快捷键 {
-    let mapleader=';'
+    let mapleader=' '
     " 窗口快速移动 {
         map <C-J> <C-W>j<C-W>_
         map <C-K> <C-W>k<C-W>_
@@ -619,11 +619,11 @@
         augroup end
 
         " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-        vmap <leader>ca  <Plug>(coc-codeaction-selected)
-        nmap <leader>ca  <Plug>(coc-codeaction-selected)
+        vmap <leader>cs  <Plug>(coc-codeaction-selected)
+        nmap <leader>cs  <Plug>(coc-codeaction-selected)
 
         " Remap for do codeAction of current line
-        nmap <leader>cc  <Plug>(coc-codeaction)
+        nmap <leader>ca  <Plug>(coc-codeaction)
         " Fix autofix problem of current line
         nmap <leader>cq  <Plug>(coc-fix-current)
 
@@ -640,27 +640,27 @@
         command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
         " Using CocList
-        nnoremap <silent> <space>b  :<C-u>CocList buffers<cr>
+        nnoremap <silent> <leader>cb  :<C-u>CocList buffers<cr>
         " Show maps
-        nnoremap <silent> <space>m  :<C-u>CocList maps<cr>
+        nnoremap <silent> <leader>cm  :<C-u>CocList maps<cr>
         " Show all diagnostics
-        nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+        nnoremap <silent> <leader>ca  :<C-u>CocList diagnostics<cr>
         " Manage extensions
-        nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+        nnoremap <silent> <leader>ce  :<C-u>CocList extensions<cr>
         " Show commands
-        nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+        nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
         " Find symbol of current document
-        nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+        nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
         " Search workspace symbols
-        nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+        nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
         " Do default action for next item.
-        nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+        nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>
         " Do default action for previous item.
-        nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+        nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
         " Resume latest coc list
-        nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+        nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>
         " Open CocList
-        nnoremap <silent> <space>l  :<C-u>CocList<CR>
+        nnoremap <silent> <leader>cl  :<C-u>CocList<CR>
     " }
     " UltiSnips {
         let g:UltiSnipsExpandTrigger = '<C-j>'
@@ -847,9 +847,12 @@
       inoremap <F11> <Esc>:VimwikiReturn 1 5<CR>
     " }
     " which-key {
-      call which_key#register(';', "g:which_key_map")
-      nnoremap <silent> <leader> :WhichKey ';'<CR>
+      highlight! default link WhichKeyFloating DiffAdd
+      call which_key#register(' ', "g:which_key_map")
       nnoremap <silent> <space> :WhichKey ' '<CR>
+      let g:which_key_floating_opts = {'row' : '-10'}
+      let g:which_key_hspace = 2
+      let g:which_key_sep = '>'
       let g:which_key_use_floating_win = 1
       let g:which_key_position = 'topleft'
       let g:which_key_map =  {}
@@ -861,8 +864,18 @@
       let g:which_key_map.v = {'name' : '+Vimtex'}
       let g:which_key_map.w = {'name' : '+Wiki'}
       let g:which_key_map.c = {'name' : '+Coc',
-                  \ 'f' : 'fix current',
+                  \ 'q' : 'fix current',
+                  \ 'f' : 'format',
                   \ 'r' : 'rename',
+                  \ 'b' : 'buffers',
+                  \ 'a' : 'diagnostics',
+                  \ 'c' : 'command',
+                  \ 'e' : 'extensions',
+                  \ 'o' : 'outline',
+                  \ 'm' : 'maps',
+                  \ 's' : 'symbols',
+                  \ 'ca' : 'codeaction',
+                  \ 'cs' : 'codeaction selected',
                   \ }
       noremap <leader>ov :e $MYVIMRC<CR>
       let g:which_key_map.o = {'name' : '+Open',
@@ -875,7 +888,7 @@
       let g:which_key_map.d = 'Docstring generation'
       let g:which_key_map.j = 'Jump pairs'
       let g:which_key_map['/'] = 'No highlight'
-      let g:which_key_map[';'] = 'Easymotion prefix'
+      let g:which_key_map[' '] = 'which_key_ignore'
     " }
     " Leaderf {
       let g:Lf_HideHelp = 1

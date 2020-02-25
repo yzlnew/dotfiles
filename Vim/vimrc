@@ -351,15 +351,16 @@
         map <C-L> <C-W>l<C-W>_
         map <C-H> <C-W>h<C-W>_
     " }
+    noremap <M-,> :bprevious<CR>
+    noremap <M-.> :bnext<CR>
+
     noremap <M-d> :bd<CR>
-    noremap <M--> :vsplit<CR>
-    noremap <M-\> :split<CR>
-    " noremap <M-h> :vertical resize -5<CR>
-    " noremap <M-l> :vertical resize +5<CR>
-    noremap <M-h> :bprevious<CR>
-    noremap <M-l> :bnext<CR>
-    noremap <M-j> :resize -5<CR>
-    noremap <M-k> :resize +5<CR>
+    noremap <M-\> :vsplit<CR>
+    noremap <M--> :split<CR>
+    noremap <M-;> :vertical resize -5<CR>
+    noremap <M-'> :vertical resize +5<CR>
+    noremap <M-[> :resize -5<CR>
+    noremap <M-/> :resize +5<CR>
     " 移动增强
     noremap <M-h> b
     noremap <M-l> w
@@ -371,8 +372,6 @@
     inoremap <M-k> <c-\><c-o>gk
     cnoremap <M-h> <c-left>
     cnoremap <M-l> <c-right>
-    cnoremap <M-b> <c-left>
-    cnoremap <M-f> <c-right>
     " 折行移动到显示的下一行
     noremap j gj
     noremap k gk
@@ -865,8 +864,9 @@
                   \ 'f' : 'fix current',
                   \ 'r' : 'rename',
                   \ }
-      let g:which_key_map.o = {'name' : '+open',
-                  \ 'v' : ['e $MYVIMRC', 'vimrc'],
+      noremap <leader>ov :e $MYVIMRC<CR>
+      let g:which_key_map.o = {'name' : '+Open',
+                  \ 'v' : 'vimrc',
                   \ 's' : ['Startify', 'startify'],
                   \ 'e' : ['Defx', 'explorer'],
                   \ 'c' : ['CocList', 'coc list'],
@@ -886,8 +886,8 @@
       let g:Lf_PreviewInPopup = 1
       let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2"}
       let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-      let g:Lf_ShortcutF = "<leader>ff"
-      let g:Lf_ShortcutB = "<leader>fb"
+      let g:Lf_ShortcutF = '<M-f>'
+      let g:Lf_ShortcutB = '<M-b>'
       noremap <leader>ff :<C-U>Leaderf file<CR>
       noremap <leader>fb :<C-U>Leaderf buffer<CR>
       noremap <leader>fm :<C-U>Leaderf mru<CR>

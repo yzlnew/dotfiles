@@ -108,7 +108,8 @@
         Plug 'lervag/vimtex'                    " LaTeX
         Plug 'liuchengxu/vim-which-key'
         Plug 'vim-scripts/ReplaceWithRegister'  " 粘贴并替换 `gr`
-        Plug 'heavenshell/vim-pydocstring'      " 生成 Python docstring
+        Plug 'heavenshell/vim-pydocstring', {'tag': '1.0.0'}
+        Plug 'kkoomen/vim-doge'
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'liuchengxu/vim-clap'
         Plug 'Yggdroot/LeaderF'
@@ -261,7 +262,8 @@
         if has('gui_running')
             if WINDOWS()
                 " set guifont=SF_Mono:h10
-                set guifont=FiraCode_NF:h11,Sarasa\ Mono\ SC:h11
+                " set guifont=FiraCode_NF:h11,Sarasa\ Mono\ SC:h11
+                set guifont=SF_Mono:h11,Sarasa\ Mono\ SC:h11
                 " set guifont=FiraCode_NF:h11
                 set guifontwide=Sarasa\ Mono\ SC:h11
             else
@@ -349,11 +351,13 @@
         map <C-L> <C-W>l<C-W>_
         map <C-H> <C-W>h<C-W>_
     " }
-    noremap <M-d> :bd!<CR>
+    noremap <M-d> :bd<CR>
     noremap <M--> :vsplit<CR>
     noremap <M-\> :split<CR>
-    noremap <M-h> :vertical resize -5<CR>
-    noremap <M-l> :vertical resize +5<CR>
+    " noremap <M-h> :vertical resize -5<CR>
+    " noremap <M-l> :vertical resize +5<CR>
+    noremap <M-h> :bprevious<CR>
+    noremap <M-l> :bnext<CR>
     noremap <M-j> :resize -5<CR>
     noremap <M-k> :resize +5<CR>
     " 移动增强
@@ -373,7 +377,7 @@
     noremap j gj
     noremap k gk
     nnoremap Y y$       " 从光标处复制到行尾
-    nmap <silent> <leader>/ :nohlsearch<CR>    " 清除搜索结果高亮
+    nmap <silent> <leader>/ :nohlsearch<CR>
 
     " 进入当前文件的目录
     cmap cwd lcd %:p:h
@@ -401,6 +405,10 @@
 " }
 
 " 插件设定 {
+    " Surround {
+        nmap <leader>sw ysiw
+        nmap <leader>sW ysiW
+    " }
     " Signify {
         let g:signify_vsc_list = ['git']
         let g:signify_realtime = 0
@@ -597,11 +605,11 @@
         autocmd CursorHold * silent call CocActionAsync('highlight')
 
         " Remap for rename current word
-        nmap <leader>rn <Plug>(coc-rename)
+        nmap <leader>cr <Plug>(coc-rename)
 
         " Remap for format selected region
-        vmap <leader>fm  <Plug>(coc-format-selected)
-        nmap <leader>fm  <Plug>(coc-format-selected)
+        vmap <leader>cf  <Plug>(coc-format-selected)
+        nmap <leader>cf  <Plug>(coc-format-selected)
 
         augroup mygroup
           autocmd!
@@ -612,13 +620,13 @@
         augroup end
 
         " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-        vmap <leader>a  <Plug>(coc-codeaction-selected)
-        nmap <leader>a  <Plug>(coc-codeaction-selected)
+        vmap <leader>ca  <Plug>(coc-codeaction-selected)
+        nmap <leader>ca  <Plug>(coc-codeaction-selected)
 
         " Remap for do codeAction of current line
-        nmap <leader>ac  <Plug>(coc-codeaction)
+        nmap <leader>cc  <Plug>(coc-codeaction)
         " Fix autofix problem of current line
-        nmap <leader>qf  <Plug>(coc-fix-current)
+        nmap <leader>cq  <Plug>(coc-fix-current)
 
         " Create mappings for function text object, requires document symbols feature of languageserver.
         xmap if <Plug>(coc-funcobj-i)
@@ -664,7 +672,7 @@
         let g:UltiSnipsSnippetDirectories=["UltiSnips", "usnips"]
     " }
     " EasyMotion {
-        map <leader><leader>L <Plug>(easymotion-bd-jk)
+        " map <leader><leader>L <Plug>(easymotion-bd-jk)
     " }
     " NERDTree {
         map <leader>nt :NERDTreeToggle<CR>
@@ -680,7 +688,7 @@
         let g:NERDTreeHijackNetrw=1
     " }
     " defx {
-        nmap <leader>df :Defx<CR>
+        nmap <leader>e :Defx<CR>
         call defx#custom#option('_', {
               \ 'columns': 'mark:git:indent:icons:filename',
               \ 'winwidth': 40,
@@ -840,8 +848,28 @@
       inoremap <F11> <Esc>:VimwikiReturn 1 5<CR>
     " }
     " which-key {
+      call which_key#register(';', "g:which_key_map")
       nnoremap <silent> <leader> :WhichKey ';'<CR>
+      nnoremap <silent> <space> :WhichKey ' '<CR>
       let g:which_key_use_floating_win = 1
+      let g:which_key_position = 'topleft'
+      let g:which_key_map =  {}
+      let g:which_key_map.g = {'name' : '+Goto'}
+      let g:which_key_map.f = {'name' : '+Leaderf'}
+      let g:which_key_map.n = {'name' : '+Nerdtree'}
+      let g:which_key_map.s = {'name' : '+Surround'}
+      let g:which_key_map.t = {'name' : '+Task'}
+      let g:which_key_map.v = {'name' : '+Vimtex'}
+      let g:which_key_map.w = {'name' : '+Wiki'}
+      let g:which_key_map.c = {'name' : '+Coc',
+                  \ 'f' : 'fix current',
+                  \ 'r' : 'rename',
+                  \ }
+      let g:which_key_map.e = 'Explorer'
+      let g:which_key_map.d = 'Docstring generation'
+      let g:which_key_map.j = 'Jump pairs'
+      let g:which_key_map['/'] = 'No highlight'
+      let g:which_key_map[';'] = 'Easymotion prefix'
     " }
     " Leaderf {
       let g:Lf_HideHelp = 1
@@ -853,6 +881,8 @@
       let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2"}
       let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
       let g:Lf_ShortcutF = "<leader>ff"
+      let g:Lf_ShortcutB = "<leader>fb"
+      noremap <leader>ff :<C-U>Leaderf file<CR>
       noremap <leader>fb :<C-U>Leaderf buffer<CR>
       noremap <leader>fm :<C-U>Leaderf mru<CR>
       noremap <leader>ft :<C-U>Leaderf bufTag<CR>
@@ -866,9 +896,16 @@
       let g:asyncrun_open = 8
       noremap <silent><f5> :AsyncTask file-run<cr>
       noremap <silent><f9> :AsyncTask file-build<cr>
+      noremap <silent><leader>tr :AsyncTask file-run<cr>
+      noremap <silent><leader>tb :AsyncTask file-build<cr>
       let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
     " }
     " docstring {
-      noremap <leader>ds :Pydocstring<CR>
+      " let g:pydocstring_fomatter = 'numpy'
+      " noremap <leader>ds :Pydocstring<CR>
+      let g:doge_mapping='<Leader>d'
+      let g:doge_mapping_comment_jump_forward='<c-j>'
+      let g:doge_mapping_comment_jump_backward='<c-k>'
+      let g:doge_doc_standard_python='numpy'
     " }
 " }

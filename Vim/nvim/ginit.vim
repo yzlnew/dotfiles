@@ -7,8 +7,15 @@ if !exists('g:fvim_loaded')
 endif
 
 if exists('g:fvim_loaded')
-    " good old 'set guifont' compatibility
-    set guifont=Sarasa\ Mono\ SC:h16
+    " set guifont=FiraCode_NF:h11
+    " set guifont=Operator_Mono_SSm_Book:h16
+    " set guifont=Sarasa\ Mono\ SC:h16
+    " set guifont=Operator\ Mono\ SSm:h16
+    " set guifont=Dank\ Mono:h16
+    set guifont=SF\ Mono:h16
+    " set guifont=mononoki:h16
+    set guifontwide=Sarasa\ Mono\ SC:h16
+
     " Ctrl-ScrollWheel for zooming in/out
     nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
     nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
@@ -28,6 +35,7 @@ if exists('g:fvim_loaded')
     FVimFontLcdRender v:true
     FVimFontHintLevel 'full'
     FVimFontAutoSnap v:true
-    " FVimFontLineHeight 'default' " can be 'default', '14.0', '-1.0' etc.
-    " FVimUIPopupMenu v:false      " external popup menu
+    FVimUIPopupMenu v:false
+    " FVimFontDrawBounds v:true
+    " FVimFontLineHeight '-1.0'
 endif

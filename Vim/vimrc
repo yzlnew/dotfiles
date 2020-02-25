@@ -865,6 +865,12 @@
                   \ 'f' : 'fix current',
                   \ 'r' : 'rename',
                   \ }
+      let g:which_key_map.o = {'name' : '+open',
+                  \ 'v' : ['e $MYVIMRC', 'vimrc'],
+                  \ 's' : ['Startify', 'startify'],
+                  \ 'e' : ['Defx', 'explorer'],
+                  \ 'c' : ['CocList', 'coc list'],
+                  \}
       let g:which_key_map.e = 'Explorer'
       let g:which_key_map.d = 'Docstring generation'
       let g:which_key_map.j = 'Jump pairs'

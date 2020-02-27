@@ -31,7 +31,7 @@
         endif
         if WINDOWS() && has('nvim')
             set shell=powershell\ -nologo shellquote=( shellpipe=\| shellxquote=
-            set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
+            set shellcmdflag=\ -NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
             set shellredir=\|\ Out-File\ -Encoding\ UTF8
         endif
     " }

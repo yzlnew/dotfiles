@@ -7,11 +7,9 @@ if !exists('g:fvim_loaded')
 endif
 
 if exists('g:fvim_loaded')
-    " set guifont=FiraCode_NF:h11
-    " set guifont=Operator_Mono_SSm_Book:h16
     " set guifont=Sarasa\ Mono\ SC:h16
     " set guifont=Operator\ Mono\ SSm:h16
-    " set guifont=Dank\ Mono:h16
+    " set guifont=Operator\ Mono:h16
     set guifont=Dank\ Mono:h16
     " set guifont=mononoki:h16
     set guifontwide=Sarasa\ Mono\ SC:h16
@@ -26,7 +24,8 @@ if exists('g:fvim_loaded')
     " FVimBackgroundAltOpacity 0.85         " value between 0 and 1, non-default bg opacity.
 
     " FVimCustomTitleBar v:true             " themed with colorscheme
-
+    FVimFontNormalWeight 400
+    FVimFontBoldWeight 700
     FVimCursorSmoothMove v:true
     FVimCursorSmoothBlink v:true
     FVimFontAntialias v:true

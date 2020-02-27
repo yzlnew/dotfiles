@@ -29,6 +29,11 @@
             let &pythonthreedll='C:\Users\11103475\scoop\apps\python37\current\python37.dll'
             let &pythonthreehome='C:\Users\11103475\scoop\apps\python37\current'
         endif
+        if WINDOWS() && has('nvim')
+            set shell=powershell\ -nologo shellquote=( shellpipe=\| shellxquote=
+            set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
+            set shellredir=\|\ Out-File\ -Encoding\ UTF8
+        endif
     " }
     " runtimepath {
       set runtimepath+=$HOME/.vim

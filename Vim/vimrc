@@ -29,11 +29,11 @@
             let &pythonthreedll='C:\Users\11103475\scoop\apps\python\current\python38.dll'
             let &pythonthreehome='C:\Users\11103475\scoop\apps\python\current'
         endif
-        if WINDOWS() && has('nvim')
-            set shell=powershell\ -nologo shellquote=( shellpipe=\| shellxquote=
-            set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
-            set shellredir=\|\ Out-File\ -Encoding\ UTF8
-        endif
+        " if WINDOWS() && has('nvim')
+        "     set shell=powershell shellquote= shellpipe=\| shellxquote=(
+        "     set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
+        "     set shellredir=\|\ Out-File\ -Encoding\ UTF8
+        " endif
     " }
     " runtimepath {
       set runtimepath+=$HOME/.vim
@@ -931,5 +931,8 @@
       let g:doge_mapping_comment_jump_forward='<c-j>'
       let g:doge_mapping_comment_jump_backward='<c-k>'
       let g:doge_doc_standard_python='numpy'
+    " }
+    " terminal-help {
+      let g:terminal_shell='powershell -nologo'
     " }
 " }

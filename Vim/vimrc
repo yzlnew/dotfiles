@@ -104,7 +104,7 @@
         Plug 'tpope/vim-fugitive'               " Git
         Plug 'tpope/vim-surround'               " 更改包裹
         Plug 'tpope/vim-commentary'             " 快速注释 `gcc`
-        Plug 'jiangmiao/auto-pairs'             " 括号自动配对
+        Plug 'Krasjet/auto.pairs'             " 括号自动配对
         Plug 'luochen1990/rainbow'              " 彩虹括号
         Plug 'easymotion/vim-easymotion'        " 快速跳转
         Plug 'wellle/targets.vim'               " 额外的文本对象
@@ -112,8 +112,7 @@
         Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
         Plug 'lervag/vimtex'                    " LaTeX
         Plug 'liuchengxu/vim-which-key'
-        Plug 'vim-scripts/ReplaceWithRegister'  " 粘贴并替换 `gr`
-        Plug 'heavenshell/vim-pydocstring', {'tag': '1.0.0'}
+        Plug 'inkarkat/vim-ReplaceWithRegister'  " 粘贴并替换 `gr`
         Plug 'kkoomen/vim-doge'
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'liuchengxu/vim-clap'
@@ -888,6 +887,11 @@
                   \ 's' : ['Startify', 'startify'],
                   \ 'e' : ['Defx', 'explorer'],
                   \ 'c' : ['CocList', 'coc list'],
+                  \}
+      let g:which_key_map.p = {'name' : '+Plug',
+                  \ 'u' : ['PlugUpdate', 'update'],
+                  \ 'i' : ['PlugInstall', 'install'],
+                  \ 'c' : ['PlugClean', 'clean'],
                   \}
       let g:which_key_map.e = 'Explorer'
       let g:which_key_map.d = 'Docstring generation'

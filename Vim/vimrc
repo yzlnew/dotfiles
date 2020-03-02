@@ -119,11 +119,11 @@
         Plug 'Yggdroot/LeaderF'
         Plug 'yianwillis/vimcdoc'               " 中文文档
         Plug 'skywind3000/vim-terminal-help'
+        Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         Plug 'patstockwell/vim-monokai-tasty'   " 以下都是一些主题
         Plug 'arcticicestudio/nord-vim'         " 暗色主题
         Plug 'iCyMind/NeoSolarized'             " 支持 True Color 的主题
         Plug 'lifepillar/vim-solarized8'        " 支持 nvim 的主题
-        Plug 'altercation/vim-colors-solarized' " Solarized 主题
         Plug 'joshdick/onedark.vim'
         Plug 'rakr/vim-one'
         Plug 'kaicataldo/material.vim'
@@ -550,6 +550,7 @@
                         \ 'coc-snippets',
                         \ 'coc-python',
                         \ 'coc-ultisnips',
+                        \ 'coc-tasks',
                         \ 'coc-emoji'
                     \ ]
         let g:coc_status_error_sign = '×'
@@ -657,6 +658,8 @@
         nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
         " Search workspace symbols
         nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
+        " Tasks
+        nnoremap <silent> <leader>ct  :<C-u>CocList tasks<cr>
         " Do default action for next item.
         nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>
         " Do default action for previous item.
@@ -878,6 +881,7 @@
                   \ 'o' : 'outline',
                   \ 'm' : 'maps',
                   \ 's' : 'symbols',
+                  \ 't' : 'tasks',
                   \ 'ca' : 'codeaction',
                   \ 'cs' : 'codeaction selected',
                   \ }
@@ -913,12 +917,13 @@
       noremap <leader>ff :<C-U>Leaderf file<CR>
       noremap <leader>fb :<C-U>Leaderf buffer<CR>
       noremap <leader>fm :<C-U>Leaderf mru<CR>
-      noremap <leader>ft :<C-U>Leaderf bufTag<CR>
+      noremap <leader>fbt :<C-U>Leaderf bufTag<CR>
       noremap <leader>fl :<C-U>Leaderf line<CR>
-      noremap <leader>ft :<C-U>Leaderf filetype<CR>
+      noremap <leader>fft :<C-U>Leaderf filetype<CR>
       noremap <leader>fr :<C-U>Leaderf rg<CR>
       noremap <leader>fc :<C-U>Leaderf command<CR>
       noremap <leader>fw :<C-U>Leaderf window<CR>
+      noremap <leader>ft :<C-U>Leaderf task<CR>
     " }
     " Asyncrun {
       let g:asyncrun_open = 8
@@ -927,6 +932,52 @@
       noremap <silent><leader>tr :AsyncTask file-run<cr>
       noremap <silent><leader>tb :AsyncTask file-build<cr>
       let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
+      function! s:lf_task_source(...)
+          let rows = asynctasks#source(&columns * 48 / 100)
+          let source = []
+          for row in rows
+              let name = row[0]
+              let source += [name . '  ' . row[1] . '  : ' . row[2]]
+          endfor
+          return source
+      endfunc
+
+      function! s:lf_task_accept(line, arg)
+          let pos = stridx(a:line, '<')
+          if pos < 0
+              return
+          endif
+          let name = strpart(a:line, 0, pos)
+          let name = substitute(name, '^\s*\(.\{-}\)\s*$', '\1', '')
+          if name != ''
+              exec "AsyncTask " . name
+          endif
+      endfunc
+
+      function! s:lf_task_digest(line, mode)
+          let pos = stridx(a:line, '<')
+          if pos < 0
+              return [a:line, 0]
+          endif
+          let name = strpart(a:line, 0, pos)
+          return [name, 0]
+      endfunc
+
+      function! s:lf_win_init(...)
+          setlocal nonumber
+          setlocal nowrap
+      endfunc
+
+      let g:Lf_Extensions = get(g:, 'Lf_Extensions', {})
+      let g:Lf_Extensions.task = {
+                  \ 'source': string(function('s:lf_task_source'))[10:-3],
+                  \ 'accept': string(function('s:lf_task_accept'))[10:-3],
+                  \ 'get_digest': string(function('s:lf_task_digest'))[10:-3],
+                  \ 'highlights_def': {
+                  \     'Lf_hl_funcScope': '^\S\+',
+                  \     'Lf_hl_funcDirname': '^\S\+\s*\zs<.*>\ze\s*:',
+                  \ },
+              \ }
     " }
     " docstring {
       " let g:pydocstring_fomatter = 'numpy'

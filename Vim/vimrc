@@ -989,5 +989,6 @@
     " }
     " terminal-help {
       let g:terminal_shell='powershell -nologo'
+      let g:terminal_cwd=2
     " }
 " }

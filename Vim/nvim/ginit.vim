@@ -9,8 +9,9 @@ endif
 if exists('g:fvim_loaded')
     " set guifont=Sarasa\ Mono\ SC:h16
     " set guifont=Operator\ Mono\ SSm:h16
+    set guifont=OperatorMonoSSm\ NF:h16
     " set guifont=Operator\ Mono:h16
-    set guifont=Dank\ Mono:h16
+    " set guifont=Dank\ Mono:h16
     " set guifont=mononoki:h16
     set guifontwide=Sarasa\ Mono\ SC:h16
 
@@ -28,13 +29,14 @@ if exists('g:fvim_loaded')
     FVimFontBoldWeight 700
     FVimCursorSmoothMove v:true
     FVimCursorSmoothBlink v:true
-    FVimFontAntialias v:true
-    FVimFontAutohint v:true
-    FVimFontSubpixel v:true
-    FVimFontLcdRender v:true
-    FVimFontHintLevel 'full'
-    FVimFontAutoSnap v:true
+    " FVimFontAntialias v:true
+    " FVimFontAutohint v:true
+    " FVimFontSubpixel v:true
+    " FVimFontLcdRender v:true
+    " FVimFontHintLevel 'full'
+    " FVimFontAutoSnap v:true
     FVimUIPopupMenu v:false
     " FVimFontDrawBounds v:true
     " FVimFontLineHeight '-1.0'
+    FVimFontNoBuiltinSymbols 1
 endif

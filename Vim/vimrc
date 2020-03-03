@@ -267,9 +267,9 @@
             if WINDOWS()
                 " set guifont=SF_Mono:h10
                 " set guifont=FiraCode_NF:h11,Sarasa\ Mono\ SC:h11
-                set guifont=SF_Mono:h11,Sarasa\ Mono\ SC:h11
+                set guifont=Operator_Mono_Book:h12,Sarasa\ Mono\ SC:h12
                 " set guifont=FiraCode_NF:h11
-                set guifontwide=Sarasa\ Mono\ SC:h11
+                set guifontwide=Sarasa\ Mono\ SC:h12
             else
                 set guifont=OperatorMonoSSm\ NF:h14
             endif
@@ -277,6 +277,7 @@
             set go-=e
             set go-=T
             set go-=r
+            set renderoptions=type:directx
             " highlight clear LineNr
             " highlight clear SignColumn
             " highlight LineNr guibg=NONE

@@ -7,6 +7,7 @@
     "yank.enableCompletion": true,
     "suggest.snippetIndicator": " ->",
     "suggest.maxCompleteItemCount": 15,
+    "coc.source.around.shortcut": "",
     "java.errors.incompleteClasspath.severity": "ignore",
     "snippets.userSnippetsDirectory": "~/.vim/usnips"
 }

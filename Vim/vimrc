@@ -164,7 +164,7 @@
     set cmdheight=2
     set tags=./.tags;,.tags
     " 自动切换到当前缓冲区文件目录
-    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h |
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | silent! lcd %:p:h |
     " 编辑 git commit 时光标指向第一行
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     " 光标回到之前位置
@@ -277,6 +277,9 @@
             set go-=e
             set go-=T
             set go-=r
+            set go-=i
+            set go-=L
+            set go-=R
             set renderoptions=type:directx
             " highlight clear LineNr
             " highlight clear SignColumn
@@ -360,6 +363,7 @@
     noremap <M-.> :bnext<CR>
 
     noremap <M-d> :bd<CR>
+    noremap <M-q> <C-w>c
     noremap <M-\> :vsplit<CR>
     noremap <M--> :split<CR>
     noremap <M-;> :vertical resize -5<CR>

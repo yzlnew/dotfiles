@@ -29,6 +29,9 @@
             let &pythonthreedll='C:\Users\11103475\scoop\apps\python\current\python38.dll'
             let &pythonthreehome='C:\Users\11103475\scoop\apps\python\current'
         endif
+        if WINDOWS() && has('nvim')
+            let g:python3_host_prog = 'C:\Users\11103475\scoop\apps\python\current\python.exe'
+        endif
         " if WINDOWS() && has('nvim')
         "     set shell=powershell shellquote= shellpipe=\| shellxquote=(
         "     set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
@@ -114,6 +117,7 @@
         Plug 'liuchengxu/vim-which-key'
         Plug 'inkarkat/vim-ReplaceWithRegister'  " 粘贴并替换 `gr`
         Plug 'kkoomen/vim-doge'
+        Plug 'skywind3000/vim-quickui'
         Plug 'ryanoasis/vim-devicons'           " 文件图标
         Plug 'liuchengxu/vim-clap'
         Plug 'Yggdroot/LeaderF'
@@ -799,12 +803,20 @@
     let g:NERDSpaceDelims=1
     " }
     " startify {
+        let g:startify_lists = [
+              \ { 'type': 'files',     'header': ['      Files']            },
+              \ { 'type': 'dir',       'header': ['      MRU '. getcwd()] },
+              \ { 'type': 'sessions',  'header': ['      Sessions']       },
+              \ { 'type': 'bookmarks', 'header': ['      Bookmarks']      },
+              \ { 'type': 'commands',  'header': ['    גּ  Commands']       },
+              \ ]
         let g:ascii = [
         \ '    |\__/,| ',
         \ '  _.|o o  |_ Hello, Robin!',
         \ ]
         let g:startify_custom_header = g:ascii + startify#fortune#boxed()
         let g:startify_session_dir = '~/.vim/session'
+        let g:startify_bookmarks = ['~/dotfiles',{'g':'G:/'}]
     " }
     " AutoPairs {
         let g:AutoPairsShortcutFastWrap = '<leader>fw'
@@ -934,6 +946,7 @@
       let g:asyncrun_open = 8
       command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
       noremap <silent><f5> :AsyncTask file-run<cr>
+      noremap <silent><f6> :AsyncTask file-run<cr>
       noremap <silent><f9> :AsyncTask file-build<cr>
       noremap <silent><leader>tr :AsyncTask file-run<cr>
       noremap <silent><leader>tb :AsyncTask file-build<cr>
@@ -996,5 +1009,9 @@
     " terminal-help {
       let g:terminal_shell='powershell -nologo'
       let g:terminal_cwd=2
+    " }
+    " polyglot {
+      let g:python_highlight_all = 1
+      let g:polyglot_disabled = ['latex']
     " }
 " }

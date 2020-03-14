@@ -692,6 +692,8 @@
     " NERDTree {
         map <leader>nt :NERDTreeToggle<CR>
         nmap <leader>ntf :NERDTreeFind<CR>
+        let g:NERDTreeMapChangeRoot = 'l'
+        let g:NERDTreeMapUpdir = 'h'
 
         let NERDTreeShowBookmarks=1
         let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
@@ -948,6 +950,10 @@
       noremap <silent><f5> :AsyncTask file-run<cr>
       noremap <silent><f6> :AsyncTask file-run<cr>
       noremap <silent><f9> :AsyncTask file-build<cr>
+      noremap <silent><s-f5> :AsyncTask project-run<cr>
+      noremap <silent><s-f6> :AsyncTask project-test<cr>
+      noremap <silent><s-f7> :AsyncTask project-init<cr>
+      noremap <silent><s-f9> :AsyncTask project-build<cr>
       noremap <silent><leader>tr :AsyncTask file-run<cr>
       noremap <silent><leader>tb :AsyncTask file-build<cr>
       let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
@@ -1013,5 +1019,118 @@
     " polyglot {
       let g:python_highlight_all = 1
       let g:polyglot_disabled = ['latex']
+    " }
+    " quickui {
+      " clear all the menus
+      call quickui#menu#reset()
+
+      call quickui#menu#install("&Edit", [
+                  \ ['Copyright &Header', 'AddHeader', 'Insert copyright information at the beginning'],
+                  \ ['Format', 'Format', ''],
+                  \ ['--'],
+                  \ ['&Align Table', 'Tabularize /|', ''],
+                  \ ])
+
+      call quickui#menu#install("&Build", [
+                  \ ["File &Execute\tF5", 'AsyncTask file-run'],
+                  \ ["File &Compile\tF9", 'AsyncTask file-build'],
+                  \ ['--', ''],
+                  \ ["&Project Build\tShift+F9", 'AsyncTask project-build'],
+                  \ ["Project &Run\tShift+F5", 'AsyncTask project-run'],
+                  \ ["Project &Test\tShift+F6", 'AsyncTask project-test'],
+                  \ ["Project &Init\tShift+F7", 'AsyncTask project-init'],
+                  \ ['--', ''],
+                  \ ['E&dit Task', 'AsyncTask -e'],
+                  \ ['Edit &Global Task', 'AsyncTask -E'],
+                  \ ['&Stop Building', 'AsyncStop'],
+                  \ ])
+
+      " items containing tips, tips will display in the cmdline
+      call quickui#menu#install('&Plugin', [
+                  \ [ '&Buffer', 'LeaderfBuffer' ],
+                  \ [ '&File', 'LeaderfFile' ],
+                  \ [ '&Mru', 'LeaderfMru' ],
+                  \ ['--',''],
+                  \ ["Plugin &List", "PlugList", "Update list"],
+                  \ ["Plugin &Update", "PlugUpdate", "Update plugin"],
+                  \ ])
+
+      " script inside %{...} will be evaluated and expanded in the string
+      call quickui#menu#install("&Option", [
+                  \ ['Set &Wrap %{&wrap? "Off":"On"}', 'set wrap!'],
+                  \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
+                  \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
+                  \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
+                  \ ])
+
+      " register HELP menu with weight 10000
+      call quickui#menu#install('H&elp', [
+                  \ ["&Cheatsheet", 'help index', ''],
+                  \ ['T&ips', 'help tips', ''],
+                  \ ['--',''],
+                  \ ["&Tutorial", 'help tutor', ''],
+                  \ ['&Quick Reference', 'help quickref', ''],
+                  \ ['&Summary', 'help summary', ''],
+                  \ ], 10000)
+
+
+      " enable to display tips in the cmdline
+      let g:quickui_show_tip = 1
+      let g:quickui_border_style = 2
+      let g:quickui_color_scheme = 'gruvbox'
+
+      " hit space twice to open menu
+      noremap <space>q :call quickui#menu#open()<cr>
+
+      let g:context_menu_k = [
+                  \ ["&Search in Project\t", 'exec "silent! Leaderf rg " . expand("<cword>")'],
+                  \ [ "--", ],
+                  \ [ "Goto D&efinition\t(Coc)", 'call CocAction("jumpDefinition")'],
+                  \ [ "Goto &References\t(Coc)", 'call CocAction("jumpReferences")'],
+                  \ [ "Goto &Implementation\t(Coc)", 'call CocAction("jumpImplementation")'],
+                  \ [ "--", ],
+                  \ ['P&ython Doc', 'call quickui#tools#python_help("")', 'python'],
+                  \ ]
+      let g:context_defx = [
+                  \ ["Vsplit\tE", 'call defx#do_action("open","vsplit")'],
+                  \ ["Preview\tP", 'call defx#do_action("open","pedit")'],
+                  \ ["Remove\td", 'call defx#do_action("remove")'],
+                  \ ["Rename\tr", 'call defx#do_action("rename")'],
+                  \ ["CD\tcd", 'call defx#do_action("change_vim_cwd")'],
+                  \ ["Redraw", 'call defx#do_action("redraw")'],
+                  \ ]
+      function! DisplayFugitiveMappings()
+          let content =  [
+            \ ["toggle stage\t-"              , '' ] ,
+            \ ["Unstage everything\tU"        , '' ] ,
+            \ ["Discard changes\tX"           , '' ] ,
+            \ ["Inline diff\t="               , '' ] ,
+            \ ["--"                           , '' ] ,
+            \ ["Open file\to"                 , '' ] ,
+            \ ["Jump previous\t("             , '' ] ,
+            \ ["Jump Next\t)"                 , '' ] ,
+            \ ["--"                           , '' ] ,
+            \ ["Create commit\tcc"            , '' ] ,
+            \ ["Amend\tca"                    , '' ] ,
+            \ ["Reword\tcw"                   , '' ] ,
+            \ ]
+          let opts = {"title":"Fugitive Mappings"}
+          call quickui#context#open(content, opts)
+      endfunc
+      let context_opts = {'index':g:quickui#context#cursor}
+      augroup UIFugitive
+        au!
+        au FileType fugitive noremap <silent><buffer> K :call DisplayFugitiveMappings()<cr>
+      augroup END
+      augroup UIDefx
+        au!
+        au FileType defx noremap <silent><buffer> K
+                    \ :call quickui#tools#clever_context('k', g:context_defx, context_opts)<cr>
+      augroup END
+      nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
+      augroup UIQuickfixPreview
+        au!
+        au FileType qf noremap <silent><buffer> p :call quickui#tools#preview_quickfix()<cr>
+      augroup END
     " }
 " }

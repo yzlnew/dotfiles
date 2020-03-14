@@ -1051,7 +1051,7 @@
                   \ [ '&File', 'LeaderfFile' ],
                   \ [ '&Mru', 'LeaderfMru' ],
                   \ ['--',''],
-                  \ ["Plugin &List", "PlugList", "Update list"],
+                  \ ["Plugin &Clean", "PlugClean", "Clean"],
                   \ ["Plugin &Update", "PlugUpdate", "Update plugin"],
                   \ ])
 
@@ -1082,6 +1082,46 @@
       " hit space twice to open menu
       noremap <space>q :call quickui#menu#open()<cr>
 
+      function! DisplayDefxMappings()
+          let content = [
+            \ ["Vsplit\tE"  , 'call defx#call_action("open","vsplit")'] ,
+            \ ["Preview\tP" , 'call defx#call_action("open","pedit")'] ,
+            \ ["Remove\td"  , 'call defx#call_action("remove")'] ,
+            \ ["Rename\tr"  , 'call defx#call_action("rename")'] ,
+            \ ["CD\tcd"     , 'call defx#call_action("change_vim_cwd")'] ,
+            \ ["Redraw"     , 'call defx#call_action("redraw")'] ,
+            \ ]
+          call quickui#context#open(content, {})
+      endfunc
+      function! DisplayFugitiveMappings()
+          let content =  [
+            \ ["toggle stage\t-"       , '' ] ,
+            \ ["Unstage everything\tU" , '' ] ,
+            \ ["Discard changes\tX"    , '' ] ,
+            \ ["Inline diff\t="        , '' ] ,
+            \ ["--"                    , '' ] ,
+            \ ["Open file\to"          , '' ] ,
+            \ ["Jump previous\t("      , '' ] ,
+            \ ["Jump Next\t)"          , '' ] ,
+            \ ["--"                    , '' ] ,
+            \ ["Create commit\tcc"     , '' ] ,
+            \ ["Amend\tca"             , '' ] ,
+            \ ["Reword\tcw"            , '' ] ,
+            \ ]
+          call quickui#context#open(content, {})
+      endfunc
+      augroup UIFugitive
+        au!
+        au FileType fugitive noremap <silent><buffer> K :call DisplayFugitiveMappings()<cr>
+      augroup END
+      augroup UIDefx
+        au!
+        au FileType defx noremap <silent><buffer> K :call DisplayDefxMappings()<cr>
+      augroup END
+      augroup UIQuickfixPreview
+        au!
+        au FileType qf noremap <silent><buffer> p :call quickui#tools#preview_quickfix()<cr>
+      augroup END
       let g:context_menu_k = [
                   \ ["&Search in Project\t", 'exec "silent! Leaderf rg " . expand("<cword>")'],
                   \ [ "--", ],
@@ -1091,46 +1131,6 @@
                   \ [ "--", ],
                   \ ['P&ython Doc', 'call quickui#tools#python_help("")', 'python'],
                   \ ]
-      let g:context_defx = [
-                  \ ["Vsplit\tE", 'call defx#do_action("open","vsplit")'],
-                  \ ["Preview\tP", 'call defx#do_action("open","pedit")'],
-                  \ ["Remove\td", 'call defx#do_action("remove")'],
-                  \ ["Rename\tr", 'call defx#do_action("rename")'],
-                  \ ["CD\tcd", 'call defx#do_action("change_vim_cwd")'],
-                  \ ["Redraw", 'call defx#do_action("redraw")'],
-                  \ ]
-      function! DisplayFugitiveMappings()
-          let content =  [
-            \ ["toggle stage\t-"              , '' ] ,
-            \ ["Unstage everything\tU"        , '' ] ,
-            \ ["Discard changes\tX"           , '' ] ,
-            \ ["Inline diff\t="               , '' ] ,
-            \ ["--"                           , '' ] ,
-            \ ["Open file\to"                 , '' ] ,
-            \ ["Jump previous\t("             , '' ] ,
-            \ ["Jump Next\t)"                 , '' ] ,
-            \ ["--"                           , '' ] ,
-            \ ["Create commit\tcc"            , '' ] ,
-            \ ["Amend\tca"                    , '' ] ,
-            \ ["Reword\tcw"                   , '' ] ,
-            \ ]
-          let opts = {"title":"Fugitive Mappings"}
-          call quickui#context#open(content, opts)
-      endfunc
-      let context_opts = {'index':g:quickui#context#cursor}
-      augroup UIFugitive
-        au!
-        au FileType fugitive noremap <silent><buffer> K :call DisplayFugitiveMappings()<cr>
-      augroup END
-      augroup UIDefx
-        au!
-        au FileType defx noremap <silent><buffer> K
-                    \ :call quickui#tools#clever_context('k', g:context_defx, context_opts)<cr>
-      augroup END
       nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
-      augroup UIQuickfixPreview
-        au!
-        au FileType qf noremap <silent><buffer> p :call quickui#tools#preview_quickfix()<cr>
-      augroup END
     " }
 " }

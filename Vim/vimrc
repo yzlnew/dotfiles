@@ -119,7 +119,6 @@
         Plug 'kkoomen/vim-doge'
         Plug 'skywind3000/vim-quickui'
         Plug 'ryanoasis/vim-devicons'           " 文件图标
-        Plug 'liuchengxu/vim-clap'
         Plug 'Yggdroot/LeaderF'
         Plug 'yianwillis/vimcdoc'               " 中文文档
         Plug 'skywind3000/vim-terminal-help'
@@ -752,7 +751,7 @@
         function! s:defx_my_settings() abort
           " Define mappings
           nnoremap <silent><buffer><expr> <CR>
-          \ defx#do_action('open')
+          \ defx#do_action('drop')
           nnoremap <silent><buffer><expr> c
           \ defx#do_action('copy')
           nnoremap <silent><buffer><expr> m
@@ -1096,6 +1095,7 @@
 
       function! DisplayDefxMappings()
           let content = [
+            \ ["Open\t<CR>"  , 'call defx#call_action("drop")'] ,
             \ ["Vsplit\tE"  , 'call defx#call_action("open","vsplit")'] ,
             \ ["Preview\tP" , 'call defx#call_action("open","pedit")'] ,
             \ ["Remove\td"  , 'call defx#call_action("remove")'] ,
@@ -1136,7 +1136,7 @@
       augroup END
       let g:context_menu_k = [
                   \ ["&Search in Project\t", 'exec "silent! Leaderf rg " . expand("<cword>")'],
-                  \ ["&Search in Zeal\t", 'exec "!zeal dash://python3:" . expand("<cword>")'],
+                  \ ["&Search in Zeal\t", 'exec "!zeal dash://" . expand("<cword>")'],
                   \ [ "--", ],
                   \ [ "Goto D&efinition\t(Coc)", 'call CocAction("jumpDefinition")'],
                   \ [ "Goto &References\t(Coc)", 'call CocAction("jumpReferences")'],

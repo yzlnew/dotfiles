@@ -1,9 +1,14 @@
+" File              : ginit.vim
+" Author            : @yzlnew <yzlnew@gmail.com>
+" Date              : 23.03.2020
+" Last Modified Date: 23.03.2020
+" Last Modified By  : @yzlnew <yzlnew@gmail.com>
 if !exists('g:fvim_loaded')
     GuiTabline 0
     GuiPopupmenu 0
     GuiFont! Operator Mono Book:h12
     " GuiFont! Sarasa Mono SC:h12
-    GuiLinespace 2
+    " GuiLinespace 2
 endif
 
 if exists('g:fvim_loaded')

@@ -2,6 +2,7 @@
     "list.source.files.defaultArgs": ["-folder"],
     "list.source.grep.defaultArgs": ["-folder"],
     "python.jediEnabled": false,
+    "python.linting.mypyEnabled": true,
     "coc.source.word.filetypes": ["markdown"],
     "yank.enableCompletion": false,
     "suggest.maxCompleteItemCount": 15,

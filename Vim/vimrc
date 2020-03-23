@@ -131,6 +131,7 @@
         Plug 'joshdick/onedark.vim'
         Plug 'rakr/vim-one'
         Plug 'kaicataldo/material.vim'
+        Plug 'crusoexia/vim-monokai'
         Plug 'dikiaap/minimalist'
         Plug 'hzchirs/vim-material'
         Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
@@ -219,6 +220,8 @@
         let g:material_theme_style = 'default'
         let g:nord_italic = 1
         let g:nord_cursor_line_number_background = 1
+        let g:monokai_term_italic = 1
+        let g:monokai_gui_italic = 1
 
         if OSX()
             let iterm_profile = $ITERM_PROFILE
@@ -365,6 +368,7 @@
     " }
     noremap <M-,> :bprevious<CR>
     noremap <M-.> :bnext<CR>
+    noremap <Tab> :bnext<CR>
 
     noremap <M-d> :bd<CR>
     noremap <M-q> <C-w>c
@@ -432,6 +436,12 @@
     " }
     " Lightline {
         let g:lightline = {}
+        if get(g:, 'colors_name', 'default') == 'nord'
+            let g:lightline.colorscheme = 'nord'
+        endif
+        if get(g:, 'colors_name', 'default') == 'onedark'
+            let g:lightline.colorscheme = 'onedark'
+        endif
         if get(g:, 'colors_name', 'default') == 'github'
             let g:lightline.colorscheme = 'github'
         endif
@@ -470,6 +480,7 @@
               \  'linter_ok': 'left',
               \  'buffers': 'tabsel',
               \  }
+        let g:lightline.component_raw = {'buffers': 1}
         let g:lightline#ale#indicator_checking = ""
         let g:lightline#ale#indicator_warnings = "!"
         let g:lightline#ale#indicator_errors = "×"
@@ -485,6 +496,8 @@
               \             [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
               \  }
         let g:lightline#bufferline#enable_devicons = 1
+        let g:lightline#bufferline#unicode_symbols = 1
+        let g:lightline#bufferline#clickable = 1
         function! Filetype()
           return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
         endfunction
@@ -565,7 +578,7 @@
         let g:coc_status_error_sign = '×'
         let g:coc_status_warning_sign = '!'
         " hi IncSearch gui=reverse
-        hi HighlightedyankRegion term=bold ctermbg=0 guibg=#cdffd8 guifg=#979797
+        hi! link HighlightedyankRegion DiffDelete
         nmap <leader>ge :CocCommand explorer<CR>
 
         " Use tab for trigger completion with characters ahead and navigate.
@@ -873,10 +886,10 @@
       inoremap <F11> <Esc>:VimwikiReturn 1 5<CR>
     " }
     " which-key {
-      highlight! default link WhichKeyFloating DiffAdd
+      " highlight! default link WhichKeyFloating DiffAdd
       call which_key#register(' ', "g:which_key_map")
       nnoremap <silent> <space> :WhichKey ' '<CR>
-      let g:which_key_floating_opts = {'row' : '-10'}
+      let g:which_key_floating_opts = {}
       let g:which_key_hspace = 2
       let g:which_key_sep = '>'
       let g:which_key_use_floating_win = 1
@@ -1077,7 +1090,6 @@
       " enable to display tips in the cmdline
       let g:quickui_show_tip = 1
       let g:quickui_border_style = 2
-      let g:quickui_color_scheme = 'gruvbox'
 
       " hit space twice to open menu
       noremap <space>q :call quickui#menu#open()<cr>
@@ -1124,13 +1136,18 @@
       augroup END
       let g:context_menu_k = [
                   \ ["&Search in Project\t", 'exec "silent! Leaderf rg " . expand("<cword>")'],
+                  \ ["&Search in Zeal\t", 'exec "!zeal dash://python3:" . expand("<cword>")'],
                   \ [ "--", ],
                   \ [ "Goto D&efinition\t(Coc)", 'call CocAction("jumpDefinition")'],
                   \ [ "Goto &References\t(Coc)", 'call CocAction("jumpReferences")'],
                   \ [ "Goto &Implementation\t(Coc)", 'call CocAction("jumpImplementation")'],
-                  \ [ "--", ],
-                  \ ['P&ython Doc', 'call quickui#tools#python_help("")', 'python'],
                   \ ]
       nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
+      hi! link QuickBG Pmenu
+      hi! link QuickBorder Pmenu
+      hi! link QuickSel PmenuSel
+      hi! link QuickKey Title
+      hi! link QuickOff Whitespace
+      hi! link QuickHelp PmenuSBar
     " }
 " }

@@ -929,16 +929,18 @@
                   \ 'c' : ['PlugClean', 'clean'],
                   \}
       let g:which_key_map.e = 'Explorer'
-      let g:which_key_map.d = 'Docstring generation'
+      let g:which_key_map.q = 'Quick UI'
+      let g:which_key_map.d = 'Docstring'
       let g:which_key_map.j = 'Jump pairs'
       let g:which_key_map['/'] = 'No highlight'
       let g:which_key_map[' '] = 'which_key_ignore'
     " }
     " Leaderf {
       let g:Lf_HideHelp = 1
-      let g:Lf_UseCache = 0
+      let g:Lf_UseCache = 1
       let g:Lf_UseVersionControlTool = 0
       let g:Lf_IgnoreCurrentBufferName = 1
+      let g:Lf_RootMarkers = ['.git', '.svn', '.root', '.project', '.hg']
       let g:Lf_WindowPosition = 'popup'
       let g:Lf_PreviewInPopup = 1
       let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2"}
@@ -1096,12 +1098,12 @@
       function! DisplayDefxMappings()
           let content = [
             \ ["Open\t<CR>"  , 'call defx#call_action("drop")'] ,
+            \ ["Redraw\t<C-l>"     , 'call defx#call_action("redraw")'] ,
             \ ["Vsplit\tE"  , 'call defx#call_action("open","vsplit")'] ,
             \ ["Preview\tP" , 'call defx#call_action("open","pedit")'] ,
             \ ["Remove\td"  , 'call defx#call_action("remove")'] ,
             \ ["Rename\tr"  , 'call defx#call_action("rename")'] ,
             \ ["CD\tcd"     , 'call defx#call_action("change_vim_cwd")'] ,
-            \ ["Redraw"     , 'call defx#call_action("redraw")'] ,
             \ ]
           call quickui#context#open(content, {})
       endfunc
@@ -1143,8 +1145,8 @@
                   \ [ "Goto &Implementation\t(Coc)", 'call CocAction("jumpImplementation")'],
                   \ ]
       nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
-      hi! link QuickBG Pmenu
-      hi! link QuickBorder Pmenu
+      hi! link QuickBG Normal
+      hi! link QuickBorder Normal
       hi! link QuickSel PmenuSel
       hi! link QuickKey Title
       hi! link QuickOff Whitespace

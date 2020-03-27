@@ -418,6 +418,19 @@
     noremap <Left> <Nop>
     noremap <Right> <Nop>
 
+    nnoremap <leader>qq :call QuickfixToggle()<cr>
+    let g:quickfix_is_open = 0
+    function! QuickfixToggle()
+        if g:quickfix_is_open
+            cclose
+            let g:quickfix_is_open = 0
+            execute g:quickfix_return_to_window . "wincmd w"
+        else
+            let g:quickfix_return_to_window = winnr()
+            copen
+            let g:quickfix_is_open = 1
+        endif
+    endfunction
 " }
 
 " 插件设定 {
@@ -1147,6 +1160,7 @@
                   \ [ "Goto D&efinition\t(Coc)", 'call CocAction("jumpDefinition")'],
                   \ [ "Goto &References\t(Coc)", 'call CocAction("jumpReferences")'],
                   \ [ "Goto &Implementation\t(Coc)", 'call CocAction("jumpImplementation")'],
+                  \ [ "Toggle &Quickfix", 'call QuickfixToggle()' ]
                   \ ]
       nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
       hi! link QuickBG Normal

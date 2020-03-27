@@ -123,6 +123,12 @@
         Plug 'yianwillis/vimcdoc'               " 中文文档
         Plug 'skywind3000/vim-terminal-help'
         Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+        Plug 'kana/vim-textobj-user'
+        Plug 'kana/vim-textobj-entire'
+        Plug 'kana/vim-textobj-indent'
+        Plug 'kana/vim-textobj-function'
+        Plug 'bps/vim-textobj-python'
+        Plug 'ianding1/leetcode.vim'
         Plug 'patstockwell/vim-monokai-tasty'   " 以下都是一些主题
         Plug 'arcticicestudio/nord-vim'         " 暗色主题
         Plug 'iCyMind/NeoSolarized'             " 支持 True Color 的主题
@@ -1153,12 +1159,13 @@
         au FileType qf noremap <silent><buffer> p :call quickui#tools#preview_quickfix()<cr>
       augroup END
       let g:context_menu_k = [
-                  \ ["&Search in Project\t", 'exec "silent! Leaderf rg " . expand("<cword>")'],
-                  \ ["&Search in Zeal\t", 'exec "!zeal dash://" . expand("<cword>")'],
+                  \ ["&Search in Project\t", 'exec "silent! Leaderf rg " . expand("<cword>")'],
+                  \ ["Search in &Zeal\t", 'exec "!zeal dash://" . expand("<cword>")'],
                   \ [ "--", ],
-                  \ [ "Goto D&efinition\t(Coc)", 'call CocAction("jumpDefinition")'],
-                  \ [ "Goto &References\t(Coc)", 'call CocAction("jumpReferences")'],
-                  \ [ "Goto &Implementation\t(Coc)", 'call CocAction("jumpImplementation")'],
+                  \ [ "Goto D&efinition\t", 'call CocAction("jumpDefinition")'],
+                  \ [ "Goto &References\t", 'call CocAction("jumpReferences")'],
+                  \ [ "Goto &Implementation\t", 'call CocAction("jumpImplementation")'],
+                  \ ['--', ''],
                   \ [ "Toggle &Quickfix", 'call QuickfixToggle()' ]
                   \ ]
       nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
@@ -1168,5 +1175,10 @@
       hi! link QuickKey Title
       hi! link QuickOff Whitespace
       hi! link QuickHelp PmenuSBar
+    " }
+    " leetcode {
+      let g:leetcode_browser='chrome'
+      let g:leetcode_china=1
+      let g:leetcode_solution_filetype='python3'
     " }
 " }

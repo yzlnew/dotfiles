@@ -418,7 +418,6 @@
     noremap <Left> <Nop>
     noremap <Right> <Nop>
 
-    nnoremap <leader>qq :call QuickfixToggle()<cr>
     let g:quickfix_is_open = 0
     function! QuickfixToggle()
         if g:quickfix_is_open

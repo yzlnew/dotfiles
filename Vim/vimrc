@@ -272,8 +272,9 @@
         if has('gui_running')
             if WINDOWS()
                 " set guifont=SF_Mono:h10
-                " set guifont=FiraCode_NF:h11,Sarasa\ Mono\ SC:h11
-                set guifont=Operator_Mono_Book:h12,Sarasa\ Mono\ SC:h12
+                set guifont=JetBrainsMono_NF:h11,Sarasa\ Mono\ SC:h11
+                " set guifont=SFMono_NF:h11,Sarasa\ Mono\ SC:h11
+                " set guifont=Operator_Mono_Book:h12,Sarasa\ Mono\ SC:h12
                 " set guifont=FiraCode_NF:h11
                 set guifontwide=Sarasa\ Mono\ SC:h12
             else
@@ -970,6 +971,9 @@
       noremap <silent><s-f9> :AsyncTask project-build<cr>
       noremap <silent><leader>tr :AsyncTask file-run<cr>
       noremap <silent><leader>tb :AsyncTask file-build<cr>
+      let g:asynctasks_extra_config = [
+          \ '~/dotfiles/Vim/tasks.ini',
+          \ ]
       let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
       function! s:lf_task_source(...)
           let rows = asynctasks#source(&columns * 48 / 100)

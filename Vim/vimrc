@@ -115,6 +115,8 @@
         Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
         Plug 'lervag/vimtex'                    " LaTeX
         Plug 'liuchengxu/vim-which-key'
+        Plug 'brglng/vim-sidebar-manager'
+        Plug 'mbbill/undotree'
         Plug 'inkarkat/vim-ReplaceWithRegister'  " 粘贴并替换 `gr`
         Plug 'kkoomen/vim-doge'
         Plug 'skywind3000/vim-quickui'
@@ -1166,7 +1168,10 @@
                   \ [ "Goto &References\t", 'call CocAction("jumpReferences")'],
                   \ [ "Goto &Implementation\t", 'call CocAction("jumpImplementation")'],
                   \ ['--', ''],
-                  \ [ "Toggle &Quickfix", 'call QuickfixToggle()' ]
+                  \ [ "Toggle &Quickfix", 'call sidebar#toggle("quickfix")' ],
+                  \ [ "Toggle &Loclist", 'call sidebar#toggle("loclist")' ],
+                  \ [ "Toggle &Vista", 'call sidebar#toggle("vista")' ],
+                  \ [ "Toggle &Undotree", 'call sidebar#toggle("undotree")' ],
                   \ ]
       nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
       hi! link QuickBG Normal
@@ -1180,5 +1185,45 @@
       let g:leetcode_browser='chrome'
       let g:leetcode_china=1
       let g:leetcode_solution_filetype='python3'
+    " }
+    " {
+      let g:undotree_SetFocusWhenToggle = 1
+      let g:undotree_SplitWidth = 40
+      let g:undotree_WindowLayout = 4
+    " }
+    " sidebars {
+      autocmd FileType qf call s:setup_quickfix_window()
+      function! s:setup_quickfix_window()
+          wincmd J
+          10wincmd _
+          setlocal wrap foldcolumn=0 colorcolumn= signcolumn=no cursorline
+          nnoremap <silent> <buffer> q <C-w>q
+      endfunction
+      let g:sidebars = {
+        \ 'quickfix': {
+        \     'position': 'bottom',
+        \     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'qf' && !getwininfo(win_getid(nr))[0]['loclist']},
+        \     'open': 'copen',
+        \     'close': 'cclose'
+        \ },
+        \ 'loclist': {
+        \     'position': 'bottom',
+        \     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'qf' && getwininfo(win_getid(nr))[0]['loclist']},
+        \     'open': 'silent! lopen',
+        \     'close': 'silent! lclose'
+        \ },
+        \ 'vista': {
+        \     'position': 'left',
+        \     'check_win': {nr -> bufname(winbufnr(nr)) =~ '__vista__'},
+        \     'open': 'Vista',
+        \     'close': 'Vista!'
+        \ },
+        \ 'undotree': {
+        \     'position': 'right',
+        \     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'undotree'},
+        \     'open': 'UndotreeShow',
+        \     'close': 'UndotreeHide'
+        \ }
+        \ }
     " }
 " }

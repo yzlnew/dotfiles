@@ -1161,7 +1161,7 @@
         au FileType qf noremap <silent><buffer> p :call quickui#tools#preview_quickfix()<cr>
       augroup END
       let g:context_menu_k = [
-                  \ ["&Search in Project\t", 'exec "silent! Leaderf rg " . expand("<cword>")'],
+                  \ ["&Search in Project\t", 'exec "silent! Leaderf rg " . expand("<cword>")'],
                   \ ["Search in &Zeal\t", 'exec "!zeal dash://" . expand("<cword>")'],
                   \ [ "--", ],
                   \ [ "Goto D&efinition\t", 'call CocAction("jumpDefinition")'],

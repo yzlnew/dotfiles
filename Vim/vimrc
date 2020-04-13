@@ -723,7 +723,7 @@
         " map <leader><leader>L <Plug>(easymotion-bd-jk)
     " }
     " NERDTree {
-        map <leader>nt :NERDTreeToggle<CR>
+        map <leader>e :NERDTreeToggle<CR>
         nmap <leader>ntf :NERDTreeFind<CR>
         let g:NERDTreeMapChangeRoot = 'l'
         let g:NERDTreeMapUpdir = 'h'
@@ -731,14 +731,14 @@
         let NERDTreeShowBookmarks=1
         let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
         let NERDTreeChDirMode=0
-        let NERDTreeQuitOnOpen=1
+        let NERDTreeQuitOnOpen=0
         let NERDTreeMouseMode=2
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
         let g:NERDTreeHijackNetrw=1
     " }
     " defx {
-        nmap <leader>e :Defx<CR>
+        " nmap <leader>e :Defx<CR>
         call defx#custom#option('_', {
               \ 'columns': 'mark:git:indent:icons:filename',
               \ 'winwidth': 40,

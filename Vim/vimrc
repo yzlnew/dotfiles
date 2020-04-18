@@ -107,6 +107,7 @@
         Plug 'tpope/vim-fugitive'               " Git
         Plug 'tpope/vim-surround'               " 更改包裹
         Plug 'tpope/vim-commentary'             " 快速注释 `gcc`
+        Plug 'tpope/vim-repeat'                 " 重复
         Plug 'Krasjet/auto.pairs'               " 括号自动配对
         Plug 'luochen1990/rainbow'              " 彩虹括号
         Plug 'easymotion/vim-easymotion'        " 快速跳转

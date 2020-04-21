@@ -132,6 +132,7 @@
         Plug 'kana/vim-textobj-function'
         Plug 'bps/vim-textobj-python'
         Plug 'ianding1/leetcode.vim'
+        Plug 'zef/vim-cycle'
         Plug 'patstockwell/vim-monokai-tasty'   " 以下都是一些主题
         Plug 'arcticicestudio/nord-vim'         " 暗色主题
         Plug 'iCyMind/NeoSolarized'             " 支持 True Color 的主题
@@ -289,7 +290,7 @@
             else
                 set guifont=OperatorMonoSSm\ NF:h14
             endif
-            set go-=m
+            " set go-=m
             set go-=e
             set go-=T
             set go-=r
@@ -426,6 +427,8 @@
     noremap <Down> <Nop>
     noremap <Left> <Nop>
     noremap <Right> <Nop>
+
+    noremap <silent>Q :confirm qall<cr>
 
     let g:quickfix_is_open = 0
     function! QuickfixToggle()
@@ -1092,6 +1095,8 @@
                   \ ['--',''],
                   \ ["Plugin &Clean", "PlugClean", "Clean"],
                   \ ["Plugin &Update", "PlugUpdate", "Update plugin"],
+                  \ ['--',''],
+                  \ ["&Nerdtree Find", "NERDTreeFind", "Update plugin"],
                   \ ])
 
       " script inside %{...} will be evaluated and expanded in the string

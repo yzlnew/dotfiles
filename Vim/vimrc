@@ -1102,6 +1102,7 @@
       " script inside %{...} will be evaluated and expanded in the string
       call quickui#menu#install("&Option", [
                   \ ['Set &Wrap %{&wrap? "Off":"On"}', 'set wrap!'],
+                  \ ['Set &Expandtab %{&et? "Off":"On"}', 'set et!'],
                   \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
                   \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
                   \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],

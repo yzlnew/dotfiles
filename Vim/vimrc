@@ -858,8 +858,8 @@
         let g:startify_bookmarks = ['~/dotfiles',{'g':'G:/'}]
     " }
     " AutoPairs {
-        let g:AutoPairsShortcutFastWrap = '<leader>fw'
-        let g:AutoPairsShortcutJump = '<leader>j'
+        let g:AutoPairsShortcutFastWrap = '<c-space>f'
+        let g:AutoPairsShortcutJump = '<c-space>'
     " }
     " Vimtex {
         nmap <leader>vr :VimtexReload<CR>
@@ -1102,6 +1102,7 @@
       " script inside %{...} will be evaluated and expanded in the string
       call quickui#menu#install("&Option", [
                   \ ['Set &Wrap %{&wrap? "Off":"On"}', 'set wrap!'],
+                  \ ['Set &Expandtab %{&et? "Off":"On"}', 'set et!'],
                   \ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
                   \ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
                   \ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],

@@ -2,7 +2,7 @@
     "list.source.files.defaultArgs": ["-folder"],
     "list.source.grep.defaultArgs": ["-folder"],
     "python.jediEnabled": false,
-    "python.linting.mypyEnabled": true,
+    "python.linting.mypyEnabled": false,
     "coc.source.word.filetypes": ["markdown"],
     "yank.enableCompletion": false,
     "suggest.maxCompleteItemCount": 15,
@@ -41,5 +41,6 @@
         "snippet": "\ue60b",
         "typeParameter": "\uf728", "default": "\uf29c"
     },
-    "snippets.userSnippetsDirectory": "~/dotfiles/Snippets"
+    "snippets.userSnippetsDirectory": "~/dotfiles/Snippets",
+    "snippets.ultisnips.enable": false,
 }

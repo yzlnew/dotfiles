@@ -865,6 +865,7 @@
         nmap <leader>vr :VimtexReload<CR>
         nmap <leader>vc :update \| VimtexCompileSS<CR>
         nmap <leader>vv :VimtexView<CR>
+        let g:vimtex_syntax_enabled = 0
         let g:vimtex_compiler_latexmk = {
                 \ 'executable' : 'latexmk',
                 \ 'options' : [
@@ -1066,12 +1067,23 @@
       " clear all the menus
       call quickui#menu#reset()
 
-      call quickui#menu#install("&Edit", [
-                  \ ['Copyright &Header', 'AddHeader', 'Insert copyright information at the beginning'],
-                  \ ['Format', 'Format', ''],
+      let quickui_edit_basic = [
+                  \ ["Copyright &Header\t", 'AddHeader', 'Insert copyright information at the beginning'],
+                  \ ["Format\t", 'Format', ''],
                   \ ['--'],
-                  \ ['&Align Table', 'Tabularize /|', ''],
-                  \ ])
+                  \ ["&Align Table\t", 'Tabularize /|', ''],
+                  \ ]
+      let quickui_edit_win = [
+                  \ ['--'],
+                  \ ["Open in Terminal\t",'!wt -d .'],
+                  \ ["Open in Explorer\t",'!start .'],
+                  \ ]
+
+      if WINDOWS()
+          call quickui#menu#install("&Edit", quickui_edit_basic+quickui_edit_win)
+      else
+          call quickui#menu#install("&Edit", quickui_edit_basic)
+      endif
 
       call quickui#menu#install("&Build", [
                   \ ["File &Execute\tF5", 'AsyncTask file-run'],
@@ -1089,14 +1101,14 @@
 
       " items containing tips, tips will display in the cmdline
       call quickui#menu#install('&Plugin', [
-                  \ [ '&Buffer', 'LeaderfBuffer' ],
-                  \ [ '&File', 'LeaderfFile' ],
-                  \ [ '&Mru', 'LeaderfMru' ],
+                  \ [ "&Buffer\t﬘", 'LeaderfBuffer' ],
+                  \ [ "&File\t", 'LeaderfFile' ],
+                  \ [ "&Mru\t", 'LeaderfMru' ],
                   \ ['--',''],
-                  \ ["Plugin &Clean", "PlugClean", "Clean"],
-                  \ ["Plugin &Update", "PlugUpdate", "Update plugin"],
+                  \ ["Plugin &Clean\tﮁ", "PlugClean", "Clean"],
+                  \ ["Plugin &Update\tﮮ", "PlugUpdate", "Update plugin"],
                   \ ['--',''],
-                  \ ["&Nerdtree Find", "NERDTreeFind", "Update plugin"],
+                  \ ["&Nerdtree Find\t", "NERDTreeFind", "Update plugin"],
                   \ ])
 
       " script inside %{...} will be evaluated and expanded in the string
@@ -1110,12 +1122,12 @@
 
       " register HELP menu with weight 10000
       call quickui#menu#install('H&elp', [
-                  \ ["&Cheatsheet", 'help index', ''],
-                  \ ['T&ips', 'help tips', ''],
+                  \ ["&Cheatsheet\t", 'help index', ''],
+                  \ ["T&ips\tﯧ", 'help tips', ''],
                   \ ['--',''],
-                  \ ["&Tutorial", 'help tutor', ''],
-                  \ ['&Quick Reference', 'help quickref', ''],
-                  \ ['&Summary', 'help summary', ''],
+                  \ ["&Tutorial\t", 'help tutor', ''],
+                  \ ["&Quick Reference\t", 'help quickref', ''],
+                  \ ["&Summary\t", 'help summary', ''],
                   \ ], 10000)
 
 

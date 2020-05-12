@@ -72,7 +72,7 @@
         if LINUX()
             Plug 'brglng/vim-im-select', {'on': [] }
         endif
-        Plug 'preservim/nerdtree'
+        Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
         if has('nvim')
           Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
         else
@@ -80,11 +80,12 @@
           Plug 'roxma/nvim-yarp'
           Plug 'roxma/vim-hug-neovim-rpc'
         endif
+        Plug 'lervag/vimtex'                    " LaTeX
         Plug 'sheerun/vim-polyglot'             " 语法高亮等
         Plug 'alpertuna/vim-header'             " 头部信息生成
         Plug 'kristijanhusak/defx-icons'
         Plug 'kristijanhusak/defx-git'
-        Plug 'vimwiki/vimwiki'
+        Plug 'vimwiki/vimwiki', {'on': ['VimwikiIndex','VimwikiDiaryIndex']}
         Plug 'tpope/vim-unimpaired'             " 一些有用的快捷键
         Plug 'liuchengxu/vista.vim'             " tags, symbols
         Plug 'junegunn/vim-easy-align'          " 文本对齐
@@ -114,7 +115,6 @@
         Plug 'wellle/targets.vim'               " 额外的文本对象
         Plug 'lilydjwg/colorizer'               " RGB 颜色显示
         Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
-        Plug 'lervag/vimtex'                    " LaTeX
         Plug 'liuchengxu/vim-which-key'
         Plug 'brglng/vim-sidebar-manager'
         Plug 'mbbill/undotree'
@@ -147,6 +147,7 @@
         Plug 'cormacrelf/vim-colors-github'
         Plug 'sainnhe/vim-color-forest-night'
         Plug 'Rigellute/shades-of-purple.vim'
+        Plug 'dstein64/vim-startuptime'
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         else
@@ -219,7 +220,7 @@
     " 由于 macOS 的终端不支持 True Color，建议使用 iTerm2
     " 另支持正常和插入模式不同的光标样式
         set termguicolors
-        let darkmode = 1
+        let darkmode = 0
         let g:forest_night_enable_italic = 1
         let g:vim_monokai_tasty_italic = 1
         let g:solarized_term_italics=1
@@ -298,6 +299,7 @@
             set go-=L
             set go-=R
             set renderoptions=type:directx
+            set lines=50 columns=100
             " highlight clear LineNr
             " highlight clear SignColumn
             " highlight LineNr guibg=NONE
@@ -520,7 +522,7 @@
               \             [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
               \  }
         let g:lightline#bufferline#enable_devicons = 1
-        let g:lightline#bufferline#unicode_symbols = 1
+        let g:lightline#bufferline#unicode_symbols = 0
         let g:lightline#bufferline#clickable = 1
         function! Filetype()
           return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
@@ -561,6 +563,7 @@
         autocmd ColorScheme,WinEnter,BufEnter,VimEnter,TextChanged * call UpdateLightline()
     " }
     " ALE {
+        nmap <leader>a <Plug>(ale_fix)
         let g:ale_enabled = 0
         let g:ale_set_highlights = 0
         let g:ale_sign_error = 'x'
@@ -858,14 +861,14 @@
         let g:startify_bookmarks = ['~/dotfiles',{'g':'G:/'}]
     " }
     " AutoPairs {
-        let g:AutoPairsShortcutFastWrap = '<c-space>f'
-        let g:AutoPairsShortcutJump = '<c-space>'
+        " let g:AutoPairsShortcutFastWrap = '<M-i>'
+        " let g:AutoPairsShortcutJump = '<M-u>'
     " }
     " Vimtex {
         nmap <leader>vr :VimtexReload<CR>
         nmap <leader>vc :update \| VimtexCompileSS<CR>
         nmap <leader>vv :VimtexView<CR>
-        let g:vimtex_syntax_enabled = 0
+        let g:vimtex_syntax_enabled = 1
         let g:vimtex_compiler_latexmk = {
                 \ 'executable' : 'latexmk',
                 \ 'options' : [
@@ -955,6 +958,7 @@
                   \ 'c' : ['PlugClean', 'clean'],
                   \}
       let g:which_key_map.e = 'Explorer'
+      let g:which_key_map.a = 'ALEFix'
       let g:which_key_map.q = 'Quick UI'
       let g:which_key_map.d = 'Docstring'
       let g:which_key_map.j = 'Jump pairs'
@@ -979,7 +983,7 @@
       noremap <leader>fbt :<C-U>Leaderf bufTag<CR>
       noremap <leader>fl :<C-U>Leaderf line<CR>
       noremap <leader>fft :<C-U>Leaderf filetype<CR>
-      noremap <leader>fr :<C-U>Leaderf rg<CR>
+      noremap <leader>fr :<C-U>Leaderf rg --max-columns 300<CR>
       noremap <leader>fc :<C-U>Leaderf command<CR>
       noremap <leader>fw :<C-U>Leaderf window<CR>
       noremap <leader>ft :<C-U>Leaderf task<CR>
@@ -1188,6 +1192,7 @@
                   \ [ "Goto &Implementation\t", 'call CocAction("jumpImplementation")'],
                   \ ['--', ''],
                   \ [ "Toggle &Quickfix", 'call sidebar#toggle("quickfix")' ],
+                  \ [ "Toggle &Nerdtree", 'call sidebar#toggle("nerdtree")' ],
                   \ [ "Toggle &Loclist", 'call sidebar#toggle("loclist")' ],
                   \ [ "Toggle &Vista", 'call sidebar#toggle("vista")' ],
                   \ [ "Toggle &Undotree", 'call sidebar#toggle("undotree")' ],
@@ -1219,6 +1224,12 @@
           nnoremap <silent> <buffer> q <C-w>q
       endfunction
       let g:sidebars = {
+        \ 'nerdtree': {
+        \     'position': 'left',
+        \     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'nerdtree'},
+        \     'open': 'NERDTree',
+        \     'close': 'NERDTreeClose'
+        \ },
         \ 'quickfix': {
         \     'position': 'bottom',
         \     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'qf' && !getwininfo(win_getid(nr))[0]['loclist']},

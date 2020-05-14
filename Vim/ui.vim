@@ -54,7 +54,7 @@
         if WINDOWS()
             if darkmode == 1
                 set background=dark
-                colorscheme gruvbox-material
+                colorscheme darcula
             else
                 set background=light
                 colorscheme gruvbox-material
@@ -89,7 +89,7 @@
             " highlight LineNr guibg=NONE
             " highlight Comment gui=italic
         endif
-
+        hi Cursor gui=reverse guibg=NONE guifg=NONE
         highlight Keyword cterm=italic gui=italic
         highlight Comment cterm=italic gui=italic
     " }

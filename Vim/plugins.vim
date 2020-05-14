@@ -21,31 +21,23 @@
             Plug 'brglng/vim-im-select', {'on': [] }
         endif
         Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
-        if has('nvim')
-          Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-        else
-          Plug 'Shougo/defx.nvim'
-          Plug 'roxma/nvim-yarp'
-          Plug 'roxma/vim-hug-neovim-rpc'
-        endif
-        Plug 'lervag/vimtex'                    " LaTeX
-        Plug 'sheerun/vim-polyglot'             " 语法高亮等
+        Plug 'lervag/vimtex', {'for': 'tex'}    " LaTeX
+        " Plug 'sheerun/vim-polyglot'             " 语法高亮等
         Plug 'alpertuna/vim-header'             " 头部信息生成
-        Plug 'kristijanhusak/defx-icons'
-        Plug 'kristijanhusak/defx-git'
-        Plug 'vimwiki/vimwiki', {'on': ['VimwikiIndex','VimwikiDiaryIndex']}
+        Plug 'vimwiki/vimwiki'
         Plug 'tpope/vim-unimpaired'             " 一些有用的快捷键
-        Plug 'liuchengxu/vista.vim'             " tags, symbols
+        Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
         Plug 'junegunn/vim-easy-align'          " 文本对齐
         Plug 'mhinz/vim-startify'               " 启动页
-        Plug 'cespare/vim-toml'                 " 支持 TOML
+        Plug 'cespare/vim-toml', {'for': 'toml'}" 支持 TOML
         Plug 'wakatime/vim-wakatime'            " Wakatime 编程记录
         Plug 'w0rp/ale'                         " 代码分析和自动修正
         Plug 'junegunn/vim-emoji'               " Emoji
         Plug 'mhinz/vim-signify'                " Git 标记
         Plug 'godlygeek/tabular'                " 对齐文本
-        Plug 'plasticboy/vim-markdown'          " 支持 Markdown
+        Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
         Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+        Plug 'mzlogin/vim-markdown-toc', {'for': 'markdown'}
         Plug 'skywind3000/asynctasks.vim'
         Plug 'skywind3000/asyncrun.vim'         " 异步执行命令行指令
         Plug 'itchyny/lightline.vim'            " Lightline
@@ -62,15 +54,14 @@
         Plug 'easymotion/vim-easymotion'        " 快速跳转
         Plug 'wellle/targets.vim'               " 额外的文本对象
         Plug 'lilydjwg/colorizer'               " RGB 颜色显示
-        Plug 'mzlogin/vim-markdown-toc'         " Markdown 目录生成
-        Plug 'liuchengxu/vim-which-key'
-        Plug 'brglng/vim-sidebar-manager'
+        Plug 'liuchengxu/vim-which-key'         " 快捷键提示
+        Plug 'brglng/vim-sidebar-manager'       " 边栏管理
         Plug 'mbbill/undotree'
-        Plug 'inkarkat/vim-ReplaceWithRegister'  " 粘贴并替换 `gr`
-        Plug 'kkoomen/vim-doge'
-        Plug 'skywind3000/vim-quickui'
+        Plug 'inkarkat/vim-ReplaceWithRegister' " 粘贴并替换 `gr`
+        Plug 'kkoomen/vim-doge'                 " 文档生成
+        Plug 'skywind3000/vim-quickui'          " 右键和菜单 UI
         Plug 'ryanoasis/vim-devicons'           " 文件图标
-        Plug 'Yggdroot/LeaderF'
+        Plug 'Yggdroot/LeaderF'                 " 模糊匹配
         Plug 'yianwillis/vimcdoc'               " 中文文档
         Plug 'skywind3000/vim-terminal-help'
         Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -81,10 +72,11 @@
         Plug 'bps/vim-textobj-python'
         Plug 'ianding1/leetcode.vim'
         Plug 'zef/vim-cycle'
+        Plug 'dstein64/vim-startuptime'
         Plug 'patstockwell/vim-monokai-tasty'   " 以下都是一些主题
-        Plug 'arcticicestudio/nord-vim'         " 暗色主题
-        Plug 'iCyMind/NeoSolarized'             " 支持 True Color 的主题
-        Plug 'lifepillar/vim-solarized8'        " 支持 nvim 的主题
+        Plug 'arcticicestudio/nord-vim'
+        Plug 'iCyMind/NeoSolarized'
+        Plug 'lifepillar/vim-solarized8'
         Plug 'joshdick/onedark.vim'
         Plug 'rakr/vim-one'
         Plug 'rakr/vim-two-firewatch'
@@ -96,7 +88,7 @@
         Plug 'cormacrelf/vim-colors-github'
         Plug 'sainnhe/vim-color-forest-night'
         Plug 'Rigellute/shades-of-purple.vim'
-        Plug 'dstein64/vim-startuptime'
+        Plug 'doums/darcula'
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         else

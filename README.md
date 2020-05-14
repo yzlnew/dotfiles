@@ -1,23 +1,37 @@
 ### What I use
 
 - Homebrew Bundle
-- vim/NeoVim
+- Vim/NeoVim
 - oh-my-zsh
 - tmux
+- Windows Terminal/PowerShell
 
 ### Vim
 
 This [vimrc](https://github.com/yzlnew/dotfiles/blob/master/vimrc) is tested on macOS and Windows.
 
-Screenshots can be found [here](https://yellow-stone.club/blog/2019-01-28-vimrc/).
+#### Prerequisites
+
+- Nodejs (for coc.nvim)
+- Python3
+
+**Recommend** using `Scoop` to install all kinds of this stuff on Windows.
+
+Clone this repo to your home directory.
 
 #### macOS/Linux
 
-Copy the `vimrc` to your `~/.vimrc`, and you're almost all set.
+Copy or link the `vimrc` to your `~/.vimrc`, and you're almost all set.
+
+```
+vim +PlugInstall
+```
+
+Enjoy!
 
 #### Windows
 
-1. Copy the vimrc to `~/_vimrc.`
+1. Copy or link the vimrc to `~/_vimrc.`
 2. Paste script below in PowerShell to install vim-plug.
 
     ```PowerShell
@@ -31,12 +45,11 @@ Copy the `vimrc` to your `~/.vimrc`, and you're almost all set.
     )
     ```
 
-3. Add `Python3.dll` to `$PATH`
+3. Edit the `_vimrc` to point to your `Python` installation.
 4. `pip3 install --user pynvim` if using Neovim.
 
 #### Reminder
 
-- I use [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic) on Windows and FantasqueSansMono on macOS. A Nerd-Font is needed
-  to make plugin like `vim-devicons` and `vim-airline` look right.
+- A Nerd-Font is needed to make plugin like `vim-devicons` and `vim-airline` look right.
 - Life is short, use coc.nvim. And make sure `python` is visible to vim on Windows.
 - Use [Scoop](https://github.com/lukesampson/scoop) to install vim and anything else on Windows.

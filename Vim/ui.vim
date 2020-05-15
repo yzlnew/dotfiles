@@ -92,6 +92,23 @@
         hi Cursor gui=reverse guibg=NONE guifg=NONE
         highlight Keyword cterm=italic gui=italic
         highlight Comment cterm=italic gui=italic
+        if get(g:, 'colors_name', 'default') == 'darcula'
+            hi! link CocErrorSign ErrorSign
+            hi! link CocWarningSign WarningSign
+            hi! link CocInfoSign InfoSign
+            hi! link CocHintSign InfoSign
+            hi! link CocErrorFloat Pmenu
+            hi! link CocWarningFloat Pmenu
+            hi! link CocInfoFloat Pmenu
+            hi! link CocHintFloat Pmenu
+            hi! link CocHighlightText IdentifierUnderCaret
+            hi! link CocHighlightRead IdentifierUnderCaret
+            hi! link CocHighlightWrite IdentifierUnderCaretWrite
+            hi! link CocErrorHighlight CodeError
+            hi! link CocWarningHighlight CodeWarning
+            hi! link CocInfoHighlight CodeInfo
+            hi! link CocHintHighlight CodeHint
+        endif
     " }
     set noshowmode
     set colorcolumn=81

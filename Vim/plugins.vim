@@ -22,7 +22,7 @@
         endif
         Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
         Plug 'lervag/vimtex', {'for': 'tex'}    " LaTeX
-        " Plug 'sheerun/vim-polyglot'             " 语法高亮等
+        Plug 'sheerun/vim-polyglot'             " 语法高亮等
         Plug 'alpertuna/vim-header'             " 头部信息生成
         Plug 'vimwiki/vimwiki'
         Plug 'tpope/vim-unimpaired'             " 一些有用的快捷键

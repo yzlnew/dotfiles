@@ -89,7 +89,7 @@
                     let g:lightline.colorscheme = 'forest_night'
                 endif
                 if colors_name == 'darcula'
-                    let g:lightline.colorscheme = 'darculaOriginal'
+                    let g:lightline.colorscheme = 'darcula_robin'
                 endif
                 if colors_name == 'gruvbox-material'
                     let g:lightline.colorscheme = 'gruvbox_material'

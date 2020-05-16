@@ -57,7 +57,7 @@
                 colorscheme darcula
             else
                 set background=light
-                colorscheme gruvbox-material
+                colorscheme github
             endif
             let &t_SI.="\e[5 q"
             let &t_SR.="\e[4 q"
@@ -75,23 +75,10 @@
             else
                 set guifont=OperatorMonoSSm\ NF:h14
             endif
-            " set go-=m
-            set go-=e
-            set go-=T
-            set go-=r
-            set go-=i
-            set go-=L
-            set go-=R
+            set go=gmt
             set renderoptions=type:directx
             set lines=50 columns=100
-            " highlight clear LineNr
-            " highlight clear SignColumn
-            " highlight LineNr guibg=NONE
-            " highlight Comment gui=italic
         endif
-        hi Cursor gui=reverse guibg=NONE guifg=NONE
-        highlight Keyword cterm=italic gui=italic
-        highlight Comment cterm=italic gui=italic
         if get(g:, 'colors_name', 'default') == 'darcula'
             hi! link CocErrorSign ErrorSign
             hi! link CocWarningSign WarningSign
@@ -109,6 +96,11 @@
             hi! link CocInfoHighlight CodeInfo
             hi! link CocHintHighlight CodeHint
         endif
+    hi Cursor gui=reverse guibg=NONE guifg=NONE
+    highlight Keyword cterm=italic gui=italic
+    highlight Comment cterm=italic gui=italic
+    hi LineNr     ctermbg=NONE guibg=NONE
+    hi SignColumn ctermbg=NONE guibg=NONE
     " }
     set noshowmode
     set colorcolumn=81
@@ -130,8 +122,6 @@
     set number                  " 显示行号
     set relativenumber
     set cursorline              " 高亮当前行
-    hi LineNr     ctermbg=NONE guibg=NONE
-    hi SignColumn ctermbg=NONE guibg=NONE
     set backspace=indent,eol,start
     set showmatch               " 括号匹配
     set incsearch               " 同步搜索

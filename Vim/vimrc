@@ -3,9 +3,9 @@
 " 参考：http://vim.wikia.com/wiki/Modeline_magic
 " vim: foldmethod=marker foldlevel=0 foldmarker={,}
 " 自己使用的 Vim 配置
-" 主要平台：macOS,Windows,Linux / 终端：iTerm2,Windows Terminal /
-" 主题：Solarized / 推荐字体：Nerd Fonts, SarasaGothic
-" Copyright 2019 @yzlnew
+" 主要平台：macOS, Windows, Linux / 终端：iTerm2, Windows Terminal /
+" 主题：Darcula / 推荐字体：Nerd Fonts, SarasaGothic
+" Copyright 2020 @yzlnew
 " }
 
 " 环境设置 {
@@ -32,11 +32,6 @@
         if WINDOWS() && has('nvim')
             let g:python3_host_prog = 'C:\Users\11103475\scoop\apps\python\current\python.exe'
         endif
-        " if WINDOWS() && has('nvim')
-        "     set shell=powershell shellquote= shellpipe=\| shellxquote=(
-        "     set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
-        "     set shellredir=\|\ Out-File\ -Encoding\ UTF8
-        " endif
     " }
     " runtimepath {
       set runtimepath+=$HOME/.vim

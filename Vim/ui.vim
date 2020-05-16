@@ -71,7 +71,7 @@
                 " set guifont=SFMono_NF:h11,Sarasa\ Mono\ SC:h11
                 " set guifont=Operator_Mono_Book:h12,Sarasa\ Mono\ SC:h12
                 " set guifont=FiraCode_NF:h11
-                set guifontwide=Sarasa\ Mono\ SC:h12
+                set guifontwide=Sarasa\ Mono\ SC:h11
             else
                 set guifont=OperatorMonoSSm\ NF:h14
             endif
@@ -130,9 +130,6 @@
     set number                  " 显示行号
     set relativenumber
     set cursorline              " 高亮当前行
-    " highlight clear SignColumn  " 去除标志列背景
-    " highlight clear LineNr      " 去除行号背景
-    " hi Normal     ctermbg=NONE guibg=NONE
     hi LineNr     ctermbg=NONE guibg=NONE
     hi SignColumn ctermbg=NONE guibg=NONE
     set backspace=indent,eol,start
@@ -145,7 +142,7 @@
     set wildmenu                " Tab 补全候选
     " set wildmode=list:longest,full
     set whichwrap=b,s,<,>,[,]   " 在行首行尾可以移动到另一行
-    set scrolljump=5            " 光标离开屏幕时滚动的行数
+    set scrolljump=0            " 光标离开屏幕时滚动的行数
     set scrolloff=3             " 收尾留的行数
     set nofoldenable            " 关闭代码折叠
     set list                    " 显示可能引起的空白字符

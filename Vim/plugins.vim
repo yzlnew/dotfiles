@@ -34,9 +34,9 @@
         Plug 'junegunn/vim-emoji'                             " Emoji
         Plug 'mhinz/vim-signify'                              " Git 标记
         Plug 'godlygeek/tabular'                              " 对齐文本
-        Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
-        Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-        Plug 'mzlogin/vim-markdown-toc', {'for': 'markdown'}
+        Plug 'plasticboy/vim-markdown', {'for': ['markdown','vimwiki']}
+        Plug 'suan/vim-instant-markdown', {'for': ['markdown','vimwiki']}
+        Plug 'mzlogin/vim-markdown-toc', {'for': ['markdown','vimwiki']}
         Plug 'skywind3000/asynctasks.vim'
         Plug 'skywind3000/asyncrun.vim'                       " 异步执行命令行指令
         Plug 'skywind3000/vim-quickui'                        " 右键和菜单 UI
@@ -62,6 +62,7 @@
         Plug 'kkoomen/vim-doge'                               " 文档生成
         Plug 'ryanoasis/vim-devicons'                         " 文件图标
         Plug 'Yggdroot/LeaderF'                               " 模糊匹配
+        Plug 'Yggdroot/indentLine'
         Plug 'yianwillis/vimcdoc'                             " 中文文档
         Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         Plug 'kana/vim-textobj-user'                          " 文本对象套餐

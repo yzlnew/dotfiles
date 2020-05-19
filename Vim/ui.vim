@@ -134,6 +134,6 @@
     set scrolloff=3             " 收尾留的行数
     set nofoldenable            " 关闭代码折叠
     set list                    " 显示可能引起的空白字符
-    set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+    set listchars=tab:›\ ,trail:·,precedes:«,extends:»,nbsp:.
     set fillchars+=vert:│
 " }

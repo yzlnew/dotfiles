@@ -125,6 +125,7 @@
         \   'python': ['black','isort','yapf'],
         \   'markdown': ['prettier','trim_whitespace'],
         \    'cpp': ['clang-format','trim_whitespace'],
+        \    'json': ['prettier'],
         \}
     " }
     " Markdown {
@@ -489,7 +490,7 @@
                   \ 'ca' : 'codeaction',
                   \ 'cs' : 'codeaction selected',
                   \ }
-      noremap <leader>ov :e $MYVIMRC<CR>
+      noremap <leader>ov :e ~/dotfiles/Vim/vimrc<CR>
       let g:which_key_map.o = {'name' : '+Open',
                   \ 'v' : 'vimrc',
                   \ 's' : ['Startify', 'startify'],
@@ -660,6 +661,14 @@
                   \ ["&Nerdtree Find\t", "NERDTreeFind", "Update plugin"],
                   \ ])
 
+      call quickui#menu#install("&Toggle", [
+                  \ [ "Toggle &Quickfix", 'call sidebar#toggle("quickfix")' ],
+                  \ [ "Toggle &Nerdtree", 'call sidebar#toggle("nerdtree")' ],
+                  \ [ "Toggle &Loclist", 'call sidebar#toggle("loclist")' ],
+                  \ [ "Toggle &Vista", 'call sidebar#toggle("vista")' ],
+                  \ [ "Toggle &Undotree", 'call sidebar#toggle("undotree")' ],
+                  \ ])
+
       " script inside %{...} will be evaluated and expanded in the string
       call quickui#menu#install("&Option", [
                   \ ['Set &Wrap %{&wrap? "Off":"On"}', 'set wrap!'],
@@ -800,5 +809,14 @@
         \     'close': 'UndotreeHide'
         \ }
         \ }
+    " }
+    " Dirvish {
+        " let g:loaded_netrwPlugin = 1
+        " command! -nargs=? -complete=dir Explore Dirvish <args>
+        " command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
+        " command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
+    " }
+    " IndentLine {
+    let g:indentLine_char_list = ['|']
     " }
 " }

@@ -125,6 +125,7 @@
         \   'python': ['black','isort','yapf'],
         \   'markdown': ['prettier','trim_whitespace'],
         \    'cpp': ['clang-format','trim_whitespace'],
+        \    'tex': ['latexindent'],
         \    'json': ['prettier'],
         \}
     " }

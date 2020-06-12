@@ -818,6 +818,16 @@
         " command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
     " }
     " IndentLine {
-    let g:indentLine_char_list = ['|']
+      let g:indentLine_char_list = ['|']
+      let g:indentLine_setConceal = 0
+      let g:indentLine_setColors = 0
+    " }
+    " Cycle {
+      " call AddCycleGroup(['one', 'two', 'three'])
+      " call AddCycleGroup(['true', 'false'])
+      " call AddCycleGroup(['True', 'False'])
+    " }
+    " CSV {
+      let g:csv_delim = ','
     " }
 " }

@@ -21,7 +21,6 @@
         endif
         Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
         Plug 'lervag/vimtex', {'for': 'tex'}                  " LaTeX
-        Plug 'sheerun/vim-polyglot'                           " 语法高亮等
         Plug 'alpertuna/vim-header', {'on': 'AddHeader'}      " 头部信息生成
         Plug 'vimwiki/vimwiki', {'on': 'VimwikiIndex'}
         Plug 'tpope/vim-unimpaired'                           " 一些有用的快捷键
@@ -72,6 +71,7 @@
         Plug 'bps/vim-textobj-python'
         Plug 'ianding1/leetcode.vim'
         Plug 'zef/vim-cycle'
+        Plug 'chrisbra/csv.vim', {'for': ['csv']}
         Plug 'dstein64/vim-startuptime'
         " 以下都是一些主题
         Plug 'patstockwell/vim-monokai-tasty'
@@ -90,6 +90,7 @@
         Plug 'sainnhe/vim-color-forest-night'
         Plug 'Rigellute/shades-of-purple.vim'
         Plug 'doums/darcula'
+        Plug 'sheerun/vim-polyglot'                           " 语法高亮等
         if WINDOWS()
             Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
         else

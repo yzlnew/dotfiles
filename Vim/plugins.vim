@@ -10,6 +10,9 @@
 
     call plug#begin('~/.vim/plugged')
         Plug 'yzlnew/lightline-theme-robin'                   " 自己的一些主题
+        if has('nvim')
+            Plug 'nvim-treesitter/nvim-treesitter'
+        endif
         if WINDOWS() && has('nvim')
             Plug 'yzlnew/smartim'
         endif
@@ -22,7 +25,7 @@
         Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
         Plug 'lervag/vimtex', {'for': 'tex'}                  " LaTeX
         Plug 'alpertuna/vim-header', {'on': 'AddHeader'}      " 头部信息生成
-        Plug 'vimwiki/vimwiki', {'on': 'VimwikiIndex'}
+        Plug 'vimwiki/vimwiki'
         Plug 'tpope/vim-unimpaired'                           " 一些有用的快捷键
         Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
         Plug 'junegunn/vim-easy-align'                        " 文本对齐

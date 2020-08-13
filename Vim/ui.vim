@@ -54,7 +54,7 @@
         if WINDOWS()
             if darkmode == 1
                 set background=dark
-                colorscheme darcula
+                colorscheme gruvbox-material
             else
                 set background=light
                 colorscheme github
@@ -120,6 +120,9 @@
     set number                  " 显示行号
     set relativenumber
     set cursorline              " 高亮当前行
+    if has('nvim') == 0 && has('patch-8.1.2020')
+        set cursorlineopt=number cursorline
+    endif
     set backspace=indent,eol,start
     set showmatch               " 括号匹配
     set incsearch               " 同步搜索

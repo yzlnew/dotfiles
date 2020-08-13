@@ -17,7 +17,7 @@
       "padding": "5, 5, 5, 5",
       "fontFace": "JetBrainsMono NF",
       "fontSize": 11,
-      "colorScheme": "Dracula",
+      "colorScheme": "Monokai Soda",
       "historySize": 9001,
       "antialiasingMode": "grayscale",
       "snapOnInput": true
@@ -28,7 +28,6 @@
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
         "name": "Windows PowerShell",
-        "useAcrylic": true,
         "startingDirectory": "%USERPROFILE%",
         "tabTitle": "PowerRobin"
       },
@@ -48,8 +47,6 @@
         "acrylicOpacity": 0.8,
         "colorScheme": "Solarized Dark",
         "commandline": "wsl.exe",
-        "fontFace": "OperatorMonoSSm NF",
-        "fontSize": 12,
         "guid": "{9acb9455-ca41-5af7-950f-6bca1bc9722f}",
         "icon": "ms-appdata:///roaming/ubuntu.png",
         "name": "Ubuntu",

@@ -5,6 +5,7 @@
         set termguicolors
         hi! clear
         let darkmode = 1
+        let ayucolor="dark"
         let g:forest_night_enable_italic = 1
         let g:vim_monokai_tasty_italic = 1
         let g:solarized_term_italics=1
@@ -54,7 +55,7 @@
         if WINDOWS()
             if darkmode == 1
                 set background=dark
-                colorscheme gruvbox-material
+                colorscheme github
             else
                 set background=light
                 colorscheme github

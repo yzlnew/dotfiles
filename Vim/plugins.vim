@@ -77,6 +77,8 @@
         Plug 'chrisbra/csv.vim', {'for': ['csv']}
         Plug 'dstein64/vim-startuptime'
         " 以下都是一些主题
+        Plug 'chuling/ci_dark'
+        Plug 'ayu-theme/ayu-vim'
         Plug 'patstockwell/vim-monokai-tasty'
         Plug 'arcticicestudio/nord-vim'
         Plug 'iCyMind/NeoSolarized'
@@ -95,9 +97,9 @@
         Plug 'doums/darcula'
         Plug 'sheerun/vim-polyglot'                           " 语法高亮等
         if WINDOWS()
-            Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.cmd'}
+            Plug 'neoclide/coc.nvim', {'branch': 'release'}
         else
-            Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+            Plug 'neoclide/coc.nvim', {'branch': 'release'}
         endif
     call plug#end()
 " }

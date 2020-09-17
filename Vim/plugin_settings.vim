@@ -124,9 +124,10 @@
         let g:ale_fixers = {
         \   'python': ['black','isort','yapf'],
         \   'markdown': ['prettier','trim_whitespace'],
-        \    'cpp': ['clang-format','trim_whitespace'],
-        \    'tex': ['latexindent'],
-        \    'json': ['prettier'],
+        \   'cpp': ['clang-format','trim_whitespace'],
+        \   'tex': ['latexindent'],
+        \   'json': ['prettier'],
+        \   'html': ['prettier'],
         \}
     " }
     " Markdown {
@@ -414,6 +415,7 @@
         nmap <leader>vr :VimtexReload<CR>
         nmap <leader>vc :update \| VimtexCompileSS<CR>
         nmap <leader>vv :VimtexView<CR>
+        let g:tex_flavor = 'latex'
         let g:vimtex_syntax_enabled = 1
         let g:vimtex_compiler_latexmk = {
                 \ 'executable' : 'latexmk',

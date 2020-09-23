@@ -28,9 +28,9 @@ snippet head "Useful settings for data analysis" b
 	import pandas as pd
 	import seaborn as sns
 	import matplotlib.pyplot as plt
+	plt.style.use('seaborn')
 	plt.rcParams['font.sans-serif']=['Sarasa UI SC','思源宋体 CN']
 	plt.rcParams['axes.unicode_minus']=False
 	plt.rcParams['figure.autolayout']=True
-	plt.rcParams['figure.dpi']=100
 	sns.set_style('whitegrid',{'font.sans-serif':['Sarasa UI SC','思源宋体 CN']})
 endsnippet

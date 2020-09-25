@@ -610,7 +610,9 @@
       let g:doge_doc_standard_python='numpy'
     " }
     " terminal-help {
-      let g:terminal_shell='powershell -nologo'
+      if WINDOWS()
+          let g:terminal_shell='powershell -nologo'
+      endif
       let g:terminal_cwd=2
     " }
     " polyglot {

@@ -129,6 +129,7 @@
         \   'json': ['prettier'],
         \   'html': ['prettier'],
         \}
+        let g:ale_c_clangformat_options = 'style="{BasedOnStyle: google, IndentWidth: 4}"'
     " }
     " Markdown {
         let g:tex_conceal = ""

@@ -55,7 +55,7 @@
         if WINDOWS()
             if darkmode == 1
                 set background=dark
-                colorscheme github
+                colorscheme forest-night
             else
                 set background=light
                 colorscheme github

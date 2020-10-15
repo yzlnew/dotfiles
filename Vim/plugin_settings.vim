@@ -94,6 +94,9 @@
                 if colors_name == 'gruvbox-material'
                     let g:lightline.colorscheme = 'gruvbox_material'
                 endif
+                if colors_name == 'onehalflight'
+                    let g:lightline.colorscheme = 'onehalfdark'
+                endif
                 if colors_name == 'solarized8'
                     if &background ==# 'dark'
                         let g:lightline.colorscheme = 'solarized_flood'
@@ -617,7 +620,7 @@
     " }
     " polyglot {
       let g:python_highlight_all = 1
-      let g:polyglot_disabled = ['latex']
+      " let g:polyglot_disabled = ['latex']
     " }
     " quickui {
       " clear all the menus

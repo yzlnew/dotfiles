@@ -77,6 +77,8 @@
         Plug 'chrisbra/csv.vim', {'for': ['csv']}
         Plug 'dstein64/vim-startuptime'
         " 以下都是一些主题
+        Plug 'sonph/onehalf', {'rtp': 'vim/'}
+        Plug 'NLKNguyen/papercolor-theme'
         Plug 'chuling/ci_dark'
         Plug 'ayu-theme/ayu-vim'
         Plug 'patstockwell/vim-monokai-tasty'

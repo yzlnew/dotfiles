@@ -13,6 +13,12 @@
         nmap <leader>gK 9999<leader>gk
     " }
     " Lightline {
+        function! ReloadLightLine(name)
+            let g:lightline.colorscheme = a:name
+            call lightline#init()
+            call lightline#colorscheme()
+        endfunction
+        command! -nargs=* ReloadLightLine call ReloadLightLine(<f-args>)
         let g:lightline = {}
         let g:lightline.separator = { 'left': '', 'right': '' }
         let g:lightline.subseparator = { 'left': '', 'right': '' }

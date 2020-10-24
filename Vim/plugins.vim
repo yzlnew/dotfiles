@@ -77,6 +77,7 @@
         Plug 'chrisbra/csv.vim', {'for': ['csv']}
         Plug 'dstein64/vim-startuptime'
         " 以下都是一些主题
+        Plug 'ghifarit53/tokyonight-vim'
         Plug 'sonph/onehalf', {'rtp': 'vim/'}
         Plug 'NLKNguyen/papercolor-theme'
         Plug 'chuling/ci_dark'
@@ -95,6 +96,8 @@
         Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
         Plug 'cormacrelf/vim-colors-github'
         Plug 'sainnhe/vim-color-forest-night'
+        Plug 'sainnhe/sonokai'
+        Plug 'sainnhe/edge'
         Plug 'Rigellute/shades-of-purple.vim'
         Plug 'doums/darcula'
         Plug 'sheerun/vim-polyglot'                           " 语法高亮等

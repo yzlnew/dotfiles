@@ -4,7 +4,7 @@
     " 另支持正常和插入模式不同的光标样式
         set termguicolors
         hi! clear
-        let darkmode = 1
+        let darkmode = 0
         let ayucolor="dark"
         let g:forest_night_enable_italic = 1
         let g:vim_monokai_tasty_italic = 1
@@ -17,6 +17,10 @@
         let g:nord_cursor_line_number_background = 1
         let g:monokai_term_italic = 1
         let g:monokai_gui_italic = 1
+        let g:tokyonight_style = 'storm' " available: night, storm
+        let g:tokyonight_enable_italic = 1
+        let g:edge_enable_italic = 1
+        let g:edge_disable_italic_comment = 1
 
         if OSX()
             let iterm_profile = $ITERM_PROFILE
@@ -55,10 +59,10 @@
         if WINDOWS()
             if darkmode == 1
                 set background=dark
-                colorscheme forest-night
+                colorscheme tokyonight
             else
                 set background=light
-                colorscheme github
+                colorscheme edge
             endif
             let &t_SI.="\e[5 q"
             let &t_SR.="\e[4 q"

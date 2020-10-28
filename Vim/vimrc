@@ -25,12 +25,13 @@
         if !WINDOWS()
             set shell=/bin/zsh
         endif
+        let winpypath = "C:\\Users\\<username>\\scoop\\apps\\python\\current"
         if WINDOWS() && !has('nvim')
-            let &pythonthreedll='C:\Users\11103475\scoop\apps\python\current\python38.dll'
-            let &pythonthreehome='C:\Users\11103475\scoop\apps\python\current'
+            let &pythonthreedll= join([winpypath,"\\python38.dll"],"")
+            let &pythonthreehome= winpypath
         endif
         if WINDOWS() && has('nvim')
-            let g:python3_host_prog = 'C:\Users\11103475\scoop\apps\python\current\python.exe'
+            let g:python3_host_prog = join([winpypath,"\\python.exe"],"")
         endif
     " }
     " runtimepath {

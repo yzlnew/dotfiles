@@ -36,8 +36,10 @@
         if OSX()
             let g:python3_host_prog = '/usr/local/bin/python3'
             let g:loaded_python_provider = 0
-            let &pythonthreedll="/usr/local/Frameworks/Python.framework/Versions/3.9/Python"
-            let &pythonthreehome="/usr/local/Frameworks/Python.framework/Versions/3.9"
+            if has('gui_running')
+                let &pythonthreedll="/usr/local/Frameworks/Python.framework/Versions/3.9/Python"
+                let &pythonthreehome="/usr/local/Frameworks/Python.framework/Versions/3.9"
+            endif
         endif
     " }
     " runtimepath {

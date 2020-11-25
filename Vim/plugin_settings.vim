@@ -284,6 +284,7 @@
         let g:UltiSnipsEditSplit="vertical"
         let g:UltiSnipsSnippetsDir='~/.vim/usnips'
         let g:UltiSnipsSnippetDirectories=["UltiSnips", "usnips"]
+        let g:UltiSnipsUsePythonVersion = 3
     " }
     " EasyMotion {
         " map <leader><leader>L <Plug>(easymotion-bd-jk)

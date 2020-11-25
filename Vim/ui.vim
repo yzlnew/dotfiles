@@ -29,7 +29,7 @@
                 colorscheme forest-night
             else
                 set background=light
-                colorscheme github
+                colorscheme edge
             endif
 
             if $TERM_PROGRAM == 'Apple_Terminal'

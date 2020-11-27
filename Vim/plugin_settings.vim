@@ -530,6 +530,7 @@
       let g:Lf_UseVersionControlTool = 0
       let g:Lf_IgnoreCurrentBufferName = 1
       let g:Lf_RootMarkers = ['.git', '.svn', '.root', '.project', '.hg']
+      let g:Lf_WorkingDirectoryMode = 'Ac'
       let g:Lf_WindowPosition = 'popup'
       let g:Lf_PreviewInPopup = 1
       let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2"}
@@ -738,6 +739,9 @@
             \ ["Create commit\tcc"     , '' ] ,
             \ ["Amend\tca"             , '' ] ,
             \ ["Reword\tcw"            , '' ] ,
+            \ ["--"                    , '' ] ,
+            \ ["Stash\tczz"            , '' ] ,
+            \ ["Unstash\tcza"          , '' ] ,
             \ ]
           call quickui#context#open(content, {})
       endfunc

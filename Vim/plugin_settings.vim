@@ -776,12 +776,12 @@
                   \ [ "Toggle &Undotree", 'call sidebar#toggle("undotree")' ],
                   \ ]
       nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
-      hi! link QuickBG Normal
-      hi! link QuickBorder Normal
-      hi! link QuickSel PmenuSel
-      hi! link QuickKey Title
-      hi! link QuickOff Whitespace
-      hi! link QuickHelp PmenuSBar
+      hi! link QuickDefaultBackground Normal
+      hi! link QuickDefaultBorder Normal
+      hi! link QuickDefaultSel PmenuSel
+      hi! link QuickDefaultKey Title
+      hi! link QuickDefaultOff Whitespace
+      hi! link QuickDefaultHelp PmenuSBar
     " }
     " leetcode {
       let g:leetcode_browser='chrome'

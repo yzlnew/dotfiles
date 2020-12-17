@@ -64,7 +64,9 @@
               \             [ 'lineinfo', 'percent' ],
               \             [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
               \  }
+        let g:lightline#bufferline#show_number = 2
         let g:lightline#bufferline#enable_devicons = 1
+        let g:lightline#bufferline#min_buffer_count = 2
         let g:lightline#bufferline#unicode_symbols = 0
         let g:lightline#bufferline#clickable = 1
         function! Filetype()
@@ -147,6 +149,7 @@
         let g:vim_markdown_folding_disabled = 1
         " let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
         let g:instant_markdown_autostart = 0
+        let g:instant_markdown_mathjax = 1
     " }
     " COC {
         let g:coc_global_extensions = [
@@ -290,8 +293,7 @@
         " map <leader><leader>L <Plug>(easymotion-bd-jk)
     " }
     " NERDTree {
-        map <leader>e :NERDTreeToggle<CR>
-        nmap <leader>ntf :NERDTreeFind<CR>
+        map <leader>e :call sidebar#toggle("nerdtree")<CR>
         let g:NERDTreeMapChangeRoot = 'l'
         let g:NERDTreeMapUpdir = 'h'
 
@@ -541,9 +543,9 @@
       noremap <leader>ff :<C-U>Leaderf file<CR>
       noremap <leader>fb :<C-U>Leaderf buffer<CR>
       noremap <leader>fm :<C-U>Leaderf mru<CR>
-      noremap <leader>fbt :<C-U>Leaderf bufTag<CR>
+      noremap <leader>fg :<C-U>Leaderf bufTag<CR>
       noremap <leader>fl :<C-U>Leaderf line<CR>
-      noremap <leader>fft :<C-U>Leaderf filetype<CR>
+      noremap <leader>fp :<C-U>Leaderf filetype<CR>
       noremap <leader>fr :<C-U>Leaderf rg --max-columns 300<CR>
       noremap <leader>fc :<C-U>Leaderf command<CR>
       noremap <leader>fw :<C-U>Leaderf window<CR>
@@ -683,6 +685,7 @@
                   \ [ "Toggle &Nerdtree", 'call sidebar#toggle("nerdtree")' ],
                   \ [ "Toggle &Loclist", 'call sidebar#toggle("loclist")' ],
                   \ [ "Toggle &Vista", 'call sidebar#toggle("vista")' ],
+                  \ [ "Toggle &Git", 'call sidebar#toggle("fugitive")' ],
                   \ [ "Toggle &Undotree", 'call sidebar#toggle("undotree")' ],
                   \ ])
 
@@ -769,6 +772,7 @@
                   \ [ "Toggle &Nerdtree", 'call sidebar#toggle("nerdtree")' ],
                   \ [ "Toggle &Loclist", 'call sidebar#toggle("loclist")' ],
                   \ [ "Toggle &Vista", 'call sidebar#toggle("vista")' ],
+                  \ [ "Toggle &Git", 'call sidebar#toggle("fugitive")' ],
                   \ [ "Toggle &Undotree", 'call sidebar#toggle("undotree")' ],
                   \ ]
       nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
@@ -788,6 +792,16 @@
       let g:undotree_SetFocusWhenToggle = 1
       let g:undotree_SplitWidth = 40
       let g:undotree_WindowLayout = 4
+    " }
+    " fugitive {
+      function! s:close_gstatus()
+        for l:winnr in range(1, winnr('$'))
+          if !empty(getwinvar(l:winnr, 'fugitive_status'))
+            execute l:winnr.'close'
+          endif
+        endfor
+      endfunction
+      command! GClose call s:close_gstatus()
     " }
     " sidebars {
       autocmd FileType qf call s:setup_quickfix_window()
@@ -820,7 +834,13 @@
         \     'position': 'left',
         \     'check_win': {nr -> bufname(winbufnr(nr)) =~ '__vista__'},
         \     'open': 'Vista',
-        \     'close': 'Vista!'
+        \     'close': 'G!'
+        \ },
+        \ 'fugitive': {
+        \     'position': 'right',
+        \     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'fugitive'},
+        \     'open': 'G',
+        \     'close': 'GClose'
         \ },
         \ 'undotree': {
         \     'position': 'right',

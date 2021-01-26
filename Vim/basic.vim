@@ -73,5 +73,6 @@
     set splitbelow
     set pastetoggle=<F12>                " 进入粘贴模式
     autocmd BufWritePre * %s/\s\+$//e    " 保存时清除行末空格
+    autocmd Filetype cpp setlocal expandtab tabstop=2 shiftwidth=2
 " }
 

@@ -34,11 +34,14 @@
             let g:python3_host_prog = join([winpypath,"\\python.exe"],"")
         endif
         if OSX()
-            let g:python3_host_prog = '/usr/local/bin/python3'
+            if exists('py2') && has('python')
+            elseif has('python3')
+            endif
+            let g:python3_host_prog = '/opt/homebrew/bin/python3'
             let g:loaded_python_provider = 0
             if has('gui_running')
-                let &pythonthreedll="/usr/local/Frameworks/Python.framework/Versions/3.9/Python"
-                let &pythonthreehome="/usr/local/Frameworks/Python.framework/Versions/3.9"
+                let &pythonthreedll="/opt/homebrew/Frameworks/Python.framework/Versions/Current/Python"
+                let &pythonthreehome="/opt/homebrew/Frameworks/Python.framework/Versions/Current"
             endif
         endif
     " }

@@ -20,8 +20,8 @@
         endfunction
         command! -nargs=* ReloadLightLine call ReloadLightLine(<f-args>)
         let g:lightline = {}
-        let g:lightline.separator = { 'left': '', 'right': '' }
-        let g:lightline.subseparator = { 'left': '', 'right': '' }
+        let g:lightline.separator = { 'left': '', 'right': '' }
+        let g:lightline.subseparator = { 'left': '·', 'right': '·' }
         let g:lightline.component = {
               \  'me': '@yzlnew',
               \  'lineinfo': '%3l:%-2v',
@@ -159,7 +159,7 @@
                         \ 'coc-lists',
                         \ 'coc-yank',
                         \ 'coc-snippets',
-                        \ 'coc-python',
+                        \ 'coc-jedi',
                         \ 'coc-ultisnips',
                         \ 'coc-tasks',
                         \ 'coc-emoji'

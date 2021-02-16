@@ -119,14 +119,4 @@ function brew_enable() {
 	export HOMEBREW_NO_AUTO_UPDATE=1
 }
 
-function vivo_disable() {
-    export PATH=${PATH##*"/Documents/platform-tools:"}
-}
-
-function vivo_enable() {
-    ADB="$HOME/Documents/platform-tools"
-    vivo_disable
-    export PATH="$ADB:$PATH"
-}
-
 eval "$(lua ~/z.lua --init zsh)"

@@ -76,7 +76,7 @@
                 " set guifont=Operator_Mono_Book:h12,Sarasa\ Mono\ SC:h12
                 set guifontwide=Sarasa\ Mono\ SC:h11
             else
-                set guifont=OperatorMonoSSm\ NF:h14
+                set guifont=JetBrainsMonoNerdFontCompleteM-Medium:h16
             endif
             set go=gmt
             set renderoptions=type:directx

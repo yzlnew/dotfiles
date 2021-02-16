@@ -776,12 +776,7 @@
                   \ [ "Toggle &Undotree", 'call sidebar#toggle("undotree")' ],
                   \ ]
       nnoremap <silent>K :call quickui#tools#clever_context('k', g:context_menu_k, {})<cr>
-      hi! link QuickDefaultBackground Normal
-      hi! link QuickDefaultBorder Normal
-      hi! link QuickDefaultSel PmenuSel
-      hi! link QuickDefaultKey Title
-      hi! link QuickDefaultOff Whitespace
-      hi! link QuickDefaultHelp PmenuSBar
+      let g:quickui_color_scheme = 'system'
     " }
     " leetcode {
       let g:leetcode_browser='chrome'
@@ -868,5 +863,15 @@
     " }
     " CSV {
       let g:csv_delim = ','
+    " }
+    " Sneak {
+    let g:sneak#label = 1
+    nmap f <Plug>Sneak_s
+    xmap f <Plug>Sneak_s
+    onoremap <silent> f :call sneak#wrap(v:operator, 2, 0, 1, 1)<CR>
+    nmap F <Plug>Sneak_S
+    xmap F <Plug>Sneak_S
+    onoremap <silent> F :call sneak#wrap(v:operator, 2, 1, 1, 1)<CR>
+    let g:sneak#s_next = 1
     " }
 " }

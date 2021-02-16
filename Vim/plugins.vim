@@ -55,6 +55,7 @@
         Plug 'Krasjet/auto.pairs'                             " 括号自动配对
         Plug 'luochen1990/rainbow'                            " 彩虹括号
         Plug 'easymotion/vim-easymotion'                      " 快速跳转
+        Plug 'justinmk/vim-sneak'
         Plug 'wellle/targets.vim'                             " 额外的文本对象
         Plug 'lilydjwg/colorizer'                             " RGB 颜色显示
         Plug 'liuchengxu/vim-which-key'                       " 快捷键提示

@@ -60,4 +60,4 @@ source ~/dotfiles/Vim/plugins.vim
 source ~/dotfiles/Vim/basic.vim
 source ~/dotfiles/Vim/ui.vim
 source ~/dotfiles/Vim/mappings.vim
-source ~/dotfiles/Vim/plugin_settings.vim
+source ~/dotfiles/Vim/settings.vim

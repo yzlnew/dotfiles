@@ -56,8 +56,8 @@
     " }
 " }
 
-source ~/dotfiles/Vim/plugins.vim
-source ~/dotfiles/Vim/basic.vim
-source ~/dotfiles/Vim/ui.vim
-source ~/dotfiles/Vim/mappings.vim
-source ~/dotfiles/Vim/settings.vim
+source ~/dotfiles/vim/plugins.vim
+source ~/dotfiles/vim/basic.vim
+source ~/dotfiles/vim/ui.vim
+source ~/dotfiles/vim/mappings.vim
+source ~/dotfiles/vim/settings.vim

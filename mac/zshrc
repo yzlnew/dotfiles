@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -7,8 +14,8 @@ export ZSH=/Users/r0brew/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="ys"
-source $HOME/powerlevel9k.config
+ZSH_THEME="powerlevel10k/powerlevel10k"
+# source $HOME/powerlevel9k.config
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,8 +92,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source $HOME/.aliases
-alias python="/usr/local/bin/python3"
-alias pip="/usr/local/bin/pip3"
+alias python="/opt/homebrew/bin/python3"
+alias pip="/opt/homebrew/bin/pip3"
 alias typora="open -a typora"
 eval "$(thefuck --alias)"
 
@@ -97,21 +104,18 @@ source $HOME/.tokens
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 export EDITOR=vim
 
-# Eigen
-export EIGEN3_INCLUDE_DIR="/usr/local/Cellar/eigen/3.3.4/include"
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Solarized colors light & dark
-# export FZF_DEFAULT_OPTS="
-    # --color fg:#657b83,bg:#fdf6e3,hl:#859900,fg+:#586e75,bg+:#eee8d5,hl+:#859900
-    # --color info:#dc322f,prompt:#859900,pointer:#859900,marker:#fdf6e3,spinner:#b58900
-# "
 export FZF_DEFAULT_OPTS="
-  --color bg+:#073642,bg:#002b36,spinner:#719e07,hl:#586e75
-  --color fg:#839496,header:#586e75,info:#cb4b16,pointer:#719e07
-  --color marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07
+    --color fg:#657b83,bg:#fdf6e3,hl:#859900,fg+:#586e75,bg+:#eee8d5,hl+:#859900
+    --color info:#dc322f,prompt:#859900,pointer:#859900,marker:#fdf6e3,spinner:#b58900
 "
+# export FZF_DEFAULT_OPTS="
+  # --color bg+:#073642,bg:#002b36,spinner:#719e07,hl:#586e75
+  # --color fg:#839496,header:#586e75,info:#cb4b16,pointer:#719e07
+  # --color marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07
+# "
 # Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH:/usr/local/lib/ruby/gems/2.6.0/bin"
 
@@ -119,3 +123,6 @@ export PATH="/usr/local/opt/ruby/bin:$PATH:/usr/local/lib/ruby/gems/2.6.0/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export PATH="/usr/local/sbin:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

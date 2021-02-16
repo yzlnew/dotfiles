@@ -564,7 +564,7 @@
       noremap <silent><leader>tr :AsyncTask file-run<cr>
       noremap <silent><leader>tb :AsyncTask file-build<cr>
       let g:asynctasks_extra_config = [
-          \ '~/dotfiles/Vim/tasks.ini',
+          \ '~/dotfiles/vim/tasks.ini',
           \ ]
       let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
       function! s:lf_task_source(...)

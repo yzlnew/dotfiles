@@ -535,7 +535,7 @@
       let g:Lf_WorkingDirectoryMode = 'Ac'
       let g:Lf_WindowPosition = 'popup'
       let g:Lf_PreviewInPopup = 1
-      let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2"}
+      let g:Lf_StlSeparator = { 'left': "", 'right': ""}
       let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
       let g:Lf_ShortcutF = '<M-f>'
       let g:Lf_ShortcutB = '<M-b>'

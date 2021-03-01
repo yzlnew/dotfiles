@@ -550,6 +550,9 @@
       noremap <leader>fc :<C-U>Leaderf command<CR>
       noremap <leader>fw :<C-U>Leaderf window<CR>
       noremap <leader>ft :<C-U>Leaderf task<CR>
+      noremap <leader>fd :exec 'Leaderf filer ' . fnameescape(expand('%:p:h'))<cr>
+      let g:Lf_FilerShowPromptPath = 1
+      let g:Lf_FilerInsertMap = { '<CR>': 'open_current', '<BS>': 'open_parent_or_backspace' }
     " }
     " Asyncrun {
       let g:asyncrun_open = 8

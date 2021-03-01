@@ -65,6 +65,7 @@
         Plug 'kkoomen/vim-doge'                               " 文档生成
         Plug 'ryanoasis/vim-devicons'                         " 文件图标
         Plug 'Yggdroot/LeaderF'                               " 模糊匹配
+        Plug 'tamago324/LeaderF-filer'
         Plug 'Yggdroot/indentLine'
         Plug 'yianwillis/vimcdoc'                             " 中文文档
         Plug 'mg979/vim-visual-multi', {'branch': 'master'}

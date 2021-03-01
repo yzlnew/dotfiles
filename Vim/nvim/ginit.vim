@@ -6,7 +6,7 @@
 if !exists('g:fvim_loaded')
     GuiTabline 0
     GuiPopupmenu 0
-    GuiFont! JetBrainsMono NF:h11
+    GuiFont! JetBrainsMono NF:h10
     " GuiFont! Sarasa Mono SC:h12
     " GuiLinespace 2
 endif

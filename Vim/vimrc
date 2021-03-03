@@ -25,8 +25,8 @@
         if !WINDOWS()
             set shell=/bin/zsh
         endif
+        let winpypath = "C:\\Users\\Robin\\scoop\\apps\\python\\current"
         if WINDOWS() && !has('nvim')
-            let winpypath = "C:\\Users\\Robin\\scoop\\apps\\python\\current"
             let &pythonthreedll= join([winpypath,"\\python39.dll"],"")
             let &pythonthreehome= winpypath
         endif

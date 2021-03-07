@@ -42,5 +42,5 @@
         "default": "\uf29c"
     },
     "snippets.userSnippetsDirectory": "~/dotfiles/snippets",
-    "snippets.ultisnips.enable": false
+    "snippets.ultisnips.enable": true
 }

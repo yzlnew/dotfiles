@@ -23,8 +23,12 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
-snippet notice "create info warning note or tip notice"
+snippet notice "create info warning note or tip notice" b
 {{< notice ${1} >}}
 ${2}
 {{< /notice >}}
+endsnippet
+
+snippet img "image from HTML" b
+{{< figure src="${1}" title="${2}" width=${3} title="${4}" >}}
 endsnippet

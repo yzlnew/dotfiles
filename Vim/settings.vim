@@ -642,6 +642,7 @@
       let quickui_edit_basic = [
                   \ ["Copyright &Header\t", 'AddHeader', 'Insert copyright information at the beginning'],
                   \ ["Format\t", 'Format', ''],
+                  \ ["Pangu\t", 'Pangu', ''],
                   \ ['--'],
                   \ ["&Align Table\t", 'Tabularize /|', ''],
                   \ ]
@@ -876,5 +877,8 @@
     xmap F <Plug>Sneak_S
     onoremap <silent> F :call sneak#wrap(v:operator, 2, 1, 1, 1)<CR>
     let g:sneak#s_next = 1
+    " }
+    " Pangu {
+    nnoremap <leader>pg :Pangu<cr>
     " }
 " }

@@ -68,6 +68,7 @@
         Plug 'tamago324/LeaderF-filer'
         Plug 'Yggdroot/indentLine'
         Plug 'yianwillis/vimcdoc'                             " 中文文档
+        Plug 'hotoo/pangu.vim'
         Plug 'mg979/vim-visual-multi', {'branch': 'master'}
         Plug 'kana/vim-textobj-user'                          " 文本对象套餐
         Plug 'kana/vim-textobj-entire'                        " ae(ntire)

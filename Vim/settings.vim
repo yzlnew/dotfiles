@@ -461,6 +461,9 @@
     " }
     " Smartim {
         let g:smartim_default = '1033'
+        if OSX()
+            let g:im_select_default = 'com.apple.keylayout.ABC'
+        endif
     " }
     " { header
         let g:header_field_author = '@yzlnew'
@@ -645,6 +648,7 @@
                   \ ["Pangu\t", 'Pangu', ''],
                   \ ['--'],
                   \ ["&Align Table\t", 'Tabularize /|', ''],
+                  \ ["Open in Finder\t",'!open .'],
                   \ ]
       let quickui_edit_win = [
                   \ ['--'],

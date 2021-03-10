@@ -15,12 +15,8 @@
         endif
         if WINDOWS() && has('nvim')
             Plug 'yzlnew/smartim'
-        endif
-        if OSX()
-            Plug 'dangxuandev/fcitx-vim-osx'                  " 正常模式使用英文输入法
-        endif
-        if LINUX()
-            Plug 'brglng/vim-im-select', {'on': [] }
+        else
+            Plug 'brglng/vim-im-select'
         endif
         Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
         Plug 'lervag/vimtex', {'for': 'tex'}                  " LaTeX
@@ -104,10 +100,6 @@
         Plug 'Rigellute/shades-of-purple.vim'
         Plug 'doums/darcula'
         Plug 'sheerun/vim-polyglot'                           " 语法高亮等
-        if WINDOWS()
-            Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        else
-            Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        endif
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
     call plug#end()
 " }

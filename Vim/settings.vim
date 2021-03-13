@@ -571,6 +571,9 @@
       noremap <silent><s-f9> :AsyncTask project-build<cr>
       noremap <silent><leader>tr :AsyncTask file-run<cr>
       noremap <silent><leader>tb :AsyncTask file-build<cr>
+      if OSX()
+        let g:asynctasks_system = 'macos'
+      endif
       let g:asynctasks_extra_config = [
           \ '~/dotfiles/vim/tasks.ini',
           \ ]

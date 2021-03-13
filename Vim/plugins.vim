@@ -13,9 +13,7 @@
         if has('nvim')
             Plug 'nvim-treesitter/nvim-treesitter'
         endif
-        if WINDOWS() && has('nvim')
-            Plug 'yzlnew/smartim'
-        else
+        if !has('gui_running')
             Plug 'brglng/vim-im-select'
         endif
         Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}

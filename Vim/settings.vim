@@ -463,6 +463,8 @@
         let g:smartim_default = '1033'
         if OSX()
             let g:im_select_default = 'com.apple.keylayout.ABC'
+        elseif WINDOWS()
+            let g:im_select_default = '1033'
         endif
     " }
     " { header

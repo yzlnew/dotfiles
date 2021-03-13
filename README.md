@@ -2,7 +2,7 @@
 
 - Homebrew Bundle
 - Vim/NeoVim
-- oh-my-zsh
+- prezto
 - tmux
 - Windows Terminal/PowerShell
 

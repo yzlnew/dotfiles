@@ -26,10 +26,10 @@
             let iterm_profile = $ITERM_PROFILE
             if iterm_profile == "robin_dark"
                 set background=dark
-                colorscheme forest-night
+                colorscheme everforest
             else
                 set background=light
-                colorscheme edge
+                colorscheme everforest
             endif
 
             if $TERM_PROGRAM == 'Apple_Terminal'
@@ -76,11 +76,20 @@
                 " set guifont=Operator_Mono_Book:h12,Sarasa\ Mono\ SC:h12
                 set guifontwide=Sarasa\ Mono\ SC:h11
             else
-                set guifont=JetBrainsMonoNerdFontCompleteM-Regular:h16
+                set guifont=JetBrainsMono\ Nerd\ Font
             endif
             set go=gmt
-            set renderoptions=type:directx
+            if !exists("g:neovide")
+                set renderoptions=type:directx
+            endif
             set lines=50 columns=100
+        endif
+        if exists("g:neovide")
+            set guifont=JetBrainsMono\ Nerd\ Font,Apple\ Color\ Emoji
+            " g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
+            " let g:neovide_transparency = 0.0
+            " let g:transparency = 0.8
+            " let g:neovide_background_color = '#0f1117'.printf('%x', float2nr(255 * g:transparency))
         endif
         if get(g:, 'colors_name', 'default') == 'darcula'
             hi! link CocErrorSign ErrorSign
@@ -127,6 +136,9 @@
     set cursorline              " 高亮当前行
     if has('nvim') == 0 && has('patch-8.1.2020')
         set cursorlineopt=number cursorline
+    endif
+    if has('nvim')
+        set laststatus=3
     endif
     set backspace=indent,eol,start
     set showmatch               " 括号匹配

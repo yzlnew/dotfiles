@@ -1,0 +1,123 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet fig2 "2 figs with equal width" b
+\begin{figure}[htbp]
+	\centering
+	\begin{minipage}[b]{.5\linewidth}
+		\centering
+		\includegraphics[height=6cm]{fig/$1}
+		\caption{$2}
+		\label{fig:$1}
+	\end{minipage}%
+	\begin{minipage}[b]{.5\linewidth}
+		\centering
+		\includegraphics[height=6cm]{fig/$3}
+		\caption{$4}
+		\label{fig:$3}
+	\end{minipage}
+\end{figure}
+endsnippet
+
+snippet font "set font" b
+\setmainfont{LibertinusSerif}[
+	Extension		 = .otf,
+	UprightFont	 = *-Regular,
+	BoldFont		 = *-Bold,
+	ItalicFont	 = *-Italic,
+	BoldItalicFont = *-BoldItalic,
+	Scale			 = 1.1]
+\setmonofont{Sarasa Mono SC}[Scale=0.96]
+\setCJKmainfont{思源宋体 CN}[
+	UprightFont	  = * ,
+	BoldFont		  = * SemiBold,
+	ItalicFont	  = * SemiBold,
+	BoldItalicFont  = * SemiBold,
+	RawFeature	  = +fwid]
+\setCJKmonofont{Sarasa Mono SC}
+endsnippet
+
+snippet magic "magic comment" b
+% !TEX program = xelatex
+endsnippet
+
+snippet chinese "chinese support" b
+\usepackge[UTF8]{ctex}
+endsnippet
+
+snippet fragile "add a fragile beamer frame" b
+\begin{frame}[fragile]
+\frametitle{$1}
+
+\end{frame}
+endsnippet
+
+snippet table "create 3-line table" b
+\begin{table}[!htbp]
+	\centering
+	\caption{$1}
+	\begin{tabularx}{0.5\linewidth}{$2}
+		\toprule
+		$3
+		\midrule
+		$4
+		\bottomrule
+	\end{tabularx}%
+\end{table}%
+endsnippet
+
+snippet tikz "tikz picture"
+\begin{figure}[htpb]
+\begin{center}
+\begin{tikzpicture}[%
+	$1/.style={
+		rectangle,
+		text=white,
+		rounded corners,
+		draw=white,
+		minimum width=1.5cm,
+		drop shadow,
+	},
+]
+\draw[very thick,-Latex,drop shadow,vivoblue] (0,0) -- (8,0);
+
+\node[$1,fill=$2] (node1) at (2,0) {nodetext1};
+\node[above of=node1,$1,fill=$2] (node2) {nodetext2};
+
+\end{tikzpicture}
+\end{center}
+\caption{$3}%
+\label{fig:$4}
+\end{figure}
+endsnippet
+
+snippet updatebox "fcolorbox"
+\noindent\fcolorbox{red}{yellow}{
+\begin{minipage}{\textwidth}
+\textbf{$1}
+$2
+\end{minipage}
+}
+endsnippet

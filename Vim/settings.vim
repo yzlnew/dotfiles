@@ -6,7 +6,8 @@
     " Signify {
         let g:signify_vsc_list = ['git']
         let g:signify_realtime = 0
-        let g:signify_line_highlight = 1
+        let g:signify_line_highlight = 0
+        let g:signify_number_highlight = 0
         nmap <leader>gj <plug>(signify-next-hunk)
         nmap <leader>gk <plug>(signify-prev-hunk)
         nmap <leader>gJ 9999<leader>gj
@@ -35,13 +36,13 @@
               \  'fileformat': 'Fileformat',
               \  'modified': 'LightlineModified'
               \  }
-        let g:lightline.component_expand = {
-              \  'linter_checking': 'lightline#ale#checking',
-              \  'linter_warnings': 'lightline#ale#warnings',
-              \  'linter_errors': 'lightline#ale#errors',
-              \  'linter_ok': 'lightline#ale#ok',
-              \  'buffers': 'lightline#bufferline#buffers'
-              \  }
+        " let g:lightline.component_expand = {
+        "       \  'linter_checking': 'lightline#ale#checking',
+        "       \  'linter_warnings': 'lightline#ale#warnings',
+        "       \  'linter_errors': 'lightline#ale#errors',
+        "       \  'linter_ok': 'lightline#ale#ok',
+        "       \  'buffers': 'lightline#bufferline#buffers'
+        "       \  }
         let g:lightline.component_type = {
               \  'linter_checking': 'left',
               \  'linter_warnings': 'warning',
@@ -50,10 +51,10 @@
               \  'buffers': 'tabsel',
               \  }
         let g:lightline.component_raw = {'buffers': 1}
-        let g:lightline#ale#indicator_checking = ""
-        let g:lightline#ale#indicator_warnings = "!"
-        let g:lightline#ale#indicator_errors = "×"
-        let g:lightline#ale#indicator_ok = ""
+        " let g:lightline#ale#indicator_checking = ""
+        " let g:lightline#ale#indicator_warnings = "!"
+        " let g:lightline#ale#indicator_errors = "×"
+        " let g:lightline#ale#indicator_ok = ""
         " let g:lightline.separator = {'left': '', 'right': ''}
         " let g:lightline.subseparator = {'left': '', 'right': ''}
         let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
@@ -120,33 +121,38 @@
         autocmd ColorScheme,WinEnter,BufEnter,VimEnter,TextChanged * call UpdateLightline()
     " }
     " ALE {
-        nmap <leader>a <Plug>(ale_fix)
-        let g:ale_enabled = 0
-        let g:ale_set_highlights = 0
-        let g:ale_sign_error = 'x'
-        let g:ale_sign_warning = '!'
-        let g:ale_echo_msg_format = "%severity%: %s  [%linter%]"
-        let g:ale_echo_msg_error_str = "Error"
-        let g:ale_echo_msg_info_str = "Info"
-        let g:ale_echo_msg_warning_str = "Warning"
-        let g:ale_writegood_use_global = 1
-        let g:ale_change_sign_column_color = 0
-        let g:ale_sign_column_always = 1
-        let g:ale_fixers = {
-        \   'python': ['black','isort','yapf'],
-        \   'markdown': ['prettier','trim_whitespace'],
-        \   'cpp': ['clang-format','trim_whitespace'],
-        \   'tex': ['latexindent'],
-        \   'json': ['prettier'],
-        \   'html': ['prettier'],
-        \}
-        let g:ale_c_clangformat_options = '-style="{BasedOnStyle: llvm}"'
+        " nmap <leader>a <Plug>(ale_fix)
+        " let g:ale_enabled = 0
+        " let g:ale_set_highlights = 0
+        " let g:ale_sign_error = 'x'
+        " let g:ale_sign_warning = '!'
+        " let g:ale_echo_msg_format = "%severity%: %s  [%linter%]"
+        " let g:ale_echo_msg_error_str = "Error"
+        " let g:ale_echo_msg_info_str = "Info"
+        " let g:ale_echo_msg_warning_str = "Warning"
+        " let g:ale_writegood_use_global = 1
+        " let g:ale_change_sign_column_color = 0
+        " let g:ale_sign_column_always = 1
+        " let g:ale_fixers = {
+        " \   'python': ['black','isort','yapf'],
+        " \   'markdown': ['prettier','trim_whitespace'],
+        " \   'cpp': ['clang-format','trim_whitespace'],
+        " \   'tex': ['latexindent'],
+        " \   'json': ['prettier'],
+        " \   'html': ['prettier'],
+        " \}
+        " let g:ale_c_clangformat_options = '-style="{BasedOnStyle: llvm}"'
+    " }
+    " Neoformat {
+        let g:neoformat_enabled_python = ['black','yapf','isort']
+        let g:shfmt_opt="-ci"
     " }
     " Markdown {
         let g:tex_conceal = ""
         let g:vim_markdown_math = 1
         let g:vim_markdown_frontmatter = 1
         let g:vim_markdown_folding_disabled = 1
+        let g:vim_markdown_strikethrough = 1
         " let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
         let g:instant_markdown_autostart = 0
         let g:instant_markdown_mathjax = 1
@@ -154,7 +160,6 @@
     " COC {
         let g:coc_global_extensions = [
                         \ 'coc-json',
-                        \ 'coc-word',
                         \ 'coc-vimtex',
                         \ 'coc-lists',
                         \ 'coc-yank',
@@ -171,26 +176,33 @@
         nmap <leader>ge :CocCommand explorer<CR>
 
         " Use tab for trigger completion with characters ahead and navigate.
-        " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+        " NOTE: There's always complete item selected by default, you may want to enable
+        " no select by `"suggest.noselect": true` in your configuration file.
+        " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+        " other plugin before putting this into your config.
         inoremap <silent><expr> <TAB>
-              \ pumvisible() ? "\<C-n>" :
-              \ <SID>check_back_space() ? "\<TAB>" :
+              \ coc#pum#visible() ? coc#pum#next(1) :
+              \ CheckBackspace() ? "\<Tab>" :
               \ coc#refresh()
-        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+        inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-        function! s:check_back_space() abort
+        " Make <CR> to accept selected completion item or notify coc.nvim to format
+        " <C-g>u breaks current undo, please make your own choice.
+        " inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+        "                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+        function! CheckBackspace() abort
           let col = col('.') - 1
           return !col || getline('.')[col - 1]  =~# '\s'
         endfunction
 
         " Use <c-space> to trigger completion.
-        inoremap <silent><expr> <c-space> coc#refresh()
-
-        if has('patch8.1.1068')
-          " Use `complete_info` if your (Neo)Vim version supports it.
-          inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+        if has('nvim')
+          inoremap <silent><expr> <c-space> coc#refresh()
         else
-          imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+          inoremap <silent><expr> <c-@> coc#refresh()
         endif
 
         set signcolumn=yes
@@ -206,13 +218,13 @@
         nmap <silent> <leader>gf <Plug>(coc-references)
 
         " Use K to show documentation in preview window
-        nnoremap <silent> K :call <SID>show_documentation()<CR>
+        nnoremap <silent> <leader>cu :call ShowDocumentation()<CR>
 
-        function! s:show_documentation()
-          if (index(['vim','help'], &filetype) >= 0)
-            execute 'h '.expand('<cword>')
+        function! ShowDocumentation()
+          if CocAction('hasProvider', 'hover')
+            call CocActionAsync('doHover')
           else
-            call CocAction('doHover')
+            call feedkeys('K', 'in')
           endif
         endfunction
 
@@ -243,17 +255,45 @@
         " Fix autofix problem of current line
         nmap <leader>cq  <Plug>(coc-fix-current)
 
-        " Create mappings for function text object, requires document symbols feature of languageserver.
+        " Map function and class text objects
+        " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
         xmap if <Plug>(coc-funcobj-i)
-        xmap af <Plug>(coc-funcobj-a)
         omap if <Plug>(coc-funcobj-i)
+        xmap af <Plug>(coc-funcobj-a)
         omap af <Plug>(coc-funcobj-a)
+        xmap ic <Plug>(coc-classobj-i)
+        omap ic <Plug>(coc-classobj-i)
+        xmap ac <Plug>(coc-classobj-a)
+        omap ac <Plug>(coc-classobj-a)
+
+        " Remap <C-f> and <C-b> for scroll float windows/popups.
+        if has('nvim-0.4.0') || has('patch-8.2.0750')
+          nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+          nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+          inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+          inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+          vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+          vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+        endif
+
+        " Use CTRL-S for selections ranges.
+        " Requires 'textDocument/selectionRange' support of language server.
+        nmap <silent> <C-s> <Plug>(coc-range-select)
+        xmap <silent> <C-s> <Plug>(coc-range-select)
 
         " Use `:Format` to format current buffer
         command! -nargs=0 Format :call CocAction('format')
 
         " Use `:Fold` to fold current buffer
         command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+        " Add `:OR` command for organize imports of the current buffer.
+        command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+        " Add (Neo)Vim's native statusline support.
+        " NOTE: Please see `:h coc-status` for integrations with external plugins that
+        " provide custom statusline: lightline.vim, vim-airline.
+        " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
         " Using CocList
         nnoremap <silent> <leader>cb  :<C-u>CocList buffers<cr>
@@ -407,9 +447,9 @@
         let g:startify_lists = [
               \ { 'type': 'files',     'header': ['      Files']          },
               \ { 'type': 'dir',       'header': ['      MRU '. getcwd()] },
-              \ { 'type': 'sessions',  'header': ['      Sessions']       },
+              \ { 'type': 'sessions',  'header': ['     Sessions']       },
               \ { 'type': 'bookmarks', 'header': ['      Bookmarks']      },
-              \ { 'type': 'commands',  'header': ['    גּ  Commands']       },
+              \ { 'type': 'commands',  'header': ['    󰘳  Commands']       },
               \ ]
         let g:ascii = [
         \ '    |\__/,| ',
@@ -468,8 +508,8 @@
         endif
     " }
     " { header
-        let g:header_field_author = '@yzlnew'
-        let g:header_field_author_email = 'yzlnew@gmail.com'
+        let g:header_field_author = 'yezhiling.yzl'
+        let g:header_field_author_email = 'yezhiling.yzl@antgroup.com'
         let g:header_auto_add_header = 0
     " }
     " vimwiki {
@@ -524,7 +564,7 @@
                   \ 'c' : ['PlugClean', 'clean'],
                   \}
       let g:which_key_map.e = 'Explorer'
-      let g:which_key_map.a = 'ALEFix'
+      " let g:which_key_map.a = 'ALEFix'
       let g:which_key_map.q = 'Quick UI'
       let g:which_key_map.d = 'Docstring'
       let g:which_key_map.j = 'Jump pairs'
@@ -649,16 +689,16 @@
 
       let quickui_edit_basic = [
                   \ ["Copyright &Header\t", 'AddHeader', 'Insert copyright information at the beginning'],
-                  \ ["Format\t", 'Format', ''],
-                  \ ["Pangu\t", 'Pangu', ''],
+                  \ ["Format\t󰉼", 'Format', ''],
+                  \ ["Pangu\t󰊄", 'Pangu', ''],
                   \ ['--'],
                   \ ["&Align Table\t", 'Tabularize /|', ''],
-                  \ ["Open in Finder\t",'!open .'],
+                  \ ["Open in Finder\t󰀶",'!open .'],
                   \ ]
       let quickui_edit_win = [
                   \ ['--'],
                   \ ["Open in Terminal\t",'!wt -d .'],
-                  \ ["Open in Explorer\t",'!start .'],
+                  \ ["Open in Explorer\t󰀶",'!start .'],
                   \ ]
 
       if WINDOWS()
@@ -687,10 +727,10 @@
                   \ [ "&File\t", 'LeaderfFile' ],
                   \ [ "&Mru\t", 'LeaderfMru' ],
                   \ ['--',''],
-                  \ ["Plugin &Clean\tﮁ", "PlugClean", "Clean"],
-                  \ ["Plugin &Update\tﮮ", "PlugUpdate", "Update plugin"],
+                  \ ["Plugin &Clean\t󰿞", "PlugClean", "Clean"],
+                  \ ["Plugin &Update\t󰚰", "PlugUpdate", "Update plugin"],
                   \ ['--',''],
-                  \ ["&Nerdtree Find\t", "NERDTreeFind", "Update plugin"],
+                  \ ["&Nerdtree Find\t󰈞", "NERDTreeFind", "Update plugin"],
                   \ ])
 
       call quickui#menu#install("&Toggle", [
@@ -713,10 +753,10 @@
 
       " register HELP menu with weight 10000
       call quickui#menu#install('H&elp', [
-                  \ ["&Cheatsheet\t", 'help index', ''],
-                  \ ["T&ips\tﯧ", 'help tips', ''],
+                  \ ["&Cheatsheet\t", 'help index', ''],
+                  \ ["T&ips\t", 'help tips', ''],
                   \ ['--',''],
-                  \ ["&Tutorial\t", 'help tutor', ''],
+                  \ ["&Tutorial\t󰋖", 'help tutor', ''],
                   \ ["&Quick Reference\t", 'help quickref', ''],
                   \ ["&Summary\t", 'help summary', ''],
                   \ ], 10000)
@@ -777,9 +817,9 @@
                   \ ["&Search in Project\t", 'exec "silent! Leaderf rg " . expand("<cword>")'],
                   \ ["Search in &Zeal\t", 'exec "!zeal dash://" . expand("<cword>")'],
                   \ [ "--", ],
-                  \ [ "Goto D&efinition\t", 'call CocAction("jumpDefinition")'],
-                  \ [ "Goto &References\t", 'call CocAction("jumpReferences")'],
-                  \ [ "Goto &Implementation\t", 'call CocAction("jumpImplementation")'],
+                  \ [ "Goto D&efinition\t", 'call CocAction("jumpDefinition")'],
+                  \ [ "Goto &References\t", 'call CocAction("jumpReferences")'],
+                  \ [ "Goto &Implementation\t", 'call CocAction("jumpImplementation")'],
                   \ ['--', ''],
                   \ [ "Toggle &Quickfix", 'call sidebar#toggle("quickfix")' ],
                   \ [ "Toggle &Nerdtree", 'call sidebar#toggle("nerdtree")' ],
@@ -890,4 +930,17 @@
     " Pangu {
     nnoremap <leader>pg :Pangu<cr>
     " }
-" }
+    " Wildr.nvim {
+    if !exists('g:vscode')
+        call wilder#setup({'modes': [':', '/', '?']})
+        call wilder#set_option('pipeline', [
+              \   wilder#branch(
+              \     wilder#cmdline_pipeline(),
+              \     wilder#search_pipeline(),
+              \   ),
+              \ ])
+        call wilder#set_option('renderer', wilder#wildmenu_renderer({
+              \ 'highlighter': wilder#basic_highlighter(),
+              \ }))
+    endif
+    " }

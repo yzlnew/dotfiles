@@ -10,7 +10,7 @@
     noremap <M-.> :bnext<CR>
     noremap <Tab> :bnext<CR>
 
-    noremap <M-d> :bd<CR>
+    noremap <M-d> :bp\|bd #<CR>
     noremap <M-q> <C-w>c
     noremap <M-\> :vsplit<CR>
     noremap <M--> :split<CR>
@@ -73,7 +73,7 @@
         endif
     endfunction
 
-    if OSX()
+    if OSX() && !has('nvim')
         set macmeta
     endif
 " }

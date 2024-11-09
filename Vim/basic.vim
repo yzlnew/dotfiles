@@ -60,7 +60,7 @@
 " 格式化 {
     set fo+=mB
     set sidescroll=1
-    set conceallevel=2                   " Markdown 用到此项做语法隐藏
+    set conceallevel=0                   " Markdown 用到此项做语法隐藏
     set nowrap
     set autoindent
     set smartindent
